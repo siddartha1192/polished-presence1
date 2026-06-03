@@ -511,6 +511,8 @@ img{max-width:100%;display:block}
   .eng-card.eng-exit{opacity:1;transform:none}
   .eng-ghost-num{display:none}
   .eng-progress{display:none}
+  .eng-steplist{display:none}
+  .eng-header h2{font-size:clamp(2rem,7vw,3rem);font-weight:900;line-height:1.1}
 }
 
 /* ═══ CASE STUDIES ════════════════════════════════════════════════════════ */
