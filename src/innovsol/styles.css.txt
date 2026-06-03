@@ -725,6 +725,7 @@ footer{background:#06101F;padding:3.5rem 0 1.5rem}
 }
 @media(max-width:768px){
   .container{padding:0 24px}
+  .reel-counter{display:none}
   .nav-links,.nav-right .btn-outline-blue{display:none}
   .ham{display:flex}
   .mob-nav.open{display:flex}
