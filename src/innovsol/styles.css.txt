@@ -810,18 +810,17 @@ footer{background:#000;border-top:3px solid var(--orange)}
   padding:2rem 0 1.8rem;border-bottom:1px solid rgba(255,255,255,.1)}
 
 /* Logo + tagline */
-.ft-left{display:flex;flex-direction:column;gap:.75rem;flex-shrink:0;width:200px}
+.ft-left{display:flex;flex-direction:column;gap:.75rem;flex-shrink:0;width:190px}
 .ft-logo-link{
   display:block;line-height:0;
   overflow:hidden;
-  height:100px;
+  width:185px;height:110px;
   background:#fff;
-  border-radius:50%;
-  width:100px;
-  display:flex;align-items:center;justify-content:center}
+  border-radius:10px;
+  flex-shrink:0}
 .ft-logo-img{
-  width:160px;height:auto;display:block;
-  margin-top:-52px;margin-left:-30px;
+  width:205px;height:auto;display:block;
+  margin-top:-45px;margin-left:-4px;
   transition:opacity .25s}
 .ft-logo-img:hover{opacity:.85}
 .ft-tagline{font-size:.7rem;color:rgba(255,255,255,.45);line-height:1.6;margin:0}
