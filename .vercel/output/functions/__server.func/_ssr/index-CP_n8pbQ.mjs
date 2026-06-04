@@ -821,7 +821,7 @@ footer{background:#000;border-top:3px solid var(--orange)}\r
   flex-shrink:0}\r
 .ft-logo-img{\r
   width:205px;height:auto;display:block;\r
-  margin-top:-45px;margin-left:-4px;\r
+  margin-top:-45px;margin-left:8px;\r
   transition:opacity .25s}\r
 .ft-logo-img:hover{opacity:.85}\r
 .ft-tagline{font-size:.7rem;color:rgba(255,255,255,.45);line-height:1.6;margin:0}\r
