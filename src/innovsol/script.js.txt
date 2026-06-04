@@ -1,4 +1,21 @@
 
+// ── Mobile nav drawer (right-side slide-in) ──────────────────────────────
+function toggleMob () {
+  const nav    = document.getElementById('mobNav');
+  const ham    = document.getElementById('ham');
+  const overlay = document.getElementById('mobOverlay');
+  const isOpen = nav.classList.toggle('open');
+  ham.classList.toggle('open', isOpen);
+  overlay.classList.toggle('open', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+
+// close on overlay click
+document.addEventListener('DOMContentLoaded', () => {
+  const overlay = document.getElementById('mobOverlay');
+  if (overlay) overlay.addEventListener('click', toggleMob);
+});
+
 // ── Hero Reel — 4-slide enterprise video carousel ────────────────────────
 (function () {
   // Guard: prevent double-init from React StrictMode's double effect invocation
@@ -7,11 +24,15 @@
 
   const videos  = Array.from(document.querySelectorAll('.reel-video'));
   const slides  = Array.from(document.querySelectorAll('.reel-slide'));
-  const curEl   = document.querySelector('.reel-c-cur');
-  const prevBtn = document.querySelector('.reel-prev');
-  const nextBtn = document.querySelector('.reel-next');
+  const dots    = Array.from(document.querySelectorAll('.reel-dot'));
 
   if (!videos.length) return;
+
+  // Playback speed per slide (0 = first, last = videos.length-1)
+  const rates = [0.6, 1.0, 1.0, 2.5];
+  function applyRate (idx) {
+    videos[idx].playbackRate = rates[idx] ?? 1.0;
+  }
 
   let current       = 0;
   let transitioning = false;
@@ -39,6 +60,7 @@
     videos[current].classList.add('reel-active');
     videos[current].muted = true;
     videos[current].currentTime = 0;
+    applyRate(current);
     videos[current].play().catch(() => {});
 
     // Slides: fade out old, fade in new
@@ -46,8 +68,8 @@
     slides[prev].classList.add('reel-exit');
     slides[current].classList.add('reel-active');
 
-    // Counter
-    if (curEl) curEl.textContent = String(current + 1).padStart(2, '0');
+    // Dots
+    dots.forEach((d, i) => d.classList.toggle('reel-dot-active', i === current));
 
     setTimeout(() => {
       slides[prev].classList.remove('reel-exit');
@@ -73,9 +95,8 @@
     });
   });
 
-  // Arrow clicks
-  if (prevBtn) prevBtn.addEventListener('click', () => goTo(current - 1));
-  if (nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1));
+  // Dot clicks
+  dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.idx)));
 
   // Keyboard navigation
   document.addEventListener('keydown', e => {
@@ -90,7 +111,7 @@
     if (!v) return;
     v.muted = true;          // ensure muted flag is set in DOM
     v.currentTime = 0;
-    v.playbackRate = 2.5;    // first video plays 2.5× faster
+    applyRate(0);
     const p = v.play();
     if (p !== undefined) {
       p.catch(() => {

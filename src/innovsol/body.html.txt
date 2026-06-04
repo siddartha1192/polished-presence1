@@ -3,7 +3,7 @@
 <!-- ══ NAVBAR ════════════════════════════════════════════════════════════ -->
 <nav id="nav">
   <div class="container nav-wrap">
-    <a href="#home"><img src="/images/logo.png" alt="Innovsol" style="height:198px;width:auto"/></a>
+    <a href="#home"><img src="/images/logo.png" alt="Innovsol" class="nav-logo-img"/></a>
     <div class="nav-links">
       <a href="#home">Home</a>
       <a href="#services">Services</a>
@@ -14,12 +14,13 @@
       <a href="#careers">Careers</a>
     </div>
     <div class="nav-right">
-      <a href="#contact" class="btn btn-outline-blue" style="font-size:.9rem;padding:.6rem 1.3rem">Contact Us</a>
-      <a href="#contact" class="btn btn-orange" style="font-size:.9rem;padding:.6rem 1.3rem">Book a Strategy Call</a>
+      <a href="#contact-form" class="btn btn-outline-blue" style="font-size:.9rem;padding:.6rem 1.3rem">Contact Us</a>
+      <a href="#contact-form" class="btn btn-orange" style="font-size:.9rem;padding:.6rem 1.3rem">Book a Strategy Call</a>
       <button class="ham" id="ham" onclick="toggleMob()"><span></span><span></span><span></span></button>
     </div>
   </div>
   <div class="mob-nav" id="mobNav">
+    <button class="mob-close" onclick="toggleMob()" aria-label="Close menu">&#x2715;</button>
     <a href="#home" onclick="toggleMob()">Home</a>
     <a href="#services" onclick="toggleMob()">Services</a>
     <a href="#industries" onclick="toggleMob()">Industries</a>
@@ -27,8 +28,10 @@
     <a href="#fde" onclick="toggleMob()">FDE Team</a>
     <a href="#insights" onclick="toggleMob()">Insights</a>
     <a href="#careers" onclick="toggleMob()">Careers</a>
-    <a href="#contact" onclick="toggleMob()">Contact Us</a>
+    <a href="#contact-form" onclick="toggleMob()">Contact Us</a>
+    <a href="#contact-form" class="btn btn-orange" style="margin-top:1rem;justify-content:center" onclick="toggleMob()">Book a Strategy Call</a>
   </div>
+  <div class="mob-overlay" id="mobOverlay"></div>
 </nav>
 
 <!-- ══ HERO REEL — 4-slide enterprise video carousel ══════════════════════ -->
@@ -53,11 +56,12 @@
   <!-- Overlay -->
   <div class="hero-overlay"></div>
 
-  <!-- Slide counter top-right -->
-  <div class="reel-counter">
-    <span class="reel-c-cur">01</span>
-    <span class="reel-c-sep">/</span>
-    <span class="reel-c-tot">04</span>
+  <!-- Slide dots -->
+  <div class="reel-dots">
+    <button class="reel-dot reel-dot-active" data-idx="0" aria-label="Slide 1"></button>
+    <button class="reel-dot" data-idx="1" aria-label="Slide 2"></button>
+    <button class="reel-dot" data-idx="2" aria-label="Slide 3"></button>
+    <button class="reel-dot" data-idx="3" aria-label="Slide 4"></button>
   </div>
 
   <!-- Slide content -->
@@ -67,10 +71,10 @@
     <div class="reel-slide reel-active" data-idx="0">
       <div class="container">
         <div class="reel-inner">
-          <div class="reel-eyebrow">Our Mission</div>
-          <h1>Elevate enterprise productivity<br><em>measurably</em> by embedding AI<br>where it matters most.</h1>
+          <div class="reel-eyebrow reel-eyebrow-nodash">Our Mission</div>
+          <h1>Elevate enterprise productivity<br><span class="reel-nowrap"><em>&mdash;&nbsp;measurably&nbsp;&mdash;</em> by embedding AI</span><br>where it matters most.</h1>
           <div class="reel-btns">
-            <a href="#contact" class="btn btn-orange btn-hero-primary">Book a Strategy Call &rarr;</a>
+            <a href="#contact-form" class="btn btn-orange btn-hero-primary">Book a Strategy Call &rarr;</a>
             <a href="#services" class="btn btn-outline-light">Explore AI Solutions</a>
           </div>
         </div>
@@ -113,7 +117,7 @@
           <div class="reel-eyebrow">Building Enterprise AI Infrastructure</div>
           <h1>Cloud-native AI platforms, data pipelines,<br>AIOps, and governance frameworks<br>built for <em>production scale.</em></h1>
           <div class="reel-btns">
-            <a href="#contact" class="btn btn-orange btn-hero-primary">Book a Strategy Call &rarr;</a>
+            <a href="#contact-form" class="btn btn-orange btn-hero-primary">Book a Strategy Call &rarr;</a>
             <a href="#services" class="btn btn-outline-light">Explore Services</a>
           </div>
         </div>
@@ -478,15 +482,14 @@
       <!-- ── Centred header ─────────────────────────────────────────────── -->
       <div class="eng-header">
         <div class="section-label">Our Engagement Model</div>
-        <h2>Discover. Design. Deploy. Scale.</h2>
       </div>
 
-      <!-- ── Horizontal step tabs ───────────────────────────────────────── -->
+      <!-- ── Phase selector ────────────────────────────────────────────── -->
       <nav class="eng-steplist">
-        <a class="eng-steplbl active" data-phase="0"><span class="sn">01</span>Discover</a>
-        <a class="eng-steplbl" data-phase="1"><span class="sn">02</span>Design</a>
-        <a class="eng-steplbl" data-phase="2"><span class="sn">03</span>Deploy</a>
-        <a class="eng-steplbl" data-phase="3"><span class="sn">04</span>Scale</a>
+        <a class="eng-steplbl active" data-phase="0">Discover</a>
+        <a class="eng-steplbl" data-phase="1">Design</a>
+        <a class="eng-steplbl" data-phase="2">Deploy</a>
+        <a class="eng-steplbl" data-phase="3">Scale</a>
       </nav>
 
       <!-- ── Stage: cards absolutely stacked, JS drives which is visible ── -->
@@ -727,7 +730,7 @@
         <h3>Ready to Move Beyond<br>the AI Pilot?</h3>
         <p>Join enterprises that have made AI operational. Our FDE engineers are ready to embed with your team and build AI that works in the real world — not just in demos.</p>
         <div style="display:flex;gap:.8rem;flex-wrap:wrap">
-          <a href="#contact" class="btn btn-orange">Book a Strategy Call &rarr;</a>
+          <a href="#contact-form" class="btn btn-orange">Book a Strategy Call &rarr;</a>
           <a href="#contact" class="btn btn-ghost" style="font-size:.82rem">AI Readiness Guide</a>
         </div>
         <div class="cta-pill">Start with a Discovery Sprint — 2 weeks to your AI roadmap · fixed price · no long-term commitment required</div>
@@ -745,7 +748,7 @@
   </div>
 </section>
 
-<!-- ══ CONTACT ═════════════════════════════════════════════════════════════ -->
+<!-- ══ CONTACT (info + world map) ══════════════════════════════════════════ -->
 <section id="contact">
   <div class="container">
     <div class="con-grid">
@@ -758,12 +761,69 @@
           <div class="con-det"><span class="con-icon">📞</span><span><a href="tel:+919582799988" style="color:inherit;text-decoration:none">+91 95827 99988</a></span></div>
           <div class="con-det"><span class="con-icon">⚡</span><span>Strategy calls scheduled within 5 business days</span></div>
           <div class="con-det"><span class="con-icon">🔒</span><span>Enterprise-grade security · GDPR compliant</span></div>
-          <div class="con-det"><span class="con-icon">🌍</span><span>Serving clients across North America, Europe &amp; Asia-Pacific</span></div>
         </div>
       </div>
-      <div class="cform fi-right">
-        <h3>Send Us a Message</h3>
-        <form id="cform" onsubmit="sendForm(event)">
+      <div class="fi-right">
+        <!-- ── World Map ── -->
+        <div class="con-map">
+          <p class="con-map-label">Our Global Presence</p>
+          <div class="con-gmap">
+            <!-- zoom=1 shows full world — keeps marker % positions stable -->
+            <iframe
+              src="https://www.google.com/maps/embed/v1/view?center=0,0&zoom=1&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
+              allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              style="border:0;width:100%;height:100%;display:block;pointer-events:none;">
+            </iframe>
+            <!-- overlay markers — Mercator calculated for zoom=1 center=(0,0) -->
+            <div class="gmap-pins">
+              <!-- North America  lng=-95 lat=39 -->
+              <div class="gmap-pin orange" style="left:30%;top:36%">
+                <div class="gmap-ring"></div>
+                <div class="gmap-dot"></div>
+                <span class="gmap-label">North America</span>
+              </div>
+              <!-- Europe  lng=10 lat=52 -->
+              <div class="gmap-pin blue" style="left:52%;top:29%">
+                <div class="gmap-ring"></div>
+                <div class="gmap-dot"></div>
+                <span class="gmap-label">Europe</span>
+              </div>
+              <!-- Bangalore  12°58′44″N 77°35′30″E -->
+              <div class="gmap-pin orange" style="left:66%;top:46%">
+                <div class="gmap-ring"></div>
+                <div class="gmap-dot"></div>
+                <span class="gmap-label">Bangalore, India</span>
+              </div>
+              <!-- Asia-Pacific  lng=133 lat=-25 -->
+              <div class="gmap-pin blue" style="left:78%;top:59%">
+                <div class="gmap-ring"></div>
+                <div class="gmap-dot"></div>
+                <span class="gmap-label">Asia-Pacific</span>
+              </div>
+            </div>
+          </div>
+          <div class="con-map-legend">
+            <span class="cml-item"><span class="cml-dot" style="background:#faa728"></span>North America</span>
+            <span class="cml-item"><span class="cml-dot" style="background:#6398ff"></span>Europe</span>
+            <span class="cml-item"><span class="cml-dot" style="background:#faa728"></span>Bangalore, India</span>
+            <span class="cml-item"><span class="cml-dot" style="background:#6398ff"></span>Asia-Pacific</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT FORM ══════════════════════════════════════════════════════════ -->
+<section id="contact-form" class="contact-form-sec">
+  <div class="container">
+    <div class="contact-form-inner">
+      <div class="cform-hd fi">
+        <h2>Start the Conversation</h2>
+        <p>Tell us about your AI challenge — our team will respond within 1 business day.</p>
+      </div>
+      <form id="cform" class="cform-modern fi" onsubmit="sendForm(event)">
           <div class="frow">
             <div class="fg"><label>First Name *</label><input type="text" placeholder="First name" required/></div>
             <div class="fg"><label>Last Name *</label><input type="text" placeholder="Last name" required/></div>
@@ -801,8 +861,7 @@
           <div class="fg"><label>Message</label><textarea placeholder="Tell us about your AI challenge or ambition..."></textarea></div>
           <button type="submit" class="fsub">Send Message &rarr;</button>
           <div class="fnote">By submitting you agree to our Privacy Policy. All enquiries reviewed within 1 business day.</div>
-        </form>
-      </div>
+      </form>
     </div>
   </div>
 </section>
@@ -810,20 +869,56 @@
 <!-- ══ FOOTER ══════════════════════════════════════════════════════════════ -->
 <footer>
   <div class="container">
-    <div class="ft">
-      <div class="ft-brand">
-        <a href="#home"><img src="/images/logo.png" alt="Innovsol" class="ft-logo-img"/></a>
+    <!-- Main footer row: logo | nav | contact -->
+    <div class="ft-main">
+      <div class="ft-left">
+        <a href="#home" class="ft-logo-link"><img src="/images/logo.png" alt="Innovsol" class="ft-logo-img"/></a>
         <p class="ft-tagline">Enterprise AI. Deployed,<br>Not Just Discussed.</p>
-        <a class="ft-email" href="mailto:hello@innovsol.ai">hello@innovsol.ai</a>
       </div>
-      <div class="fc"><h4>Company</h4><a href="#why">About Us</a><a href="#why">Mission &amp; Vision</a><a href="#fde">FDE Team</a><a href="#careers">Careers</a><a href="#contact">Contact</a></div>
-      <div class="fc"><h4>Services</h4><a href="#services">AI Strategy</a><a href="#services">AI Agents</a><a href="#services">FDE Engineering</a><a href="#services">Enterprise AI Infrastructure</a><a href="#services">GenAI Solutions</a><a href="#services">AI Product Eng</a></div>
-      <div class="fc"><h4>Industries</h4><a href="#industries">Banking</a><a href="#industries">Manufacturing</a><a href="#industries">Healthcare</a><a href="#industries">Retail</a><a href="#industries">Insurance</a><a href="#industries">GCCs</a></div>
-      <div class="fc"><h4>Resources</h4><a href="#insights">Insights / Blog</a><a href="#casestudies">Case Studies</a><a href="#contact">AI Readiness Guide</a><a href="#contact">Webinars</a></div>
+      <nav class="ft-nav">
+        <div class="ft-col">
+          <span class="ft-col-head">Company</span>
+          <a href="#why">About Us</a>
+          <a href="#fde">FDE Team</a>
+          <a href="#careers">Careers</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="ft-col">
+          <span class="ft-col-head">Services</span>
+          <a href="#services">AI Strategy</a>
+          <a href="#services">AI Agents</a>
+          <a href="#services">GenAI Solutions</a>
+          <a href="#services">FDE Engineering</a>
+        </div>
+        <div class="ft-col">
+          <span class="ft-col-head">Industries</span>
+          <a href="#industries">Banking</a>
+          <a href="#industries">Healthcare</a>
+          <a href="#industries">Manufacturing</a>
+          <a href="#industries">GCCs</a>
+        </div>
+        <div class="ft-col">
+          <span class="ft-col-head">Resources</span>
+          <a href="#insights">Blog</a>
+          <a href="#casestudies">Case Studies</a>
+          <a href="#contact">AI Guide</a>
+          <a href="#contact">Webinars</a>
+        </div>
+      </nav>
+      <div class="ft-right">
+        <a class="ft-email" href="mailto:hello@innovsol.ai">hello@innovsol.ai</a>
+        <a href="tel:+919582799988" class="ft-phone">+91 95827 99988</a>
+        <a href="#contact-form" class="btn btn-orange ft-cta">Book a Strategy Call &rarr;</a>
+      </div>
     </div>
-    <div class="fb">
-      <p>&copy; 2026 Innovsol. All Rights Reserved. &nbsp;|&nbsp; Innovate . Disrupt . Transform</p>
-      <div class="fb-links"><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a><a href="#">Terms of Use</a></div>
+    <!-- Bottom bar -->
+    <div class="ft-bar">
+      <p>&copy; 2026 Innovsol &nbsp;·&nbsp; Innovate . Disrupt . Transform</p>
+      <div class="ft-bar-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
     </div>
   </div>
 </footer>
