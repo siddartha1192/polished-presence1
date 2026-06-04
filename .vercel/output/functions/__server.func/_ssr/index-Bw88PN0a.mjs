@@ -969,10 +969,12 @@ footer{background:#000;border-top:3px solid var(--orange)}\r
   .reel-slide[data-idx="0"] h1{font-size:clamp(1.2rem,5.2vw,1.8rem)}\r
   .reel-nowrap{white-space:normal}\r
   .reel-btns{\r
-    bottom:4.5rem;left:0;right:0;\r
+    position:relative;\r
+    bottom:auto;left:auto;right:auto;\r
     justify-content:center;\r
     flex-wrap:wrap;gap:.6rem;\r
-    padding:0 1.5rem}\r
+    margin-top:1.2rem;\r
+    padding:0}\r
   .btn-hero-primary,.btn-outline-light{\r
     font-size:clamp(.78rem,3.5vw,.9rem);\r
     padding:.6rem 1.4rem;\r
