@@ -960,6 +960,17 @@ footer{background:#000;border-top:3px solid var(--orange)}
   .cs-grid,.ins-grid{grid-template-columns:1fr}
   .why-img-wrap{height:200px}
   .ind-img-wrap{height:130px}
+
+  /* Logo strip (10+ Industries) */
+  #strip{padding:2rem 0}
+  .strip-label{font-size:.82rem;margin-bottom:1.5rem;letter-spacing:.04em}
+  .logo-chip{font-size:.78rem;padding:.6rem 1rem;gap:.6rem;border-radius:8px}
+  .logo-chip svg{width:20px;height:20px}
+  .marq-wrap::before,.marq-wrap::after{width:60px}
+
+  /* Engagement deliverable */
+  .eng-del-txt{font-size:.78rem;line-height:1.5;text-align:center;word-break:break-word}
+  .eng-deliverable{padding:0 1rem}
   .stat-cards{grid-template-columns:1fr 1fr}
   .hero-stats{grid-template-columns:repeat(2,1fr);max-width:100%}
   /* ── Hero mobile ── */
