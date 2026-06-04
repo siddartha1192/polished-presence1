@@ -1,5 +1,4 @@
-import { r as reactExports, j as jsxRuntimeExports } from "../_libs/react.mjs";
-const styles = `\r
+import{r as n,j as e}from"./index-loHDqoU4.js";const i=`\r
 /* ═══ RESET & ROOT ════════════════════════════════════════════════════════ */\r
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}\r
 :root{\r
@@ -460,7 +459,7 @@ img{max-width:100%;display:block}\r
 .eng-header h2{font-size:clamp(1.6rem,2.8vw,2.8rem);color:var(--dark);margin:.5rem 0 0;line-height:1.15}\r
 \r
 /* Phase selector — big scroll-driven text nav */\r
-.eng-steplist{display:flex;flex-direction:row;gap:0;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}\r
+.eng-steplist{display:flex;flex-direction:row;gap:0;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem}\r
 .eng-steplbl{\r
   font-size:clamp(1.4rem,2.2vw,2rem);font-weight:800;letter-spacing:-.02em;\r
   color:rgba(15,40,90,.3);\r
@@ -470,12 +469,12 @@ img{max-width:100%;display:block}\r
 .eng-steplbl:hover:not(.active){color:rgba(15,40,90,.55)}\r
 \r
 /* Stage: centred, cards stacked */\r
-.eng-stage{position:relative;height:48vh;width:100%;max-width:760px;overflow:hidden}\r
+.eng-stage{position:relative;height:38vh;width:100%;max-width:760px;overflow:hidden}\r
 \r
 /* Cards — fast transitions */\r
 .eng-card{\r
   position:absolute;inset:0;\r
-  display:flex;align-items:center;justify-content:center;\r
+  display:flex;align-items:flex-start;justify-content:center;\r
   opacity:0;transform:translateY(45px);\r
   transition:opacity .38s cubic-bezier(.22,.61,.36,1),transform .38s cubic-bezier(.22,.61,.36,1);\r
   pointer-events:none}\r
@@ -968,8 +967,7 @@ footer{background:#000;border-top:3px solid var(--orange)}\r
   .ft-nav{gap:.8rem}\r
   .ft-bar{flex-direction:column;align-items:flex-start;gap:.4rem}\r
 }\r
-`;
-const body = `\r
+`,t=`\r
 \r
 <!-- ══ NAVBAR ════════════════════════════════════════════════════════════ -->\r
 <nav id="nav">\r
@@ -1881,28 +1879,335 @@ const body = `\r
 \r
 <!-- ══ JAVASCRIPT ══════════════════════════════════════════════════════════ -->\r
 \r
-`;
-const script = "\r\n// ── Mobile nav drawer (right-side slide-in) ──────────────────────────────\r\nfunction toggleMob () {\r\n  const nav    = document.getElementById('mobNav');\r\n  const ham    = document.getElementById('ham');\r\n  const overlay = document.getElementById('mobOverlay');\r\n  const isOpen = nav.classList.toggle('open');\r\n  ham.classList.toggle('open', isOpen);\r\n  overlay.classList.toggle('open', isOpen);\r\n  document.body.style.overflow = isOpen ? 'hidden' : '';\r\n}\r\n\r\n// close on overlay click\r\ndocument.addEventListener('DOMContentLoaded', () => {\r\n  const overlay = document.getElementById('mobOverlay');\r\n  if (overlay) overlay.addEventListener('click', toggleMob);\r\n});\r\n\r\n// ── Hero Reel — 4-slide enterprise video carousel ────────────────────────\r\n(function () {\r\n  // Guard: prevent double-init from React StrictMode's double effect invocation\r\n  if (window.__reelInit) return;\r\n  window.__reelInit = true;\r\n\r\n  const videos  = Array.from(document.querySelectorAll('.reel-video'));\r\n  const slides  = Array.from(document.querySelectorAll('.reel-slide'));\r\n  const dots    = Array.from(document.querySelectorAll('.reel-dot'));\r\n\r\n  if (!videos.length) return;\r\n\r\n  // Playback speed per slide (0 = first, last = videos.length-1)\r\n  const rates = [0.6, 1.0, 1.0, 2.5];\r\n  function applyRate (idx) {\r\n    videos[idx].playbackRate = rates[idx] ?? 1.0;\r\n  }\r\n\r\n  let current       = 0;\r\n  let transitioning = false;\r\n  let fallback      = null;\r\n\r\n  // Hard fallback — advance after 12s max per slide regardless of video state\r\n  function resetFallback () {\r\n    clearTimeout(fallback);\r\n    fallback = setTimeout(() => goTo(current + 1), 12000);\r\n  }\r\n\r\n  function goTo (idx) {\r\n    if (transitioning) return;\r\n    const next = ((idx % videos.length) + videos.length) % videos.length;\r\n    if (next === current) return;\r\n    transitioning = true;\r\n\r\n    clearTimeout(fallback);\r\n    const prev = current;\r\n    current = next;\r\n\r\n    // Videos: crossfade\r\n    videos[prev].classList.remove('reel-active');\r\n    videos[prev].pause();\r\n    videos[current].classList.add('reel-active');\r\n    videos[current].muted = true;\r\n    videos[current].currentTime = 0;\r\n    applyRate(current);\r\n    videos[current].play().catch(() => {});\r\n\r\n    // Slides: fade out old, fade in new\r\n    slides[prev].classList.remove('reel-active');\r\n    slides[prev].classList.add('reel-exit');\r\n    slides[current].classList.add('reel-active');\r\n\r\n    // Dots\r\n    dots.forEach((d, i) => d.classList.toggle('reel-dot-active', i === current));\r\n\r\n    setTimeout(() => {\r\n      slides[prev].classList.remove('reel-exit');\r\n      transitioning = false;\r\n      resetFallback();\r\n    }, 950);\r\n  }\r\n\r\n  // Three layers of advance detection (most → least reliable)\r\n  videos.forEach((v, i) => {\r\n    // 1. ended event (primary)\r\n    v.addEventListener('ended', () => {\r\n      if (i === current) goTo(current + 1);\r\n    });\r\n    // 2. timeupdate: advance when 97% through (catches ended-event failures)\r\n    v.addEventListener('timeupdate', () => {\r\n      if (i !== current || !v.duration) return;\r\n      if (v.currentTime / v.duration >= 0.97) goTo(current + 1);\r\n    });\r\n    // 3. error: skip broken video immediately\r\n    v.addEventListener('error', () => {\r\n      if (i === current) goTo(current + 1);\r\n    });\r\n  });\r\n\r\n  // Dot clicks\r\n  dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.idx)));\r\n\r\n  // Keyboard navigation\r\n  document.addEventListener('keydown', e => {\r\n    if (e.key === 'ArrowRight') goTo(current + 1);\r\n    if (e.key === 'ArrowLeft')  goTo(current - 1);\r\n  });\r\n\r\n  // Init — React's dangerouslySetInnerHTML doesn't trigger browser autoplay;\r\n  // we must call .play() programmatically after the DOM has settled.\r\n  function tryPlay () {\r\n    const v = videos[0];\r\n    if (!v) return;\r\n    v.muted = true;          // ensure muted flag is set in DOM\r\n    v.currentTime = 0;\r\n    applyRate(0);\r\n    const p = v.play();\r\n    if (p !== undefined) {\r\n      p.catch(() => {\r\n        // Browser blocked autoplay — retry on first user gesture\r\n        const resume = () => {\r\n          v.play().catch(() => {});\r\n          document.removeEventListener('click',      resume);\r\n          document.removeEventListener('touchstart', resume);\r\n          document.removeEventListener('keydown',    resume);\r\n        };\r\n        document.addEventListener('click',      resume, { once: true });\r\n        document.addEventListener('touchstart', resume, { once: true });\r\n        document.addEventListener('keydown',    resume, { once: true });\r\n      });\r\n    }\r\n  }\r\n\r\n  // Wait two animation frames so React's paint + browser layout are complete\r\n  requestAnimationFrame(() => requestAnimationFrame(() => {\r\n    tryPlay();\r\n    resetFallback();\r\n  }));\r\n})();\r\n\r\n// ── Navbar scroll shadow ─────────────────────────────────────────────────\r\nconst nav = document.getElementById('nav');\r\nwindow.addEventListener('scroll', () => {\r\n  nav.classList.toggle('sc', window.scrollY > 60);\r\n}, { passive: true });\r\n\r\n// ── Active nav link ──────────────────────────────────────────────────────\r\nconst navLinks   = document.querySelectorAll('.nav-links a');\r\nconst allSections = Array.from(document.querySelectorAll('section[id], div[id].eng-scroll-driver'));\r\n\r\nfunction updateActiveNav () {\r\n  const offset = 120; // navbar height + buffer\r\n  let current  = '';\r\n  allSections.forEach(sec => {\r\n    if (window.scrollY >= sec.offsetTop - offset) current = sec.id;\r\n  });\r\n  navLinks.forEach(a => {\r\n    a.classList.toggle('act', a.getAttribute('href') === '#' + current);\r\n  });\r\n}\r\n\r\nwindow.addEventListener('scroll', updateActiveNav, { passive: true });\r\nupdateActiveNav(); // run once on load\r\n\r\n// ── Showcase video: autoplay ─────────────────────────────────────────────\r\nconst showcase = document.getElementById('showcase');\r\nconst scVid = showcase && showcase.querySelector('.sc-video');\r\nif (scVid) {\r\n  scVid.play().catch(() => {});\r\n  scVid.addEventListener('error', function(){\r\n    const sources = scVid.querySelectorAll('source');\r\n    let idx = 0;\r\n    const tryNext = () => {\r\n      if (idx >= sources.length) return;\r\n      scVid.src = sources[idx++].src;\r\n      scVid.load();\r\n      scVid.play().catch(tryNext);\r\n    };\r\n    tryNext();\r\n  });\r\n  document.addEventListener('click', () => { if (scVid.paused) scVid.play().catch(()=>{}); }, { once: true });\r\n}\r\n\r\n// ── Showcase text reveal: add sc-go when section enters view ─────────────\r\nif (showcase) {\r\n  const scIO = new IntersectionObserver((entries) => {\r\n    entries.forEach(e => {\r\n      if (e.isIntersecting) {\r\n        showcase.classList.add('sc-go');\r\n        scIO.unobserve(showcase);\r\n      }\r\n    });\r\n  }, { threshold: 0.15 });\r\n  scIO.observe(showcase);\r\n}\r\n\r\n// ── Auto-assign slow left/right animation to all section titles ──────────\r\n(function () {\r\n  const sections = document.querySelectorAll(\r\n    '#services,#why,#industries,#engagement,#casestudies,#fde,#insights,#careers,#contact'\r\n  );\r\n  sections.forEach((sec, idx) => {\r\n    const fromLeft  = idx % 2 === 0;   // alternate direction per section\r\n    const labels = sec.querySelectorAll('.section-label');\r\n    const h2s    = sec.querySelectorAll('h2');\r\n\r\n    labels.forEach(el => {\r\n      el.classList.remove('fi','fi-left','fi-right');\r\n      el.classList.add(fromLeft ? 'fi-left' : 'fi-right', 'title-label');\r\n    });\r\n    h2s.forEach(el => {\r\n      el.classList.remove('fi','fi-left','fi-right');\r\n      // h2 comes from opposite side to label for a spreading effect\r\n      el.classList.add(fromLeft ? 'fi-right' : 'fi-left', 'title-h2');\r\n    });\r\n  });\r\n})();\r\n\r\n// ── Intersection observer: fade-in animations ────────────────────────────\r\nconst ioFade = new IntersectionObserver((entries) => {\r\n  entries.forEach(e => {\r\n    if (!e.isIntersecting) return;\r\n    e.target.classList.add('on');\r\n    e.target.querySelectorAll('[data-count]').forEach(animNum);\r\n    ioFade.unobserve(e.target);\r\n  });\r\n}, { threshold: 0.12 });\r\n\r\ndocument.querySelectorAll('.fi,.fi-left,.fi-right').forEach(el => ioFade.observe(el));\r\n\r\n// ── Engagement sticky scroll — page scroll drives card transitions ────────\r\n(function () {\r\n  const driver = document.getElementById('engagement');\r\n  const cards  = Array.from(document.querySelectorAll('.eng-card'));\r\n  const steps  = Array.from(document.querySelectorAll('.eng-steplbl'));\r\n  const dots   = Array.from(document.querySelectorAll('.eng-dot'));\r\n  if (!driver || !cards.length) return;\r\n\r\n  let activeIdx  = 0;\r\n  let exiting    = false;\r\n\r\n  function getIdx () {\r\n    const rect      = driver.getBoundingClientRect();\r\n    const scrolled  = Math.max(0, -rect.top);\r\n    const available = driver.offsetHeight - window.innerHeight;\r\n    if (available <= 0) return 0;\r\n    const progress  = Math.min(1, scrolled / available);\r\n    return Math.min(cards.length - 1, Math.floor(progress * cards.length));\r\n  }\r\n\r\n  function activate (idx) {\r\n    if (idx === activeIdx) return;\r\n    const prev = activeIdx;\r\n    activeIdx  = idx;\r\n\r\n    // Exit previous\r\n    cards[prev].classList.remove('eng-active');\r\n    cards[prev].classList.add('eng-exit');\r\n    setTimeout(() => cards[prev]?.classList.remove('eng-exit'), 450);\r\n\r\n    // Enter next\r\n    cards[idx].classList.add('eng-active');\r\n\r\n    // Sync sidebar steps\r\n    steps.forEach((s, i) => s.classList.toggle('active', i === idx));\r\n\r\n    // Sync progress dots\r\n    dots.forEach((d, i) => d.classList.toggle('active', i === idx));\r\n  }\r\n\r\n  window.addEventListener('scroll', () => activate(getIdx()), { passive: true });\r\n  activate(getIdx()); // init\r\n\r\n  // Click sidebar step → scroll to that card's position in the driver\r\n  steps.forEach((s, i) => {\r\n    s.addEventListener('click', (ev) => {\r\n      ev.preventDefault();\r\n      const available = driver.offsetHeight - window.innerHeight;\r\n      const target    = driver.getBoundingClientRect().top + window.scrollY\r\n                        + (i / cards.length) * available;\r\n      window.scrollTo({ top: target, behavior: 'smooth' });\r\n    });\r\n  });\r\n})();\r\n\r\n// ── Staggered grid children ──────────────────────────────────────────────\r\nconst ioGrid = new IntersectionObserver((entries) => {\r\n  entries.forEach(e => {\r\n    if (!e.isIntersecting) return;\r\n    [...e.target.children].forEach((c, i) =>\r\n      setTimeout(() => c.classList.add('on'), i * 90));\r\n    ioGrid.unobserve(e.target);\r\n  });\r\n}, { threshold: 0.08 });\r\n\r\ndocument.querySelectorAll('.why-grid,.ind-grid,.cs-grid,.ins-grid,.roles,.svc-grid').forEach(grid => {\r\n  ioGrid.observe(grid);\r\n});\r\n\r\n// ── Number counter animation ─────────────────────────────────────────────\r\nfunction animNum(el) {\r\n  const target = +el.getAttribute('data-count');\r\n  if (isNaN(target)) return;\r\n  const pfx = el.getAttribute('data-pfx') || '';\r\n  const sfx = el.getAttribute('data-sfx') || '';\r\n  const dur = 1800, start = performance.now();\r\n  const tick = now => {\r\n    const t = Math.min((now - start) / dur, 1);\r\n    const ease = 1 - Math.pow(1 - t, 3);\r\n    el.textContent = pfx + Math.round(ease * target) + sfx;\r\n    if (t < 1) requestAnimationFrame(tick);\r\n  };\r\n  requestAnimationFrame(tick);\r\n}\r\n\r\n// ── Contact form ─────────────────────────────────────────────────────────\r\nfunction sendForm(e) {\r\n  e.preventDefault();\r\n  const btn = e.target.querySelector('.fsub');\r\n  btn.textContent = 'Sending...'; btn.disabled = true;\r\n  setTimeout(() => {\r\n    btn.textContent = 'Send Message →'; btn.disabled = false;\r\n    e.target.reset();\r\n    const t = document.getElementById('toast');\r\n    t.classList.add('on');\r\n    setTimeout(() => t.classList.remove('on'), 4500);\r\n  }, 1300);\r\n}\r\n\r\n// ── Fire hero stats on load ──────────────────────────────────────────────\r\nwindow.addEventListener('load', () => {\r\n  document.querySelectorAll('.hero-txt .hn[data-count]').forEach(el => animNum(el));\r\n});\r\n";
-function Index() {
-  reactExports.useEffect(() => {
-    const el = document.createElement("script");
-    el.type = "text/javascript";
-    el.text = script;
-    document.body.appendChild(el);
-    return () => {
-      el.remove();
-      window.__reelInit = false;
-    };
-  }, []);
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("style", { dangerouslySetInnerHTML: {
-      __html: styles
-    } }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { dangerouslySetInnerHTML: {
-      __html: body
-    } })
-  ] });
-}
-export {
-  Index as component
-};
+`,a=`\r
+// ── Mobile nav drawer (right-side slide-in) ──────────────────────────────\r
+function toggleMob () {\r
+  const nav    = document.getElementById('mobNav');\r
+  const ham    = document.getElementById('ham');\r
+  const overlay = document.getElementById('mobOverlay');\r
+  const isOpen = nav.classList.toggle('open');\r
+  ham.classList.toggle('open', isOpen);\r
+  overlay.classList.toggle('open', isOpen);\r
+  document.body.style.overflow = isOpen ? 'hidden' : '';\r
+}\r
+\r
+// close on overlay click\r
+document.addEventListener('DOMContentLoaded', () => {\r
+  const overlay = document.getElementById('mobOverlay');\r
+  if (overlay) overlay.addEventListener('click', toggleMob);\r
+});\r
+\r
+// ── Hero Reel — 4-slide enterprise video carousel ────────────────────────\r
+(function () {\r
+  // Guard: prevent double-init from React StrictMode's double effect invocation\r
+  if (window.__reelInit) return;\r
+  window.__reelInit = true;\r
+\r
+  const videos  = Array.from(document.querySelectorAll('.reel-video'));\r
+  const slides  = Array.from(document.querySelectorAll('.reel-slide'));\r
+  const dots    = Array.from(document.querySelectorAll('.reel-dot'));\r
+\r
+  if (!videos.length) return;\r
+\r
+  // Playback speed per slide (0 = first, last = videos.length-1)\r
+  const rates = [0.6, 1.0, 1.0, 2.5];\r
+  function applyRate (idx) {\r
+    videos[idx].playbackRate = rates[idx] ?? 1.0;\r
+  }\r
+\r
+  let current       = 0;\r
+  let transitioning = false;\r
+  let fallback      = null;\r
+\r
+  // Hard fallback — advance after 12s max per slide regardless of video state\r
+  function resetFallback () {\r
+    clearTimeout(fallback);\r
+    fallback = setTimeout(() => goTo(current + 1), 12000);\r
+  }\r
+\r
+  function goTo (idx) {\r
+    if (transitioning) return;\r
+    const next = ((idx % videos.length) + videos.length) % videos.length;\r
+    if (next === current) return;\r
+    transitioning = true;\r
+\r
+    clearTimeout(fallback);\r
+    const prev = current;\r
+    current = next;\r
+\r
+    // Videos: crossfade\r
+    videos[prev].classList.remove('reel-active');\r
+    videos[prev].pause();\r
+    videos[current].classList.add('reel-active');\r
+    videos[current].muted = true;\r
+    videos[current].currentTime = 0;\r
+    applyRate(current);\r
+    videos[current].play().catch(() => {});\r
+\r
+    // Slides: fade out old, fade in new\r
+    slides[prev].classList.remove('reel-active');\r
+    slides[prev].classList.add('reel-exit');\r
+    slides[current].classList.add('reel-active');\r
+\r
+    // Dots\r
+    dots.forEach((d, i) => d.classList.toggle('reel-dot-active', i === current));\r
+\r
+    setTimeout(() => {\r
+      slides[prev].classList.remove('reel-exit');\r
+      transitioning = false;\r
+      resetFallback();\r
+    }, 950);\r
+  }\r
+\r
+  // Three layers of advance detection (most → least reliable)\r
+  videos.forEach((v, i) => {\r
+    // 1. ended event (primary)\r
+    v.addEventListener('ended', () => {\r
+      if (i === current) goTo(current + 1);\r
+    });\r
+    // 2. timeupdate: advance when 97% through (catches ended-event failures)\r
+    v.addEventListener('timeupdate', () => {\r
+      if (i !== current || !v.duration) return;\r
+      if (v.currentTime / v.duration >= 0.97) goTo(current + 1);\r
+    });\r
+    // 3. error: skip broken video immediately\r
+    v.addEventListener('error', () => {\r
+      if (i === current) goTo(current + 1);\r
+    });\r
+  });\r
+\r
+  // Dot clicks\r
+  dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.idx)));\r
+\r
+  // Keyboard navigation\r
+  document.addEventListener('keydown', e => {\r
+    if (e.key === 'ArrowRight') goTo(current + 1);\r
+    if (e.key === 'ArrowLeft')  goTo(current - 1);\r
+  });\r
+\r
+  // Init — React's dangerouslySetInnerHTML doesn't trigger browser autoplay;\r
+  // we must call .play() programmatically after the DOM has settled.\r
+  function tryPlay () {\r
+    const v = videos[0];\r
+    if (!v) return;\r
+    v.muted = true;          // ensure muted flag is set in DOM\r
+    v.currentTime = 0;\r
+    applyRate(0);\r
+    const p = v.play();\r
+    if (p !== undefined) {\r
+      p.catch(() => {\r
+        // Browser blocked autoplay — retry on first user gesture\r
+        const resume = () => {\r
+          v.play().catch(() => {});\r
+          document.removeEventListener('click',      resume);\r
+          document.removeEventListener('touchstart', resume);\r
+          document.removeEventListener('keydown',    resume);\r
+        };\r
+        document.addEventListener('click',      resume, { once: true });\r
+        document.addEventListener('touchstart', resume, { once: true });\r
+        document.addEventListener('keydown',    resume, { once: true });\r
+      });\r
+    }\r
+  }\r
+\r
+  // Wait two animation frames so React's paint + browser layout are complete\r
+  requestAnimationFrame(() => requestAnimationFrame(() => {\r
+    tryPlay();\r
+    resetFallback();\r
+  }));\r
+})();\r
+\r
+// ── Navbar scroll shadow ─────────────────────────────────────────────────\r
+const nav = document.getElementById('nav');\r
+window.addEventListener('scroll', () => {\r
+  nav.classList.toggle('sc', window.scrollY > 60);\r
+}, { passive: true });\r
+\r
+// ── Active nav link ──────────────────────────────────────────────────────\r
+const navLinks   = document.querySelectorAll('.nav-links a');\r
+const allSections = Array.from(document.querySelectorAll('section[id], div[id].eng-scroll-driver'));\r
+\r
+function updateActiveNav () {\r
+  const offset = 120; // navbar height + buffer\r
+  let current  = '';\r
+  allSections.forEach(sec => {\r
+    if (window.scrollY >= sec.offsetTop - offset) current = sec.id;\r
+  });\r
+  navLinks.forEach(a => {\r
+    a.classList.toggle('act', a.getAttribute('href') === '#' + current);\r
+  });\r
+}\r
+\r
+window.addEventListener('scroll', updateActiveNav, { passive: true });\r
+updateActiveNav(); // run once on load\r
+\r
+// ── Showcase video: autoplay ─────────────────────────────────────────────\r
+const showcase = document.getElementById('showcase');\r
+const scVid = showcase && showcase.querySelector('.sc-video');\r
+if (scVid) {\r
+  scVid.play().catch(() => {});\r
+  scVid.addEventListener('error', function(){\r
+    const sources = scVid.querySelectorAll('source');\r
+    let idx = 0;\r
+    const tryNext = () => {\r
+      if (idx >= sources.length) return;\r
+      scVid.src = sources[idx++].src;\r
+      scVid.load();\r
+      scVid.play().catch(tryNext);\r
+    };\r
+    tryNext();\r
+  });\r
+  document.addEventListener('click', () => { if (scVid.paused) scVid.play().catch(()=>{}); }, { once: true });\r
+}\r
+\r
+// ── Showcase text reveal: add sc-go when section enters view ─────────────\r
+if (showcase) {\r
+  const scIO = new IntersectionObserver((entries) => {\r
+    entries.forEach(e => {\r
+      if (e.isIntersecting) {\r
+        showcase.classList.add('sc-go');\r
+        scIO.unobserve(showcase);\r
+      }\r
+    });\r
+  }, { threshold: 0.15 });\r
+  scIO.observe(showcase);\r
+}\r
+\r
+// ── Auto-assign slow left/right animation to all section titles ──────────\r
+(function () {\r
+  const sections = document.querySelectorAll(\r
+    '#services,#why,#industries,#engagement,#casestudies,#fde,#insights,#careers,#contact'\r
+  );\r
+  sections.forEach((sec, idx) => {\r
+    const fromLeft  = idx % 2 === 0;   // alternate direction per section\r
+    const labels = sec.querySelectorAll('.section-label');\r
+    const h2s    = sec.querySelectorAll('h2');\r
+\r
+    labels.forEach(el => {\r
+      el.classList.remove('fi','fi-left','fi-right');\r
+      el.classList.add(fromLeft ? 'fi-left' : 'fi-right', 'title-label');\r
+    });\r
+    h2s.forEach(el => {\r
+      el.classList.remove('fi','fi-left','fi-right');\r
+      // h2 comes from opposite side to label for a spreading effect\r
+      el.classList.add(fromLeft ? 'fi-right' : 'fi-left', 'title-h2');\r
+    });\r
+  });\r
+})();\r
+\r
+// ── Intersection observer: fade-in animations ────────────────────────────\r
+const ioFade = new IntersectionObserver((entries) => {\r
+  entries.forEach(e => {\r
+    if (!e.isIntersecting) return;\r
+    e.target.classList.add('on');\r
+    e.target.querySelectorAll('[data-count]').forEach(animNum);\r
+    ioFade.unobserve(e.target);\r
+  });\r
+}, { threshold: 0.12 });\r
+\r
+document.querySelectorAll('.fi,.fi-left,.fi-right').forEach(el => ioFade.observe(el));\r
+\r
+// ── Engagement sticky scroll — page scroll drives card transitions ────────\r
+(function () {\r
+  const driver = document.getElementById('engagement');\r
+  const cards  = Array.from(document.querySelectorAll('.eng-card'));\r
+  const steps  = Array.from(document.querySelectorAll('.eng-steplbl'));\r
+  const dots   = Array.from(document.querySelectorAll('.eng-dot'));\r
+  if (!driver || !cards.length) return;\r
+\r
+  let activeIdx  = 0;\r
+  let exiting    = false;\r
+\r
+  function getIdx () {\r
+    const rect      = driver.getBoundingClientRect();\r
+    const scrolled  = Math.max(0, -rect.top);\r
+    const available = driver.offsetHeight - window.innerHeight;\r
+    if (available <= 0) return 0;\r
+    const progress  = Math.min(1, scrolled / available);\r
+    return Math.min(cards.length - 1, Math.floor(progress * cards.length));\r
+  }\r
+\r
+  function activate (idx) {\r
+    if (idx === activeIdx) return;\r
+    const prev = activeIdx;\r
+    activeIdx  = idx;\r
+\r
+    // Exit previous\r
+    cards[prev].classList.remove('eng-active');\r
+    cards[prev].classList.add('eng-exit');\r
+    setTimeout(() => cards[prev]?.classList.remove('eng-exit'), 450);\r
+\r
+    // Enter next\r
+    cards[idx].classList.add('eng-active');\r
+\r
+    // Sync sidebar steps\r
+    steps.forEach((s, i) => s.classList.toggle('active', i === idx));\r
+\r
+    // Sync progress dots\r
+    dots.forEach((d, i) => d.classList.toggle('active', i === idx));\r
+  }\r
+\r
+  window.addEventListener('scroll', () => activate(getIdx()), { passive: true });\r
+  activate(getIdx()); // init\r
+\r
+  // Click sidebar step → scroll to that card's position in the driver\r
+  steps.forEach((s, i) => {\r
+    s.addEventListener('click', (ev) => {\r
+      ev.preventDefault();\r
+      const available = driver.offsetHeight - window.innerHeight;\r
+      const target    = driver.getBoundingClientRect().top + window.scrollY\r
+                        + (i / cards.length) * available;\r
+      window.scrollTo({ top: target, behavior: 'smooth' });\r
+    });\r
+  });\r
+})();\r
+\r
+// ── Staggered grid children ──────────────────────────────────────────────\r
+const ioGrid = new IntersectionObserver((entries) => {\r
+  entries.forEach(e => {\r
+    if (!e.isIntersecting) return;\r
+    [...e.target.children].forEach((c, i) =>\r
+      setTimeout(() => c.classList.add('on'), i * 90));\r
+    ioGrid.unobserve(e.target);\r
+  });\r
+}, { threshold: 0.08 });\r
+\r
+document.querySelectorAll('.why-grid,.ind-grid,.cs-grid,.ins-grid,.roles,.svc-grid').forEach(grid => {\r
+  ioGrid.observe(grid);\r
+});\r
+\r
+// ── Number counter animation ─────────────────────────────────────────────\r
+function animNum(el) {\r
+  const target = +el.getAttribute('data-count');\r
+  if (isNaN(target)) return;\r
+  const pfx = el.getAttribute('data-pfx') || '';\r
+  const sfx = el.getAttribute('data-sfx') || '';\r
+  const dur = 1800, start = performance.now();\r
+  const tick = now => {\r
+    const t = Math.min((now - start) / dur, 1);\r
+    const ease = 1 - Math.pow(1 - t, 3);\r
+    el.textContent = pfx + Math.round(ease * target) + sfx;\r
+    if (t < 1) requestAnimationFrame(tick);\r
+  };\r
+  requestAnimationFrame(tick);\r
+}\r
+\r
+// ── Contact form ─────────────────────────────────────────────────────────\r
+function sendForm(e) {\r
+  e.preventDefault();\r
+  const btn = e.target.querySelector('.fsub');\r
+  btn.textContent = 'Sending...'; btn.disabled = true;\r
+  setTimeout(() => {\r
+    btn.textContent = 'Send Message →'; btn.disabled = false;\r
+    e.target.reset();\r
+    const t = document.getElementById('toast');\r
+    t.classList.add('on');\r
+    setTimeout(() => t.classList.remove('on'), 4500);\r
+  }, 1300);\r
+}\r
+\r
+// ── Fire hero stats on load ──────────────────────────────────────────────\r
+window.addEventListener('load', () => {\r
+  document.querySelectorAll('.hero-txt .hn[data-count]').forEach(el => animNum(el));\r
+});\r
+`;function s(){return n.useEffect(()=>{const r=document.createElement("script");return r.type="text/javascript",r.text=a,document.body.appendChild(r),()=>{r.remove(),window.__reelInit=!1}},[]),e.jsxs(e.Fragment,{children:[e.jsx("style",{dangerouslySetInnerHTML:{__html:i}}),e.jsx("div",{dangerouslySetInnerHTML:{__html:t}})]})}export{s as component};

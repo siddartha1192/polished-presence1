@@ -459,7 +459,7 @@ img{max-width:100%;display:block}
 .eng-header h2{font-size:clamp(1.6rem,2.8vw,2.8rem);color:var(--dark);margin:.5rem 0 0;line-height:1.15}
 
 /* Phase selector — big scroll-driven text nav */
-.eng-steplist{display:flex;flex-direction:row;gap:0;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
+.eng-steplist{display:flex;flex-direction:row;gap:0;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem}
 .eng-steplbl{
   font-size:clamp(1.4rem,2.2vw,2rem);font-weight:800;letter-spacing:-.02em;
   color:rgba(15,40,90,.3);
@@ -469,12 +469,12 @@ img{max-width:100%;display:block}
 .eng-steplbl:hover:not(.active){color:rgba(15,40,90,.55)}
 
 /* Stage: centred, cards stacked */
-.eng-stage{position:relative;height:48vh;width:100%;max-width:760px;overflow:hidden}
+.eng-stage{position:relative;height:38vh;width:100%;max-width:760px;overflow:hidden}
 
 /* Cards — fast transitions */
 .eng-card{
   position:absolute;inset:0;
-  display:flex;align-items:center;justify-content:center;
+  display:flex;align-items:flex-start;justify-content:center;
   opacity:0;transform:translateY(45px);
   transition:opacity .38s cubic-bezier(.22,.61,.36,1),transform .38s cubic-bezier(.22,.61,.36,1);
   pointer-events:none}
