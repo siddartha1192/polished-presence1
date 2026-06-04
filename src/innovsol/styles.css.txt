@@ -810,11 +810,11 @@ footer{background:#000;border-top:3px solid var(--orange)}
   padding:2rem 0 1.8rem;border-bottom:1px solid rgba(255,255,255,.1)}
 
 /* Logo + tagline */
-.ft-left{display:flex;flex-direction:column;gap:.75rem;flex-shrink:0;width:190px}
+.ft-left{display:flex;flex-direction:column;gap:.75rem;flex-shrink:0;width:230px}
 .ft-logo-link{
   display:block;line-height:0;
   overflow:hidden;
-  width:185px;height:110px;
+  width:225px;height:110px;
   background:#fff;
   border-radius:10px;
   flex-shrink:0}
