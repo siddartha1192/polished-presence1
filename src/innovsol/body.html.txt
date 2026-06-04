@@ -14,8 +14,8 @@
       <a href="#careers">Careers</a>
     </div>
     <div class="nav-right">
-      <a href="#contact-form" class="btn btn-outline-blue" style="font-size:.9rem;padding:.6rem 1.3rem">Contact Us</a>
-      <a href="#contact-form" class="btn btn-orange" style="font-size:.9rem;padding:.6rem 1.3rem">Book a Strategy Call</a>
+      <a href="#contact-form" class="btn btn-outline-blue">Contact Us</a>
+      <a href="#contact-form" class="btn btn-orange">Book a Strategy Call</a>
       <button class="ham" id="ham" onclick="toggleMob()"><span></span><span></span><span></span></button>
     </div>
   </div>

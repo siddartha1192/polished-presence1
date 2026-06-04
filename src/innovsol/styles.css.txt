@@ -96,14 +96,9 @@ img{max-width:100%;display:block}
 #nav.sc{background:rgba(255,255,255,.96);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-color:var(--border);box-shadow:0 4px 24px rgba(15,40,90,.06)}
 .nav-wrap{display:flex;align-items:center;justify-content:space-between;height:104px;gap:2rem}
 .nav-logo-img{
-  height:198px;width:auto;display:block;
-  filter:drop-shadow(0 0 4px rgba(255,255,255,.55))
-         drop-shadow(0 0 10px rgba(255,255,255,.3))
-         drop-shadow(0 2px 4px rgba(0,0,0,.2));
-  transition:filter .35s ease}
-#nav.sc .nav-logo-img{filter:none}
-.nav-links{display:flex;align-items:center;gap:2.4rem}
-.nav-links a{font-size:1rem;color:rgba(255,255,255,.88);font-weight:600;transition:color .3s;position:relative;padding:6px 0;letter-spacing:-.01em}
+  height:198px;width:auto;display:block}
+.nav-links{display:flex;align-items:center;gap:clamp(1rem,1.8vw,2.4rem)}
+.nav-links a{font-size:clamp(.78rem,.95vw,1rem);color:rgba(255,255,255,.88);font-weight:600;transition:color .3s;position:relative;padding:6px 0;letter-spacing:-.01em;white-space:nowrap}
 .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--orange);border-radius:2px;transition:width .25s}
 .nav-links a:hover,.nav-links a.act{color:#fff}
 .nav-links a:hover::after,.nav-links a.act::after{width:100%}
@@ -116,7 +111,8 @@ img{max-width:100%;display:block}
 #nav.sc .nav-links a::after{background:var(--blue)}
 #nav.sc .nav-links a.act{color:var(--blue);font-weight:700}
 #nav.sc .nav-links a.act::after{background:var(--blue);width:100%}
-.nav-right{display:flex;align-items:center;gap:.8rem}
+.nav-right{display:flex;align-items:center;gap:.6rem}
+.nav-right .btn{white-space:nowrap;font-size:clamp(.72rem,.85vw,.9rem);padding:.5rem clamp(.7rem,1vw,1.3rem)}
 .ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
 .ham span{width:22px;height:2px;background:#fff;border-radius:2px;transition:.3s;display:block}
 #nav.sc .ham span{background:var(--dark)}

@@ -1,4 +1,4 @@
-import{r as n,j as e}from"./index-f-bwl0xo.js";const i=`\r
+import{r as n,j as e}from"./index-sY8QdWoi.js";const i=`\r
 /* ═══ RESET & ROOT ════════════════════════════════════════════════════════ */\r
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}\r
 :root{\r
@@ -96,14 +96,9 @@ img{max-width:100%;display:block}\r
 #nav.sc{background:rgba(255,255,255,.96);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-color:var(--border);box-shadow:0 4px 24px rgba(15,40,90,.06)}\r
 .nav-wrap{display:flex;align-items:center;justify-content:space-between;height:104px;gap:2rem}\r
 .nav-logo-img{\r
-  height:198px;width:auto;display:block;\r
-  filter:drop-shadow(0 0 4px rgba(255,255,255,.55))\r
-         drop-shadow(0 0 10px rgba(255,255,255,.3))\r
-         drop-shadow(0 2px 4px rgba(0,0,0,.2));\r
-  transition:filter .35s ease}\r
-#nav.sc .nav-logo-img{filter:none}\r
-.nav-links{display:flex;align-items:center;gap:2.4rem}\r
-.nav-links a{font-size:1rem;color:rgba(255,255,255,.88);font-weight:600;transition:color .3s;position:relative;padding:6px 0;letter-spacing:-.01em}\r
+  height:198px;width:auto;display:block}\r
+.nav-links{display:flex;align-items:center;gap:clamp(1rem,1.8vw,2.4rem)}\r
+.nav-links a{font-size:clamp(.78rem,.95vw,1rem);color:rgba(255,255,255,.88);font-weight:600;transition:color .3s;position:relative;padding:6px 0;letter-spacing:-.01em;white-space:nowrap}\r
 .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--orange);border-radius:2px;transition:width .25s}\r
 .nav-links a:hover,.nav-links a.act{color:#fff}\r
 .nav-links a:hover::after,.nav-links a.act::after{width:100%}\r
@@ -116,7 +111,8 @@ img{max-width:100%;display:block}\r
 #nav.sc .nav-links a::after{background:var(--blue)}\r
 #nav.sc .nav-links a.act{color:var(--blue);font-weight:700}\r
 #nav.sc .nav-links a.act::after{background:var(--blue);width:100%}\r
-.nav-right{display:flex;align-items:center;gap:.8rem}\r
+.nav-right{display:flex;align-items:center;gap:.6rem}\r
+.nav-right .btn{white-space:nowrap;font-size:clamp(.72rem,.85vw,.9rem);padding:.5rem clamp(.7rem,1vw,1.3rem)}\r
 .ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}\r
 .ham span{width:22px;height:2px;background:#fff;border-radius:2px;transition:.3s;display:block}\r
 #nav.sc .ham span{background:var(--dark)}\r
@@ -984,8 +980,8 @@ footer{background:#fff;border-top:3px solid var(--orange)}\r
       <a href="#careers">Careers</a>\r
     </div>\r
     <div class="nav-right">\r
-      <a href="#contact-form" class="btn btn-outline-blue" style="font-size:.9rem;padding:.6rem 1.3rem">Contact Us</a>\r
-      <a href="#contact-form" class="btn btn-orange" style="font-size:.9rem;padding:.6rem 1.3rem">Book a Strategy Call</a>\r
+      <a href="#contact-form" class="btn btn-outline-blue">Contact Us</a>\r
+      <a href="#contact-form" class="btn btn-orange">Book a Strategy Call</a>\r
       <button class="ham" id="ham" onclick="toggleMob()"><span></span><span></span><span></span></button>\r
     </div>\r
   </div>\r
