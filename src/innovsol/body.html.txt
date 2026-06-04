@@ -748,69 +748,51 @@
   </div>
 </section>
 
-<!-- ══ CONTACT (info + world map) ══════════════════════════════════════════ -->
+<!-- ══ CONTACT (redesigned) ══════════════════════════════════════════════════ -->
 <section id="contact">
-  <div class="container">
-    <div class="con-grid">
-      <div class="fi-left">
-        <div class="section-label" style="color:var(--blue)">Get in Touch</div>
-        <h2>Let's Talk About Your AI Journey.</h2>
-        <p>Whether you're exploring AI for the first time or ready to scale an existing programme, a conversation with our team is the fastest way to understand what's possible for your organisation.</p>
+  <div class="con-hero">
+
+    <!-- ── Location image background ── -->
+    <div class="con-map-bg">
+      <img src="/location.png" alt="Innovsol global presence map" class="con-loc-img"/>
+      <div class="con-map-overlay"></div>
+    </div>
+
+    <!-- ── Content over the map ── -->
+    <div class="container con-map-content">
+
+      <!-- Left: contact info panel -->
+      <div class="con-panel fi">
+        <div class="section-label" style="color:var(--orange)">Get in Touch</div>
+        <h2>Let's Talk About<br>Your AI Journey.</h2>
+        <p>Whether you're exploring AI for the first time or ready to scale — a conversation with our team is the fastest way forward.</p>
         <div class="con-details">
-          <div class="con-det"><span class="con-icon">✉️</span><span><a href="mailto:hello@innovsol.ai" style="color:inherit;text-decoration:none">hello@innovsol.ai</a></span></div>
-          <div class="con-det"><span class="con-icon">📞</span><span><a href="tel:+919582799988" style="color:inherit;text-decoration:none">+91 95827 99988</a></span></div>
-          <div class="con-det"><span class="con-icon">⚡</span><span>Strategy calls scheduled within 5 business days</span></div>
-          <div class="con-det"><span class="con-icon">🔒</span><span>Enterprise-grade security · GDPR compliant</span></div>
-        </div>
-      </div>
-      <div class="fi-right">
-        <!-- ── World Map ── -->
-        <div class="con-map">
-          <p class="con-map-label">Our Global Presence</p>
-          <div class="con-gmap">
-            <!-- zoom=1 shows full world — keeps marker % positions stable -->
-            <iframe
-              src="https://www.google.com/maps/embed/v1/view?center=0,0&zoom=1&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
-              allowfullscreen="" loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              style="border:0;width:100%;height:100%;display:block;pointer-events:none;">
-            </iframe>
-            <!-- overlay markers — Mercator calculated for zoom=1 center=(0,0) -->
-            <div class="gmap-pins">
-              <!-- North America  lng=-95 lat=39 -->
-              <div class="gmap-pin orange" style="left:30%;top:36%">
-                <div class="gmap-ring"></div>
-                <div class="gmap-dot"></div>
-                <span class="gmap-label">North America</span>
-              </div>
-              <!-- Europe  lng=10 lat=52 -->
-              <div class="gmap-pin blue" style="left:52%;top:29%">
-                <div class="gmap-ring"></div>
-                <div class="gmap-dot"></div>
-                <span class="gmap-label">Europe</span>
-              </div>
-              <!-- Bangalore  12°58′44″N 77°35′30″E -->
-              <div class="gmap-pin orange" style="left:66%;top:46%">
-                <div class="gmap-ring"></div>
-                <div class="gmap-dot"></div>
-                <span class="gmap-label">Bangalore, India</span>
-              </div>
-              <!-- Asia-Pacific  lng=133 lat=-25 -->
-              <div class="gmap-pin blue" style="left:78%;top:59%">
-                <div class="gmap-ring"></div>
-                <div class="gmap-dot"></div>
-                <span class="gmap-label">Asia-Pacific</span>
-              </div>
-            </div>
+          <div class="con-det">
+            <span class="con-icon">✉️</span>
+            <span><a href="mailto:hello@innovsol.ai" style="color:inherit;text-decoration:none">hello@innovsol.ai</a></span>
           </div>
-          <div class="con-map-legend">
-            <span class="cml-item"><span class="cml-dot" style="background:#faa728"></span>North America</span>
-            <span class="cml-item"><span class="cml-dot" style="background:#6398ff"></span>Europe</span>
-            <span class="cml-item"><span class="cml-dot" style="background:#faa728"></span>Bangalore, India</span>
-            <span class="cml-item"><span class="cml-dot" style="background:#6398ff"></span>Asia-Pacific</span>
+          <div class="con-det">
+            <span class="con-icon">📞</span>
+            <span><a href="tel:+919582799988" style="color:inherit;text-decoration:none">+91 95827 99988</a></span>
+          </div>
+          <div class="con-det">
+            <span class="con-icon">⚡</span>
+            <span>Strategy calls within 5 business days</span>
+          </div>
+          <div class="con-det">
+            <span class="con-icon">🔒</span>
+            <span>Enterprise-grade security · GDPR compliant</span>
           </div>
         </div>
+        <a href="#contact-form" class="btn btn-orange" style="margin-top:1.5rem;align-self:flex-start">Book a Strategy Call &rarr;</a>
       </div>
+
+      <!-- HQ address simple text -->
+      <div class="con-hq-text">
+        <span class="con-hq-label">&#x1F4CD; Headquarters</span>
+        <span class="con-hq-addr">411, Good Earth Business Bay-1, Sector-58,<br>Gurugram-122098, India</span>
+      </div>
+
     </div>
   </div>
 </section>

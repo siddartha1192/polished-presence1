@@ -28,7 +28,7 @@ a{text-decoration:none;color:inherit}
 img{max-width:100%;display:block}
 
 /* ═══ UTILITIES ═══════════════════════════════════════════════════════════ */
-.container{max-width:1480px;margin:0 auto;padding:0 48px}
+.container{width:92%;max-width:2200px;margin:0 auto;padding:0 clamp(20px,2.5vw,60px)}
 .section-label{
   display:inline-flex;align-items:center;gap:.65rem;
   font-size:1rem;font-weight:800;letter-spacing:.12em;
@@ -93,16 +93,6 @@ img{max-width:100%;display:block}
 #nav{position:fixed;top:0;left:0;right:0;z-index:1000;
   background:transparent;border-bottom:1px solid transparent;
   transition:background .4s ease,box-shadow .4s ease,border-color .4s ease}
-#nav::before{
-  content:'';position:absolute;inset:0;pointer-events:none;z-index:-1;
-  background:linear-gradient(
-    to bottom,
-    rgba(255,255,255,.55) 0%,
-    rgba(255,255,255,.3) 40%,
-    rgba(255,255,255,.08) 75%,
-    transparent 100%);
-  transition:opacity .4s ease}
-#nav.sc::before{opacity:0}
 #nav.sc{background:rgba(255,255,255,.96);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-color:var(--border);box-shadow:0 4px 24px rgba(15,40,90,.06)}
 .nav-wrap{display:flex;align-items:center;justify-content:space-between;height:104px;gap:2rem}
 .nav-logo-img{
@@ -242,9 +232,6 @@ img{max-width:100%;display:block}
 /* ── Slide 01 overrides — oversized eyebrow + enlarged headline ────────── */
 .reel-slide[data-idx="0"] h1{
   font-size:clamp(1.8rem,3vw,2.6rem)}
-.reel-slide[data-idx="2"] .reel-eyebrow,
-.reel-slide[data-idx="3"] .reel-eyebrow{
-  font-size:clamp(1rem,1.8vw,1.5rem)}
 
 /* ── Em/accent — orange glow, dark halo keeps it readable on bright video ── */
 .reel-slide h1 em{
@@ -478,11 +465,11 @@ img{max-width:100%;display:block}
 .eng-steplist{display:flex;flex-direction:row;gap:0;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
 .eng-steplbl{
   font-size:clamp(1.4rem,2.2vw,2rem);font-weight:800;letter-spacing:-.02em;
-  color:rgba(15,40,90,.2);
-  padding:.5rem 1.8rem;border-bottom:3px solid transparent;
+  color:rgba(15,40,90,.3);
+  padding:.5rem 1.8rem;border-bottom:3px solid var(--blue);
   cursor:pointer;transition:color .3s,border-color .3s;text-decoration:none}
 .eng-steplbl.active{color:var(--dark);border-bottom-color:var(--orange)}
-.eng-steplbl:hover:not(.active){color:rgba(15,40,90,.5)}
+.eng-steplbl:hover:not(.active){color:rgba(15,40,90,.55)}
 
 /* Stage: centred, cards stacked */
 .eng-stage{position:relative;height:48vh;width:100%;max-width:760px;overflow:hidden}
@@ -744,16 +731,64 @@ img{max-width:100%;display:block}
   font-size:.62rem;color:rgba(255,255,255,.3);
   text-align:center;margin-top:.2rem;line-height:1.6}
 
-#contact{padding:6rem 0;background:linear-gradient(135deg,var(--dark) 0%,#0A2955 100%);position:relative;overflow:hidden}
-#contact::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;
-  background:radial-gradient(circle,rgba(63,108,181,.12),transparent 65%);right:-100px;bottom:-100px;pointer-events:none}
-.con-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:4rem;align-items:start;position:relative;z-index:1}
-.con-left h2{font-size:clamp(1.8rem,3vw,2.5rem);color:#fff;margin:.5rem 0 1.2rem}
-.con-left p{color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:1.8rem}
-.con-details{display:flex;flex-direction:column;gap:.9rem}
-.con-det{display:flex;align-items:center;gap:.8rem;font-size:.88rem;color:rgba(255,255,255,.75)}
-.con-icon{width:36px;height:36px;border-radius:50%;background:rgba(63,108,181,.2);
-  display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+/* ── Contact redesign — full-bleed map with content overlay ─────────────── */
+#contact{padding:0;background:none;position:relative;overflow:hidden}
+#contact::before{display:none}
+
+.con-hero{position:relative;height:580px;overflow:hidden}
+
+/* Location image fills entire section */
+.con-map-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+.con-loc-img{width:100%;height:100%;object-fit:cover;object-position:center 90%;display:block}
+.con-map-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    105deg,
+    rgba(2,10,28,.82) 0%,
+    rgba(2,10,28,.55) 45%,
+    rgba(2,10,28,.15) 75%,
+    transparent 100%);
+  pointer-events:none}
+
+/* Content sits over the map */
+.con-map-content{
+  position:relative;z-index:2;
+  height:100%;display:flex;
+  align-items:center;justify-content:space-between;gap:3rem}
+
+/* Left info panel */
+.con-panel{
+  display:flex;flex-direction:column;gap:.75rem;
+  max-width:420px}
+.con-panel h2{
+  font-size:clamp(1.8rem,3vw,2.6rem);
+  color:#fff;margin:.4rem 0 .6rem;
+  font-weight:800;line-height:1.15;letter-spacing:-.03em}
+.con-panel>p{font-size:.88rem;color:rgba(255,255,255,.65);line-height:1.75;margin:0}
+.con-details{display:flex;flex-direction:column;gap:.65rem;margin-top:.5rem}
+.con-det{display:flex;align-items:center;gap:.75rem;font-size:.84rem;color:rgba(255,255,255,.75)}
+.con-icon{
+  width:34px;height:34px;border-radius:50%;
+  background:rgba(250,167,32,.15);border:1px solid rgba(250,167,32,.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;flex-shrink:0}
+
+/* HQ address simple text */
+.con-hq-text{
+  position:absolute;bottom:28px;right:0;
+  display:flex;flex-direction:column;gap:4px;z-index:3}
+.con-hq-label{
+  font-size:.7rem;font-weight:800;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--orange)}
+.con-hq-addr{font-size:.8rem;color:rgba(255,255,255,.75);line-height:1.7}
+
+@media(max-width:768px){
+  .con-hero{height:auto;min-height:560px}
+  .con-map-content{flex-direction:column;align-items:flex-start;padding:3rem 0;gap:2rem}
+  .con-map-overlay{background:rgba(5,14,32,.85)}
+  .con-hq-text{position:static;margin-top:1rem}
+  .con-panel{max-width:100%}
+}
 .cform{background:#fff;border-radius:14px;padding:1.4rem}
 .cform h3{font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:.85rem;
   padding-bottom:.5rem;border-bottom:1px solid var(--border)}
