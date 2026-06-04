@@ -945,7 +945,9 @@ footer{background:#000;border-top:3px solid var(--orange)}
   .ft-bar{flex-direction:column;align-items:flex-start;gap:.5rem}
 }
 @media(max-width:768px){
-  .container{padding:0 24px}
+  .container{padding:0 20px}
+
+  /* ── Nav ── */
   .reel-dots{bottom:16px;right:24px;gap:5px}
   .reel-dot{width:5px;height:5px}
   .reel-dot.reel-dot-active{width:16px}
@@ -953,63 +955,126 @@ footer{background:#000;border-top:3px solid var(--orange)}
   .ham{display:flex}
   .mob-overlay{display:block;opacity:0;pointer-events:none;transition:opacity .35s}
   .mob-overlay.open{opacity:1;pointer-events:auto}
-  .svc-grid{grid-template-columns:1fr}
-  .why-grid{grid-template-columns:1fr}
-  .ind-grid{grid-template-columns:1fr 1fr}
-  .fde-grid,.car-grid,.con-grid,.cta-duo{grid-template-columns:1fr}
-  .cs-grid,.ins-grid{grid-template-columns:1fr}
-  .why-img-wrap{height:200px}
-  .ind-img-wrap{height:130px}
 
-  /* Logo strip (10+ Industries) */
-  #strip{padding:2rem 0}
-  .strip-label{font-size:.82rem;margin-bottom:1.5rem;letter-spacing:.04em}
-  .logo-chip{font-size:.78rem;padding:.6rem 1rem;gap:.6rem;border-radius:8px}
-  .logo-chip svg{width:20px;height:20px}
-  .marq-wrap::before,.marq-wrap::after{width:60px}
+  /* ── Global section padding ── */
+  #services,#why,#metrics,#industries,#casestudies,
+  #fde,#insights,#careers,#cta,#contact-form{padding:3.5rem 0}
+  #engagement{padding:3rem 0}
 
-  /* Engagement deliverable */
-  .eng-del-txt{font-size:.78rem;line-height:1.5;text-align:center;word-break:break-word}
-  .eng-deliverable{padding:0 1rem}
-  .stat-cards{grid-template-columns:1fr 1fr}
-  .hero-stats{grid-template-columns:repeat(2,1fr);max-width:100%}
-  /* ── Hero mobile ── */
+  /* ── Section headings ── */
+  .sec-hd h2{font-size:clamp(1.5rem,6vw,2rem)}
+  .sec-hd p{font-size:.88rem}
+  .section-label{font-size:.72rem}
+
+  /* ── Hero ── */
   .hero-reel{min-height:100svh}
   .reel-slide{align-items:flex-start;padding-top:120px}
-  .reel-inner{
-    text-align:center;
-    max-width:100%;
-    padding:0 1.5rem}
-  .reel-eyebrow{
-    font-size:clamp(.88rem,4vw,1.3rem);
-    white-space:normal;letter-spacing:.05em;
-    justify-content:center;width:100%}
+  .reel-inner{text-align:center;max-width:100%;padding:0 1.5rem}
+  .reel-eyebrow{font-size:clamp(.88rem,4vw,1.3rem);white-space:normal;letter-spacing:.05em;justify-content:center;width:100%}
   .reel-slide[data-idx="2"] .reel-eyebrow,
-  .reel-slide[data-idx="3"] .reel-eyebrow{
-    font-size:clamp(.72rem,3.2vw,1rem)}
-  .reel-slide h1{
-    font-size:clamp(1.3rem,5.5vw,2rem);
-    text-align:center}
+  .reel-slide[data-idx="3"] .reel-eyebrow{font-size:clamp(.72rem,3.2vw,1rem)}
+  .reel-slide h1{font-size:clamp(1.3rem,5.5vw,2rem);text-align:center}
   .reel-slide[data-idx="0"] h1{font-size:clamp(1.2rem,5.2vw,1.8rem)}
   .reel-nowrap{white-space:normal}
-  .reel-btns{
-    position:relative;
-    bottom:auto;left:auto;right:auto;
-    justify-content:center;
-    flex-wrap:wrap;gap:.6rem;
-    margin-top:1.2rem;
-    padding:0}
-  .btn-hero-primary,.btn-outline-light{
-    font-size:clamp(.78rem,3.5vw,.9rem);
-    padding:.6rem 1.4rem;
-    white-space:nowrap}
+  .reel-btns{position:relative;bottom:auto;left:auto;right:auto;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-top:1.2rem;padding:0}
+  .btn-hero-primary,.btn-outline-light{font-size:clamp(.78rem,3.5vw,.9rem);padding:.6rem 1.4rem;white-space:nowrap}
   .reel-dots{bottom:1.5rem;right:50%;transform:translateX(50%)}
-}
-@media(max-width:480px){
-  .met-grid{grid-template-columns:repeat(2,1fr)}
+
+  /* ── Logo strip ── */
+  #strip{padding:2rem 0}
+  .strip-label{font-size:.82rem;margin-bottom:1.2rem}
+  .logo-chip{font-size:.75rem;padding:.55rem .9rem;gap:.5rem;border-radius:8px}
+  .logo-chip svg{width:18px;height:18px}
+  .marq-wrap::before,.marq-wrap::after{width:50px}
+
+  /* ── Services ── */
+  .svc-grid{grid-template-columns:1fr}
+  .svc-card{flex-direction:column}
+
+  /* ── Why / Innovsol Difference ── */
+  .why-grid{grid-template-columns:1fr}
+  .why-img-wrap{height:180px}
+
+  /* ── Industries ── */
   .ind-grid{grid-template-columns:1fr 1fr}
-  .frow{grid-template-columns:1fr}
+  .ind-img-wrap{height:120px}
+  .ind-card h3{font-size:.82rem}
+  .ind-card p{font-size:.72rem}
+
+  /* ── Engagement ── */
+  .eng-steplist{display:none}
+  .eng-header h2{font-size:clamp(1.6rem,6vw,2.2rem)}
+  .eng-card-title{font-size:clamp(2rem,8vw,3rem)}
+  .eng-card-desc{font-size:.85rem}
+  .eng-del-txt{font-size:.75rem;line-height:1.5;text-align:center;word-break:break-word}
+  .eng-deliverable{padding:0 .5rem}
+  .eng-ghost-num{display:none}
+  .eng-progress{display:none}
+  .eng-sum-pill{font-size:.75rem;padding:.5rem .9rem}
+  .eng-pills-row{padding:1.5rem 0}
+
+  /* ── Case Studies ── */
+  .cs-grid{grid-template-columns:1fr}
+  .cs-card h3{font-size:.9rem}
+
+  /* ── FDE ── */
+  .fde-grid,.car-grid,.con-grid,.cta-duo{grid-template-columns:1fr}
+  .stat-cards{grid-template-columns:1fr 1fr;gap:.8rem}
+  .stat-card .big{font-size:1.6rem}
+  .stat-card .sm{font-size:.7rem}
+  .fde-stages{gap:.5rem}
+  .fde-stage{font-size:.82rem}
+
+  /* ── Insights ── */
+  .ins-grid{grid-template-columns:1fr}
+  .ins-card{padding:1.2rem}
+
+  /* ── Careers ── */
+  .roles{grid-template-columns:1fr}
+  .car-grid{grid-template-columns:1fr}
+
+  /* ── Hero stats ── */
+  .hero-stats{grid-template-columns:1fr 1fr;max-width:100%}
+  .hstat{padding:1rem .8rem}
+  .hstat .hn{font-size:1.5rem}
+  .hstat .hlbl{font-size:.68rem}
+
+  /* ── Metrics ── */
+  .met-grid{grid-template-columns:repeat(2,1fr)}
+
+  /* ── CTA ── */
+  .cta-duo{gap:2rem}
+  .cta-pill{font-size:.72rem;text-align:center}
+
+  /* ── Contact section ── */
+  .con-hero{height:auto;min-height:560px}
+  .con-map-content{flex-direction:column;align-items:flex-start;padding:5rem 0 2rem;gap:1.5rem}
+  .con-panel{max-width:100%}
+  .con-panel h2{font-size:clamp(1.5rem,6vw,2rem)}
+  .con-hq-text{position:static;margin-top:1rem}
+
+  /* ── Contact form ── */
+  .cform-hd h2{font-size:clamp(1.4rem,5.5vw,1.8rem)}
+  .cform-modern .frow{grid-template-columns:1fr}
+
+  /* ── Footer ── */
+  .ft-main{flex-direction:column;gap:2rem;padding:2rem 0 1.8rem}
+  .ft-left{width:100%}
+  .ft-logo-link{width:200px;height:95px}
+  .ft-logo-img{width:180px}
+  .ft-nav{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem 1.2rem;flex:none;width:100%;justify-content:flex-start}
+  .ft-right{align-items:flex-start;width:100%;border-top:1px solid rgba(255,255,255,.1);padding-top:1.2rem}
+  .ft-bar{flex-direction:column;align-items:flex-start;gap:.5rem}
+}
+
+@media(max-width:480px){
+  .container{padding:0 16px}
   .ind-grid{grid-template-columns:1fr}
+  .met-grid{grid-template-columns:1fr 1fr}
+  .stat-cards{grid-template-columns:1fr 1fr}
+  .cform-modern .frow{grid-template-columns:1fr}
   .ft-nav{gap:1.2rem .8rem}
   .ft-bar-links{flex-wrap:wrap;gap:.8rem}
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .sec-hd h2{font-size:clamp(1.3rem,7vw,1.8rem)}
 }
