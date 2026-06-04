@@ -3,7 +3,10 @@
 <!-- ══ NAVBAR ════════════════════════════════════════════════════════════ -->
 <nav id="nav">
   <div class="container nav-wrap">
-    <a href="#home"><img src="/images/logo.png" alt="Innovsol" class="nav-logo-img"/></a>
+    <a href="#home" class="nav-logo-wrap">
+      <img src="/images/logo.png" alt="Innovsol" class="nav-logo-img" id="nav-logo-main"/>
+      <img src="/images/white-text-logo.png" alt="Innovsol" class="nav-logo-img" id="nav-logo-alt"/>
+    </a>
     <div class="nav-links">
       <a href="#home">Home</a>
       <a href="#services">Services</a>
@@ -72,7 +75,7 @@
       <div class="container">
         <div class="reel-inner">
           <div class="reel-eyebrow reel-eyebrow-nodash">Our Mission</div>
-          <h1>Elevate enterprise productivity<br><span class="reel-nowrap"><em>&mdash;&nbsp;measurably&nbsp;&mdash;</em> by embedding AI</span><br>where it matters most.</h1>
+          <h1>Elevate enterprise productivity-<br><span class="reel-nowrap"><em>measurably -</em> by embedding AI</span><br>where it matters most.</h1>
           <div class="reel-btns">
             <a href="#contact-form" class="btn btn-orange btn-hero-primary">Book a Strategy Call &rarr;</a>
             <a href="#services" class="btn btn-outline-light">Explore AI Solutions</a>
@@ -801,21 +804,27 @@
 <section id="contact-form" class="contact-form-sec">
   <div class="container">
     <div class="contact-form-inner">
-      <div class="cform-hd fi">
-        <h2>Start the Conversation</h2>
-        <p>Tell us about your AI challenge — our team will respond within 1 business day.</p>
+      <div class="cform-left">
+        <p class="cform-tag">Get In Touch</p>
+        <h2 class="cform-h2">Start the<br><em>Conversation.</em></h2>
+        <p class="cform-sub">Tell us about your AI challenge. Our team responds within 1 business day.</p>
+        <ul class="cform-trust">
+          <li>Strategy calls within 5 days</li>
+          <li>Enterprise-grade security</li>
+          <li>GDPR compliant</li>
+        </ul>
       </div>
       <form id="cform" class="cform-modern fi" onsubmit="sendForm(event)">
           <div class="frow">
-            <div class="fg"><label>First Name *</label><input type="text" placeholder="First name" required/></div>
-            <div class="fg"><label>Last Name *</label><input type="text" placeholder="Last name" required/></div>
+            <div class="fg"><label>First Name *</label><input type="text" name="firstName" placeholder="First name" required/></div>
+            <div class="fg"><label>Last Name *</label><input type="text" name="lastName" placeholder="Last name" required/></div>
           </div>
-          <div class="fg"><label>Work Email *</label><input type="email" placeholder="you@company.com" required/></div>
-          <div class="fg"><label>Phone Number</label><input type="tel" placeholder="" /></div>
-          <div class="fg"><label>Company *</label><input type="text" placeholder="Your organisation" required/></div>
+          <div class="fg"><label>Work Email *</label><input type="email" name="email" placeholder="you@company.com" required/></div>
+          <div class="fg"><label>Phone Number</label><input type="tel" name="phone" placeholder="" /></div>
+          <div class="fg"><label>Company *</label><input type="text" name="company" placeholder="Your organisation" required/></div>
           <div class="frow">
             <div class="fg"><label>Industry</label>
-              <select>
+              <select name="industry">
                 <option value="">Select industry</option>
                 <option>Banking &amp; Financial Services</option>
                 <option>Manufacturing</option>
@@ -829,7 +838,7 @@
               </select>
             </div>
             <div class="fg"><label>Enquiry Type</label>
-              <select>
+              <select name="enquiryType">
                 <option value="">Select type</option>
                 <option>Strategy Consultation</option>
                 <option>FDE Engagement</option>
@@ -840,7 +849,7 @@
               </select>
             </div>
           </div>
-          <div class="fg"><label>Message</label><textarea placeholder="Tell us about your AI challenge or ambition..."></textarea></div>
+          <div class="fg"><label>Message</label><textarea name="message" placeholder="Tell us about your AI challenge or ambition..."></textarea></div>
           <button type="submit" class="fsub">Send Message &rarr;</button>
           <div class="fnote">By submitting you agree to our Privacy Policy. All enquiries reviewed within 1 business day.</div>
       </form>
@@ -854,7 +863,7 @@
     <!-- Main footer row: logo | nav | contact -->
     <div class="ft-main">
       <div class="ft-left">
-        <a href="#home" class="ft-logo-link"><img src="/images/logo.png" alt="Innovsol" class="ft-logo-img"/></a>
+        <a href="#home" class="ft-logo-link"><img src="/images/white-text-logo.png" alt="Innovsol" class="ft-logo-img"/></a>
         <p class="ft-tagline">Enterprise AI. Deployed,<br>Not Just Discussed.</p>
       </div>
       <nav class="ft-nav">

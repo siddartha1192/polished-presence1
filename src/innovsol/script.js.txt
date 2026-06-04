@@ -37,6 +37,28 @@ document.addEventListener('DOMContentLoaded', () => {
   let current       = 0;
   let transitioning = false;
   let fallback      = null;
+  let heroInView    = true;
+
+  const navEl = document.getElementById('nav');
+
+  // Apply / remove the alt logo: only when video 1-3 is active,
+  // hero is in view, AND nav hasn't gone white (scrollY <= 60)
+  function syncNavLogo () {
+    const navTransparent = window.scrollY <= 60;
+    if (navEl) navEl.classList.toggle('reel-alt', current !== 0 && heroInView && navTransparent);
+  }
+
+  // Revert logo as soon as the navbar turns white on scroll
+  window.addEventListener('scroll', syncNavLogo, { passive: true });
+
+  // Watch hero section — revert logo when user scrolls away
+  const heroSection = document.getElementById('home');
+  if (heroSection) {
+    new IntersectionObserver((entries) => {
+      heroInView = entries[0].isIntersecting;
+      syncNavLogo();
+    }, { threshold: 0.1 }).observe(heroSection);
+  }
 
   // Hard fallback — advance after 12s max per slide regardless of video state
   function resetFallback () {
@@ -70,6 +92,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Dots
     dots.forEach((d, i) => d.classList.toggle('reel-dot-active', i === current));
+
+    // Nav logo: original on slide 0 or when hero not in view
+    syncNavLogo();
 
     setTimeout(() => {
       slides[prev].classList.remove('reel-exit');
@@ -314,15 +339,42 @@ function animNum(el) {
 // ── Contact form ─────────────────────────────────────────────────────────
 function sendForm(e) {
   e.preventDefault();
-  const btn = e.target.querySelector('.fsub');
+  const form = e.target;
+  const btn = form.querySelector('.fsub');
+  const get = name => { const el = form.elements[name]; return el ? el.value.trim() : ''; };
+
   btn.textContent = 'Sending...'; btn.disabled = true;
-  setTimeout(() => {
+
+  fetch('/api/contact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      firstName:   get('firstName'),
+      lastName:    get('lastName'),
+      email:       get('email'),
+      phone:       get('phone'),
+      company:     get('company'),
+      industry:    get('industry'),
+      enquiryType: get('enquiryType'),
+      message:     get('message'),
+    }),
+  })
+  .then(r => r.json())
+  .then(res => {
     btn.textContent = 'Send Message →'; btn.disabled = false;
-    e.target.reset();
-    const t = document.getElementById('toast');
-    t.classList.add('on');
-    setTimeout(() => t.classList.remove('on'), 4500);
-  }, 1300);
+    if (res.success) {
+      form.reset();
+      const t = document.getElementById('toast');
+      t.classList.add('on');
+      setTimeout(() => t.classList.remove('on'), 4500);
+    } else {
+      alert('Something went wrong. Please try again or email us directly at hello@innovsol.ai');
+    }
+  })
+  .catch(() => {
+    btn.textContent = 'Send Message →'; btn.disabled = false;
+    alert('Could not send message. Please email us at hello@innovsol.ai');
+  });
 }
 
 // ── Fire hero stats on load ──────────────────────────────────────────────

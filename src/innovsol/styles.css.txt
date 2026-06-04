@@ -96,8 +96,12 @@ img{max-width:100%;display:block}
 #nav.sc{background:rgba(255,255,255,.96);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-color:var(--border);box-shadow:0 4px 24px rgba(15,40,90,.06)}
 .nav-wrap{display:flex;align-items:center;justify-content:space-between;height:104px;gap:2rem}
 #nav a:first-child{flex-shrink:0}
-.nav-logo-img{
-  height:198px;width:auto;display:block;flex-shrink:0}
+.nav-logo-wrap{position:relative;display:block;flex-shrink:0}
+.nav-logo-img{height:95px;width:auto;display:block;flex-shrink:0}
+#nav-logo-main{transition:opacity .4s ease}
+#nav-logo-alt{position:absolute;top:50%;left:0;transform:translateY(-50%);opacity:0;pointer-events:none;transition:opacity .4s ease}
+#nav.reel-alt #nav-logo-main{opacity:0}
+#nav.reel-alt #nav-logo-alt{opacity:1;pointer-events:auto;height:198px}
 .nav-links{display:flex;align-items:center;gap:clamp(1rem,1.8vw,2.4rem)}
 .nav-links a{font-size:clamp(.78rem,.95vw,1rem);color:rgba(255,255,255,.88);font-weight:600;transition:color .3s;position:relative;padding:6px 0;letter-spacing:-.01em;white-space:nowrap}
 .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--orange);border-radius:2px;transition:width .25s}
@@ -674,59 +678,86 @@ img{max-width:100%;display:block}
 
 /* ── Modern form section ─────────────────────────────────────────────── */
 .contact-form-sec{
-  padding:6rem 0;
-  background:linear-gradient(160deg,#070f1e 0%,#0c1e3a 60%,#071628 100%);
+  padding:4.5rem 0;
+  background:#000;
   position:relative;overflow:hidden}
 .contact-form-sec::before{
-  content:'';position:absolute;width:600px;height:600px;border-radius:50%;
-  background:radial-gradient(circle,rgba(63,108,181,.1),transparent 65%);
-  left:-150px;bottom:-150px;pointer-events:none}
-.contact-form-inner{max-width:780px;margin:0 auto;position:relative;z-index:1}
-.cform-hd{text-align:center;margin-bottom:2rem}
-.cform-hd h2{font-size:clamp(1.4rem,2.2vw,2rem);color:#fff;margin:.3rem 0 .5rem;font-weight:800;letter-spacing:-.03em}
-.cform-hd p{color:rgba(255,255,255,.55);font-size:.88rem;line-height:1.65}
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(120deg,rgba(255,255,255,.05) 0%,transparent 45%,rgba(255,255,255,.03) 75%,transparent 100%);
+  background-size:300% 300%;
+  animation:cfSweep 9s ease-in-out infinite alternate;
+  pointer-events:none}
+@keyframes cfSweep{
+  0%{background-position:0% 50%}
+  100%{background-position:100% 50%}}
 
-/* Borderless modern fields */
-.cform-modern{display:flex;flex-direction:column;gap:.55rem}
-.cform-modern .frow{display:grid;grid-template-columns:1fr 1fr;gap:.55rem}
-.cform-modern .fg{display:flex;flex-direction:column;gap:.28rem}
+/* Two-column layout */
+.contact-form-inner{
+  display:grid;grid-template-columns:1fr 1.35fr;
+  gap:5rem;align-items:start;
+  position:relative;z-index:1}
+
+/* Left panel */
+.cform-left{padding-top:.4rem}
+.cform-tag{
+  font-size:.58rem;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(255,255,255,.3);
+  margin:0 0 .9rem}
+.cform-h2{
+  font-size:clamp(2.8rem,4.5vw,4.2rem);
+  font-weight:900;line-height:.9;
+  letter-spacing:-.05em;margin:0 0 1.2rem;color:#fff}
+.cform-h2 em{
+  font-style:normal;display:block;
+  color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.6)}
+.cform-sub{
+  font-size:.78rem;color:rgba(255,255,255,.38);
+  line-height:1.8;margin:0 0 1.6rem;max-width:230px}
+.cform-trust{
+  list-style:none;padding:0;margin:0;
+  display:flex;flex-direction:column;gap:.45rem}
+.cform-trust li{
+  font-size:.65rem;color:rgba(255,255,255,.28);
+  display:flex;align-items:center;gap:.5rem}
+.cform-trust li::before{
+  content:'';width:14px;height:1px;
+  background:rgba(255,255,255,.2);flex-shrink:0}
+
+/* Ultra-compact underline form */
+.cform-modern{display:flex;flex-direction:column;gap:0}
+.cform-modern .frow{display:grid;grid-template-columns:1fr 1fr;gap:0 1.2rem}
+.cform-modern .fg{
+  display:flex;flex-direction:column;gap:.1rem;
+  padding:.4rem 0;
+  border-bottom:1px solid rgba(255,255,255,.35);
+  transition:border-color .2s}
+.cform-modern .fg:focus-within{border-bottom-color:#fff}
 .cform-modern .fg label{
-  font-size:.62rem;font-weight:700;letter-spacing:.09em;
+  font-size:.52rem;font-weight:700;letter-spacing:.13em;
   text-transform:uppercase;color:#fff}
 .cform-modern .fg input,
 .cform-modern .fg select,
 .cform-modern .fg textarea{
-  background:rgba(255,255,255,.07);
-  border:none;border-bottom:1.5px solid rgba(255,255,255,.12);
-  border-radius:6px 6px 0 0;
-  padding:.55rem .75rem;
+  background:transparent;border:none;
+  padding:.18rem 0;
   font-size:.78rem;font-family:var(--font);
   color:#fff;outline:none;
-  transition:background .25s,border-color .25s;
   -webkit-appearance:none}
 .cform-modern .fg input::placeholder,
-.cform-modern .fg textarea::placeholder{color:rgba(255,255,255,.25)}
-.cform-modern .fg select option{background:#0c1e3a;color:#fff}
-.cform-modern .fg input:focus,
-.cform-modern .fg select:focus,
-.cform-modern .fg textarea:focus{
-  background:rgba(255,255,255,.11);
-  border-bottom-color:var(--orange);
-  box-shadow:0 4px 20px rgba(250,167,32,.08)}
-.cform-modern .fg textarea{resize:vertical;min-height:70px}
+.cform-modern .fg textarea::placeholder{color:rgba(255,255,255,.16)}
+.cform-modern .fg select{color:rgba(255,255,255,.55)}
+.cform-modern .fg select option{background:#111;color:#fff}
+.cform-modern .fg textarea{resize:none;min-height:44px}
 .cform-modern .fsub{
-  width:100%;padding:.72rem;margin-top:.35rem;
-  background:linear-gradient(135deg,var(--orange),#e8950a);
-  color:#fff;border:none;border-radius:8px;
-  font-size:.85rem;font-weight:700;letter-spacing:.01em;
-  cursor:pointer;transition:all .25s;font-family:var(--font);
-  box-shadow:0 4px 24px rgba(250,167,32,.3)}
-.cform-modern .fsub:hover{
-  background:linear-gradient(135deg,#ffb830,var(--orange));
-  transform:translateY(-2px);box-shadow:0 8px 32px rgba(250,167,32,.45)}
+  width:100%;padding:.58rem;margin-top:1.1rem;
+  background:#fff;color:#000;
+  border:none;border-radius:3px;
+  font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  cursor:pointer;transition:all .2s;font-family:var(--font)}
+.cform-modern .fsub:hover{background:#ddd;transform:translateY(-1px)}
 .cform-modern .fnote{
-  font-size:.62rem;color:rgba(255,255,255,.3);
-  text-align:center;margin-top:.2rem;line-height:1.6}
+  font-size:.55rem;color:rgba(255,255,255,.18);
+  text-align:center;margin-top:.55rem;line-height:1.6}
 
 /* ── Contact redesign — full-bleed map with content overlay ─────────────── */
 #contact{padding:0;background:none;position:relative;overflow:hidden}
@@ -819,7 +850,6 @@ footer{background:#000;border-top:3px solid var(--orange)}
 .ft-logo-img{
   width:205px;height:auto;display:block;
   margin-top:-45px;margin-left:8px;
-  filter:brightness(0) invert(1);
   transition:opacity .25s}
 .ft-logo-img:hover{opacity:.85}
 .ft-tagline{font-size:.7rem;color:rgba(255,255,255,.45);line-height:1.6;margin:0}
@@ -1079,7 +1109,10 @@ footer{background:#000;border-top:3px solid var(--orange)}
   .con-hq-text{position:static;margin-top:1rem}
 
   /* ── Contact form ── */
-  .cform-hd h2{font-size:clamp(1.4rem,5.5vw,1.8rem)}
+  .contact-form-inner{grid-template-columns:1fr;gap:2.2rem}
+  .cform-left{padding-top:0}
+  .cform-sub{max-width:100%}
+  .cform-h2{font-size:clamp(2.2rem,8vw,3rem)}
   .cform-modern .frow{grid-template-columns:1fr}
 
   /* ── Footer ── */
