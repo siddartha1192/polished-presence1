@@ -1,4 +1,5 @@
-import{r as n,j as e}from"./index-Dx1rrXMB.js";const i=`\r
+import { r as reactExports, j as jsxRuntimeExports } from "../_libs/react.mjs";
+const styles = `\r
 /* ═══ RESET & ROOT ════════════════════════════════════════════════════════ */\r
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}\r
 :root{\r
@@ -28,7 +29,7 @@ a{text-decoration:none;color:inherit}\r
 img{max-width:100%;display:block}\r
 \r
 /* ═══ UTILITIES ═══════════════════════════════════════════════════════════ */\r
-.container{max-width:1480px;margin:0 auto;padding:0 48px}\r
+.container{width:92%;max-width:2200px;margin:0 auto;padding:0 clamp(20px,2.5vw,60px)}\r
 .section-label{\r
   display:inline-flex;align-items:center;gap:.65rem;\r
   font-size:1rem;font-weight:800;letter-spacing:.12em;\r
@@ -53,7 +54,8 @@ img{max-width:100%;display:block}\r
 /* ── Hero-specific button pair ─────────────────────────────────────────── */\r
 /* Primary CTA on dark video — orange fill, near-black text, warm glow */\r
 .btn-hero-primary{\r
-  padding:.45rem 1.1rem;font-size:.78rem;font-weight:700;letter-spacing:.01em;\r
+  padding:clamp(.35rem,1vw,.55rem) clamp(.7rem,1.8vw,1.3rem);\r
+  font-size:clamp(.7rem,1.2vw,.88rem);font-weight:700;letter-spacing:.01em;\r
   box-shadow:0 4px 20px rgba(250,167,32,.35),0 1px 4px rgba(0,0,0,.25)}\r
 .btn-hero-primary:hover{\r
   background:var(--orange2);color:#fff;\r
@@ -62,7 +64,8 @@ img{max-width:100%;display:block}\r
 \r
 /* Secondary CTA on dark video — frosted white border, fills blue on hover */\r
 .btn-outline-light{\r
-  padding:.45rem 1.1rem;font-size:.78rem;font-weight:700;letter-spacing:.01em;\r
+  padding:clamp(.35rem,1vw,.55rem) clamp(.7rem,1.8vw,1.3rem);\r
+  font-size:clamp(.7rem,1.2vw,.88rem);font-weight:700;letter-spacing:.01em;\r
   background:var(--blue);color:#fff;border:2px solid var(--blue);\r
   box-shadow:0 4px 18px rgba(63,108,181,.45),0 1px 4px rgba(0,0,0,.3)}\r
 .btn-outline-light:hover{\r
@@ -93,7 +96,13 @@ img{max-width:100%;display:block}\r
   transition:background .4s ease,box-shadow .4s ease,border-color .4s ease}\r
 #nav.sc{background:rgba(255,255,255,.96);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-color:var(--border);box-shadow:0 4px 24px rgba(15,40,90,.06)}\r
 .nav-wrap{display:flex;align-items:center;justify-content:space-between;height:104px;gap:2rem}\r
-.nav-logo img{height:198px;width:auto;display:block}\r
+.nav-logo-img{\r
+  height:198px;width:auto;display:block;\r
+  filter:drop-shadow(0 0 4px rgba(255,255,255,.55))\r
+         drop-shadow(0 0 10px rgba(255,255,255,.3))\r
+         drop-shadow(0 2px 4px rgba(0,0,0,.2));\r
+  transition:filter .35s ease}\r
+#nav.sc .nav-logo-img{filter:none}\r
 .nav-links{display:flex;align-items:center;gap:2.4rem}\r
 .nav-links a{font-size:1rem;color:rgba(255,255,255,.88);font-weight:600;transition:color .3s;position:relative;padding:6px 0;letter-spacing:-.01em}\r
 .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--orange);border-radius:2px;transition:width .25s}\r
@@ -112,9 +121,32 @@ img{max-width:100%;display:block}\r
 .ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}\r
 .ham span{width:22px;height:2px;background:#fff;border-radius:2px;transition:.3s;display:block}\r
 #nav.sc .ham span{background:var(--dark)}\r
-.mob-nav{display:none;position:fixed;top:104px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);\r
-  padding:1.5rem 2rem;z-index:999;flex-direction:column;gap:1rem;box-shadow:0 8px 24px rgba(0,0,0,.08)}\r
-.mob-nav a{font-size:1rem;color:var(--dark);font-weight:600;padding:.4rem 0;border-bottom:1px solid var(--border)}\r
+/* Right-side drawer */\r
+.mob-nav{\r
+  position:fixed;top:0;right:0;bottom:0;\r
+  width:min(300px,82vw);\r
+  background:#fff;z-index:1001;\r
+  display:flex;flex-direction:column;gap:0;\r
+  padding:1.8rem 1.6rem;\r
+  box-shadow:-8px 0 40px rgba(0,0,0,.18);\r
+  transform:translateX(110%);\r
+  transition:transform .35s cubic-bezier(.4,0,.2,1)}\r
+.mob-nav.open{transform:translateX(0)}\r
+.mob-nav a{font-size:1rem;color:var(--dark);font-weight:600;padding:.75rem 0;border-bottom:1px solid var(--border);text-decoration:none}\r
+.mob-nav a:last-of-type{border-bottom:none}\r
+.mob-close{\r
+  align-self:flex-end;background:none;border:none;\r
+  font-size:1.3rem;color:var(--dark);cursor:pointer;\r
+  margin-bottom:1.2rem;padding:4px 8px;line-height:1}\r
+.mob-overlay{\r
+  display:none;position:fixed;inset:0;\r
+  background:rgba(0,0,0,.45);z-index:1000;\r
+  backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}\r
+.mob-overlay.open{display:block}\r
+/* Ham → X animation */\r
+.ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}\r
+.ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}\r
+.ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}\r
 \r
 /* ═══ HERO REEL — 4-slide enterprise video carousel ══════════════════════ */\r
 .hero-reel{\r
@@ -132,14 +164,18 @@ img{max-width:100%;display:block}\r
 /* ── Overlay — directional dark + brand-blue bloom + bottom dissolve ──── */\r
 .hero-overlay{display:none}\r
 \r
-/* ── Slide counter top-right ─────────────────────────────────────────── */\r
-.reel-counter{\r
-  position:absolute;top:50%;transform:translateY(-50%);right:48px;z-index:10;\r
-  display:flex;align-items:baseline;gap:.25rem;pointer-events:none}\r
-.reel-c-cur{font-size:2.4rem;font-weight:900;color:#fff;line-height:1;\r
-  text-shadow:0 2px 12px rgba(0,0,0,.5)}\r
-.reel-c-sep{font-size:.9rem;color:rgba(255,255,255,.35);margin:0 .1rem}\r
-.reel-c-tot{font-size:.9rem;font-weight:600;color:rgba(255,255,255,.35)}\r
+/* ── Slide dots bottom-centre ─────────────────────────────────────────── */\r
+.reel-dots{\r
+  position:absolute;bottom:36px;right:48px;z-index:10;\r
+  display:flex;align-items:center;gap:6px}\r
+.reel-dot{\r
+  width:6px;height:6px;border-radius:999px;border:none;\r
+  background:rgba(255,255,255,.35);cursor:pointer;padding:0;\r
+  transition:background .35s ease,width .35s ease;\r
+  flex-shrink:0}\r
+.reel-dot:hover{background:rgba(255,255,255,.65)}\r
+.reel-dot.reel-dot-active{\r
+  width:20px;background:#fff}\r
 \r
 /* ── Slides container ─────────────────────────────────────────────────── */\r
 .reel-slides{position:absolute;inset:0;z-index:3}\r
@@ -177,12 +213,10 @@ img{max-width:100%;display:block}\r
 /* ── Eyebrow — large, bold, unmissable ────────────────────────────────── */\r
 .reel-eyebrow{\r
   display:inline-flex;align-items:center;gap:.75rem;\r
-  font-size:1rem;font-weight:800;letter-spacing:.12em;\r
+  font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:800;letter-spacing:.07em;white-space:nowrap;\r
   color:var(--orange);text-transform:uppercase;margin-bottom:1rem;\r
   text-shadow:0 1px 8px rgba(0,0,0,.75),0 0 24px rgba(0,0,0,.5)}\r
-.reel-eyebrow::before{\r
-  content:'';display:inline-block;width:30px;height:3px;\r
-  background:var(--orange);border-radius:2px;flex-shrink:0}\r
+.reel-eyebrow::before{display:none}\r
 \r
 /* ── Headline — pure white, triple-layer shadow for video readability ───── */\r
 .reel-slide h1{\r
@@ -192,6 +226,13 @@ img{max-width:100%;display:block}\r
     0 1px 2px rgba(0,0,0,.9),\r
     0 4px 16px rgba(0,0,0,.75),\r
     0 12px 40px rgba(0,0,0,.55)}\r
+\r
+.reel-nowrap{white-space:nowrap}\r
+@media(max-width:768px){.reel-nowrap{white-space:normal}}\r
+\r
+/* ── Slide 01 overrides — oversized eyebrow + enlarged headline ────────── */\r
+.reel-slide[data-idx="0"] h1{\r
+  font-size:clamp(1.8rem,3vw,2.6rem)}\r
 \r
 /* ── Em/accent — orange glow, dark halo keeps it readable on bright video ── */\r
 .reel-slide h1 em{\r
@@ -298,8 +339,12 @@ img{max-width:100%;display:block}\r
   display:flex;align-items:center;gap:.9rem;\r
   padding:1rem 2rem;border:1.5px solid var(--border);border-radius:12px;\r
   font-size:1.1rem;font-weight:700;color:var(--dark2);white-space:nowrap;background:#fff;\r
-  letter-spacing:-.01em;transition:border-color .2s,box-shadow .2s,transform .2s}\r
-.logo-chip:hover{border-color:var(--blue);box-shadow:0 6px 22px rgba(63,108,181,.12);transform:translateY(-2px)}\r
+  letter-spacing:-.01em;transition:border-color .3s,box-shadow .3s,background .3s,color .3s}\r
+.logo-chip:hover{\r
+  border-color:var(--blue);\r
+  background:rgba(63,108,181,.05);\r
+  color:var(--blue);\r
+  box-shadow:0 0 0 4px rgba(63,108,181,.07),0 4px 18px rgba(63,108,181,.1)}\r
 .logo-chip svg{width:28px;height:28px;flex-shrink:0;color:var(--blue);opacity:.85}\r
 @keyframes marq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}\r
 \r
@@ -417,18 +462,15 @@ img{max-width:100%;display:block}\r
 .eng-header{text-align:center}\r
 .eng-header h2{font-size:clamp(1.6rem,2.8vw,2.8rem);color:var(--dark);margin:.5rem 0 0;line-height:1.15}\r
 \r
-/* Horizontal step tabs */\r
-.eng-steplist{display:flex;flex-direction:row;gap:0;justify-content:center;flex-wrap:wrap}\r
+/* Phase selector — big scroll-driven text nav */\r
+.eng-steplist{display:flex;flex-direction:row;gap:0;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}\r
 .eng-steplbl{\r
-  display:flex;align-items:center;gap:.55rem;\r
-  padding:.7rem 1.6rem;\r
-  border-bottom:3px solid var(--border);\r
-  font-size:.85rem;font-weight:600;color:var(--lgray);\r
-  cursor:pointer;transition:all .25s;text-decoration:none}\r
-.eng-steplbl .sn{font-size:.58rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--lgray);transition:color .25s;flex-shrink:0}\r
-.eng-steplbl.active{border-bottom-color:var(--orange);color:var(--dark)}\r
-.eng-steplbl.active .sn{color:var(--orange)}\r
-.eng-steplbl:hover{color:var(--dark);border-bottom-color:var(--blue)}\r
+  font-size:clamp(1.4rem,2.2vw,2rem);font-weight:800;letter-spacing:-.02em;\r
+  color:rgba(15,40,90,.3);\r
+  padding:.5rem 1.8rem;border-bottom:3px solid var(--blue);\r
+  cursor:pointer;transition:color .3s,border-color .3s;text-decoration:none}\r
+.eng-steplbl.active{color:var(--dark);border-bottom-color:var(--orange)}\r
+.eng-steplbl:hover:not(.active){color:rgba(15,40,90,.55)}\r
 \r
 /* Stage: centred, cards stacked */\r
 .eng-stage{position:relative;height:48vh;width:100%;max-width:760px;overflow:hidden}\r
@@ -511,6 +553,8 @@ img{max-width:100%;display:block}\r
   .eng-card.eng-exit{opacity:1;transform:none}\r
   .eng-ghost-num{display:none}\r
   .eng-progress{display:none}\r
+  .eng-steplist{display:none}\r
+  .eng-header h2{font-size:clamp(2rem,7vw,3rem);font-weight:900;line-height:1.1}\r
 }\r
 \r
 /* ═══ CASE STUDIES ════════════════════════════════════════════════════════ */\r
@@ -594,16 +638,158 @@ img{max-width:100%;display:block}\r
   font-size:.8rem;color:rgba(255,255,255,.65);line-height:1.55;border:1px solid rgba(255,255,255,.1)}\r
 \r
 /* ═══ CONTACT ══════════════════════════════════════════════════════════════ */\r
-#contact{padding:6rem 0;background:linear-gradient(135deg,var(--dark) 0%,#0A2955 100%);position:relative;overflow:hidden}\r
-#contact::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;\r
-  background:radial-gradient(circle,rgba(63,108,181,.12),transparent 65%);right:-100px;bottom:-100px;pointer-events:none}\r
-.con-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:4rem;align-items:start;position:relative;z-index:1}\r
-.con-left h2{font-size:clamp(1.8rem,3vw,2.5rem);color:#fff;margin:.5rem 0 1.2rem}\r
-.con-left p{color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:1.8rem}\r
-.con-details{display:flex;flex-direction:column;gap:.9rem}\r
-.con-det{display:flex;align-items:center;gap:.8rem;font-size:.88rem;color:rgba(255,255,255,.75)}\r
-.con-icon{width:36px;height:36px;border-radius:50%;background:rgba(63,108,181,.2);\r
-  display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}\r
+/* Google Maps embed */\r
+.con-map{display:flex;flex-direction:column;gap:1rem}\r
+.con-map-label{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin:0}\r
+.con-gmap{\r
+  position:relative;width:100%;padding-bottom:62%;\r
+  border-radius:12px;overflow:hidden;\r
+  box-shadow:0 8px 40px rgba(0,0,0,.5);\r
+  border:1px solid rgba(255,255,255,.08)}\r
+.con-gmap iframe{\r
+  position:absolute;inset:0;width:100%;height:100%;border:0;display:block}\r
+\r
+/* Overlay map pins */\r
+.gmap-pins{position:absolute;inset:0;pointer-events:none;z-index:2}\r
+.gmap-pin{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:5px}\r
+.gmap-dot{width:12px;height:12px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 3px rgba(0,0,0,.3);flex-shrink:0}\r
+.gmap-ring{\r
+  position:absolute;top:50%;left:50%;\r
+  width:12px;height:12px;border-radius:50%;\r
+  transform:translate(-50%,-50%);\r
+  border:2px solid currentColor;animation:gmap-pulse 2.4s ease-out infinite}\r
+.gmap-pin.orange .gmap-dot{background:#faa728}\r
+.gmap-pin.orange .gmap-ring{color:#faa728}\r
+.gmap-pin.blue   .gmap-dot{background:#6398ff}\r
+.gmap-pin.blue   .gmap-ring{color:#6398ff}\r
+.gmap-label{\r
+  background:rgba(5,15,35,.82);backdrop-filter:blur(4px);\r
+  color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;\r
+  padding:3px 8px;border-radius:4px;white-space:nowrap;\r
+  border:1px solid rgba(255,255,255,.15);margin-top:2px}\r
+.gmap-pin.orange .gmap-label{border-color:rgba(250,167,32,.5);color:#faa728}\r
+.gmap-pin.blue   .gmap-label{border-color:rgba(99,152,255,.5);color:#6398ff}\r
+@keyframes gmap-pulse{\r
+  0%{width:12px;height:12px;opacity:.9}\r
+  100%{width:44px;height:44px;margin:-16px;opacity:0}}\r
+.con-map-legend{display:flex;flex-wrap:wrap;gap:.75rem 1.5rem}\r
+.cml-item{display:flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:600;color:rgba(255,255,255,.6);white-space:nowrap}\r
+.cml-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}\r
+\r
+/* ── Modern form section ─────────────────────────────────────────────── */\r
+.contact-form-sec{\r
+  padding:6rem 0;\r
+  background:linear-gradient(160deg,#070f1e 0%,#0c1e3a 60%,#071628 100%);\r
+  position:relative;overflow:hidden}\r
+.contact-form-sec::before{\r
+  content:'';position:absolute;width:600px;height:600px;border-radius:50%;\r
+  background:radial-gradient(circle,rgba(63,108,181,.1),transparent 65%);\r
+  left:-150px;bottom:-150px;pointer-events:none}\r
+.contact-form-inner{max-width:780px;margin:0 auto;position:relative;z-index:1}\r
+.cform-hd{text-align:center;margin-bottom:2rem}\r
+.cform-hd h2{font-size:clamp(1.4rem,2.2vw,2rem);color:#fff;margin:.3rem 0 .5rem;font-weight:800;letter-spacing:-.03em}\r
+.cform-hd p{color:rgba(255,255,255,.55);font-size:.88rem;line-height:1.65}\r
+\r
+/* Borderless modern fields */\r
+.cform-modern{display:flex;flex-direction:column;gap:.55rem}\r
+.cform-modern .frow{display:grid;grid-template-columns:1fr 1fr;gap:.55rem}\r
+.cform-modern .fg{display:flex;flex-direction:column;gap:.28rem}\r
+.cform-modern .fg label{\r
+  font-size:.62rem;font-weight:700;letter-spacing:.09em;\r
+  text-transform:uppercase;color:#fff}\r
+.cform-modern .fg input,\r
+.cform-modern .fg select,\r
+.cform-modern .fg textarea{\r
+  background:rgba(255,255,255,.07);\r
+  border:none;border-bottom:1.5px solid rgba(255,255,255,.12);\r
+  border-radius:6px 6px 0 0;\r
+  padding:.55rem .75rem;\r
+  font-size:.78rem;font-family:var(--font);\r
+  color:#fff;outline:none;\r
+  transition:background .25s,border-color .25s;\r
+  -webkit-appearance:none}\r
+.cform-modern .fg input::placeholder,\r
+.cform-modern .fg textarea::placeholder{color:rgba(255,255,255,.25)}\r
+.cform-modern .fg select option{background:#0c1e3a;color:#fff}\r
+.cform-modern .fg input:focus,\r
+.cform-modern .fg select:focus,\r
+.cform-modern .fg textarea:focus{\r
+  background:rgba(255,255,255,.11);\r
+  border-bottom-color:var(--orange);\r
+  box-shadow:0 4px 20px rgba(250,167,32,.08)}\r
+.cform-modern .fg textarea{resize:vertical;min-height:70px}\r
+.cform-modern .fsub{\r
+  width:100%;padding:.72rem;margin-top:.35rem;\r
+  background:linear-gradient(135deg,var(--orange),#e8950a);\r
+  color:#fff;border:none;border-radius:8px;\r
+  font-size:.85rem;font-weight:700;letter-spacing:.01em;\r
+  cursor:pointer;transition:all .25s;font-family:var(--font);\r
+  box-shadow:0 4px 24px rgba(250,167,32,.3)}\r
+.cform-modern .fsub:hover{\r
+  background:linear-gradient(135deg,#ffb830,var(--orange));\r
+  transform:translateY(-2px);box-shadow:0 8px 32px rgba(250,167,32,.45)}\r
+.cform-modern .fnote{\r
+  font-size:.62rem;color:rgba(255,255,255,.3);\r
+  text-align:center;margin-top:.2rem;line-height:1.6}\r
+\r
+/* ── Contact redesign — full-bleed map with content overlay ─────────────── */\r
+#contact{padding:0;background:none;position:relative;overflow:hidden}\r
+#contact::before{display:none}\r
+\r
+.con-hero{position:relative;height:580px;overflow:hidden}\r
+\r
+/* Location image fills entire section */\r
+.con-map-bg{position:absolute;inset:0;z-index:0;overflow:hidden}\r
+.con-loc-img{width:100%;height:100%;object-fit:cover;object-position:center 90%;display:block}\r
+.con-map-overlay{\r
+  position:absolute;inset:0;\r
+  background:linear-gradient(\r
+    105deg,\r
+    rgba(2,10,28,.82) 0%,\r
+    rgba(2,10,28,.55) 45%,\r
+    rgba(2,10,28,.15) 75%,\r
+    transparent 100%);\r
+  pointer-events:none}\r
+\r
+/* Content sits over the map */\r
+.con-map-content{\r
+  position:relative;z-index:2;\r
+  height:100%;display:flex;\r
+  align-items:center;justify-content:space-between;gap:3rem}\r
+\r
+/* Left info panel */\r
+.con-panel{\r
+  display:flex;flex-direction:column;gap:.75rem;\r
+  max-width:420px}\r
+.con-panel h2{\r
+  font-size:clamp(1.8rem,3vw,2.6rem);\r
+  color:#fff;margin:.4rem 0 .6rem;\r
+  font-weight:800;line-height:1.15;letter-spacing:-.03em}\r
+.con-panel>p{font-size:.88rem;color:rgba(255,255,255,.65);line-height:1.75;margin:0}\r
+.con-details{display:flex;flex-direction:column;gap:.65rem;margin-top:.5rem}\r
+.con-det{display:flex;align-items:center;gap:.75rem;font-size:.84rem;color:rgba(255,255,255,.75)}\r
+.con-icon{\r
+  width:34px;height:34px;border-radius:50%;\r
+  background:rgba(250,167,32,.15);border:1px solid rgba(250,167,32,.3);\r
+  display:flex;align-items:center;justify-content:center;\r
+  font-size:.9rem;flex-shrink:0}\r
+\r
+/* HQ address simple text */\r
+.con-hq-text{\r
+  position:absolute;bottom:28px;right:0;\r
+  display:flex;flex-direction:column;gap:4px;z-index:3}\r
+.con-hq-label{\r
+  font-size:.7rem;font-weight:800;letter-spacing:.08em;\r
+  text-transform:uppercase;color:var(--orange)}\r
+.con-hq-addr{font-size:.8rem;color:rgba(255,255,255,.75);line-height:1.7}\r
+\r
+@media(max-width:768px){\r
+  .con-hero{height:auto;min-height:560px}\r
+  .con-map-content{flex-direction:column;align-items:flex-start;padding:3rem 0;gap:2rem}\r
+  .con-map-overlay{background:rgba(5,14,32,.85)}\r
+  .con-hq-text{position:static;margin-top:1rem}\r
+  .con-panel{max-width:100%}\r
+}\r
 .cform{background:#fff;border-radius:14px;padding:1.4rem}\r
 .cform h3{font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:.85rem;\r
   padding-bottom:.5rem;border-bottom:1px solid var(--border)}\r
@@ -620,29 +806,55 @@ img{max-width:100%;display:block}\r
 .fnote{font-size:.64rem;color:var(--lgray);margin-top:.4rem;text-align:center}\r
 \r
 /* ═══ FOOTER ══════════════════════════════════════════════════════════════ */\r
-footer{background:#06101F;padding:3.5rem 0 1.5rem}\r
-.ft{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:2rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.05)}\r
-.ft-brand{display:flex;flex-direction:column;gap:.75rem}\r
+footer{background:#fff;border-top:3px solid var(--orange)}\r
+\r
+/* Main row: logo | nav | contact */\r
+.ft-main{\r
+  display:flex;align-items:flex-start;gap:2.5rem;\r
+  padding:2rem 0 1.8rem;border-bottom:1px solid var(--border)}\r
+\r
+/* Logo + tagline */\r
+.ft-left{display:flex;flex-direction:column;gap:.4rem;flex-shrink:0;width:200px}\r
+.ft-logo-link{\r
+  display:block;line-height:0;\r
+  overflow:hidden;\r
+  height:100px; /* clips whitespace — shows only the logo content */\r
+}\r
 .ft-logo-img{\r
-  height:168px;width:auto;display:block;\r
-  background:#fff;\r
-  border-radius:10px;\r
-  padding:6px 14px;\r
-  box-shadow:0 4px 20px rgba(63,108,181,.45),0 1px 6px rgba(0,0,0,.3);\r
-  transition:box-shadow .3s,transform .3s}\r
-.ft-logo-img:hover{\r
-  box-shadow:0 8px 32px rgba(63,108,181,.6),0 2px 10px rgba(0,0,0,.35);\r
-  transform:translateY(-2px)}\r
-.ft-tagline{font-size:.78rem;color:rgba(255,255,255,.35);line-height:1.55;margin:0}\r
-.ft-email{font-size:.82rem;color:var(--blue);text-decoration:none}\r
+  width:200px;height:auto;display:block;\r
+  margin-top:-52px; /* removes 26% top whitespace at 200px */\r
+  transition:opacity .25s}\r
+.ft-logo-img:hover{opacity:.8}\r
+.ft-tagline{font-size:.7rem;color:var(--lgray);line-height:1.6;margin:0}\r
+\r
+/* Nav columns */\r
+.ft-nav{display:flex;gap:2rem;flex:1;justify-content:center}\r
+.ft-col{display:flex;flex-direction:column;gap:.28rem}\r
+.ft-col-head{\r
+  font-size:.6rem;font-weight:800;letter-spacing:.1em;\r
+  text-transform:uppercase;color:var(--dark);\r
+  margin-bottom:.5rem;padding-bottom:.35rem;\r
+  border-bottom:1.5px solid var(--orange);\r
+  display:block;width:fit-content}\r
+.ft-col a{font-size:.73rem;color:var(--lgray);text-decoration:none;transition:color .2s;line-height:1.5}\r
+.ft-col a:hover{color:var(--orange)}\r
+\r
+/* Right contact + CTA */\r
+.ft-right{display:flex;flex-direction:column;align-items:flex-end;gap:.5rem;flex-shrink:0}\r
+.ft-email{font-size:.75rem;font-weight:700;color:var(--blue);text-decoration:none}\r
 .ft-email:hover{color:var(--orange)}\r
-.fc h4{font-size:.75rem;font-weight:800;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem}\r
-.fc a{display:block;font-size:.79rem;color:rgba(255,255,255,.35);margin-bottom:.5rem;transition:color .2s}\r
-.fc a:hover{color:var(--orange)}\r
-.fb{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;flex-wrap:wrap;gap:.5rem}\r
-.fb p,.fb a{font-size:.73rem;color:rgba(255,255,255,.22)}\r
-.fb a{transition:color .2s}.fb a:hover{color:rgba(255,255,255,.5)}\r
-.fb-links{display:flex;gap:1.5rem}\r
+.ft-phone{font-size:.72rem;color:var(--lgray);text-decoration:none}\r
+.ft-phone:hover{color:var(--dark)}\r
+.ft-cta{font-size:.72rem;padding:.42rem .9rem;margin-top:.4rem;white-space:nowrap}\r
+\r
+/* Bottom bar */\r
+.ft-bar{\r
+  display:flex;justify-content:space-between;align-items:center;\r
+  padding:.8rem 0;flex-wrap:wrap;gap:.4rem}\r
+.ft-bar p{font-size:.67rem;color:var(--lgray);margin:0}\r
+.ft-bar-links{display:flex;gap:1.2rem}\r
+.ft-bar-links a{font-size:.67rem;color:var(--lgray);text-decoration:none;transition:color .2s}\r
+.ft-bar-links a:hover{color:var(--dark)}\r
 \r
 /* ═══ EXTRAS ══════════════════════════════════════════════════════════════ */\r
 #totop{position:fixed;bottom:1.8rem;right:1.8rem;width:42px;height:42px;background:var(--blue);\r
@@ -721,31 +933,49 @@ footer{background:#06101F;padding:3.5rem 0 1.5rem}\r
   .ind-grid{grid-template-columns:repeat(2,1fr)}\r
   .svc-grid{grid-template-columns:repeat(2,1fr)}\r
   .met-grid{grid-template-columns:repeat(3,1fr)}\r
-  .ft{grid-template-columns:1fr 1fr;gap:2.5rem}\r
+  .ft-main{flex-wrap:wrap;gap:1.5rem}\r
+  .ft-nav{flex-wrap:wrap;gap:1.2rem;justify-content:flex-start}\r
+  .ft-right{align-items:flex-start}\r
 }\r
 @media(max-width:768px){\r
   .container{padding:0 24px}\r
-  .nav-links,.nav-right .btn-outline-blue{display:none}\r
+  .reel-dots{bottom:16px;right:24px;gap:5px}\r
+  .reel-dot{width:5px;height:5px}\r
+  .reel-dot.reel-dot-active{width:16px}\r
+  .nav-links,.nav-right .btn-outline-blue,.nav-right .btn-orange{display:none}\r
   .ham{display:flex}\r
-  .mob-nav.open{display:flex}\r
+  .mob-overlay{display:block;opacity:0;pointer-events:none;transition:opacity .35s}\r
+  .mob-overlay.open{opacity:1;pointer-events:auto}\r
   .svc-grid{grid-template-columns:1fr}\r
   .fde-grid,.car-grid,.con-grid,.cta-duo{grid-template-columns:1fr}\r
   .cs-grid,.ins-grid{grid-template-columns:1fr}\r
   .stat-cards{grid-template-columns:1fr 1fr}\r
   .hero-stats{grid-template-columns:repeat(2,1fr);max-width:100%}\r
+  /* Hero mobile fixes */\r
+  .reel-eyebrow{font-size:clamp(.75rem,3.5vw,1.1rem);white-space:normal;letter-spacing:.05em}\r
+  .reel-slide[data-idx="2"] .reel-eyebrow,\r
+  .reel-slide[data-idx="3"] .reel-eyebrow{font-size:clamp(.65rem,3vw,.9rem)}\r
+  .reel-slide h1{font-size:clamp(1.2rem,5.5vw,1.8rem)}\r
+  .reel-slide[data-idx="0"] h1{font-size:clamp(1.1rem,5vw,1.6rem)}\r
+  .reel-btns{flex-wrap:wrap;gap:.5rem;padding:0 1rem}\r
+  .btn-hero-primary,.btn-outline-light{font-size:clamp(.7rem,3.2vw,.85rem);padding:.5rem 1rem}\r
 }\r
 @media(max-width:480px){\r
   .met-grid{grid-template-columns:repeat(2,1fr)}\r
   .ind-grid{grid-template-columns:1fr 1fr}\r
   .frow{grid-template-columns:1fr}\r
-  .ft{grid-template-columns:1fr}\r
+  .ft-logo-img{width:160px}\r
+  .ft-left{width:160px}\r
+  .ft-nav{gap:.8rem}\r
+  .ft-bar{flex-direction:column;align-items:flex-start;gap:.4rem}\r
 }\r
-`,t=`\r
+`;
+const body = `\r
 \r
 <!-- ══ NAVBAR ════════════════════════════════════════════════════════════ -->\r
 <nav id="nav">\r
   <div class="container nav-wrap">\r
-    <a href="#home"><img src="/images/logo.png" alt="Innovsol" style="height:198px;width:auto"/></a>\r
+    <a href="#home"><img src="/images/logo.png" alt="Innovsol" class="nav-logo-img"/></a>\r
     <div class="nav-links">\r
       <a href="#home">Home</a>\r
       <a href="#services">Services</a>\r
@@ -756,12 +986,13 @@ footer{background:#06101F;padding:3.5rem 0 1.5rem}\r
       <a href="#careers">Careers</a>\r
     </div>\r
     <div class="nav-right">\r
-      <a href="#contact" class="btn btn-outline-blue" style="font-size:.9rem;padding:.6rem 1.3rem">Contact Us</a>\r
-      <a href="#contact" class="btn btn-orange" style="font-size:.9rem;padding:.6rem 1.3rem">Book a Strategy Call</a>\r
+      <a href="#contact-form" class="btn btn-outline-blue" style="font-size:.9rem;padding:.6rem 1.3rem">Contact Us</a>\r
+      <a href="#contact-form" class="btn btn-orange" style="font-size:.9rem;padding:.6rem 1.3rem">Book a Strategy Call</a>\r
       <button class="ham" id="ham" onclick="toggleMob()"><span></span><span></span><span></span></button>\r
     </div>\r
   </div>\r
   <div class="mob-nav" id="mobNav">\r
+    <button class="mob-close" onclick="toggleMob()" aria-label="Close menu">&#x2715;</button>\r
     <a href="#home" onclick="toggleMob()">Home</a>\r
     <a href="#services" onclick="toggleMob()">Services</a>\r
     <a href="#industries" onclick="toggleMob()">Industries</a>\r
@@ -769,8 +1000,10 @@ footer{background:#06101F;padding:3.5rem 0 1.5rem}\r
     <a href="#fde" onclick="toggleMob()">FDE Team</a>\r
     <a href="#insights" onclick="toggleMob()">Insights</a>\r
     <a href="#careers" onclick="toggleMob()">Careers</a>\r
-    <a href="#contact" onclick="toggleMob()">Contact Us</a>\r
+    <a href="#contact-form" onclick="toggleMob()">Contact Us</a>\r
+    <a href="#contact-form" class="btn btn-orange" style="margin-top:1rem;justify-content:center" onclick="toggleMob()">Book a Strategy Call</a>\r
   </div>\r
+  <div class="mob-overlay" id="mobOverlay"></div>\r
 </nav>\r
 \r
 <!-- ══ HERO REEL — 4-slide enterprise video carousel ══════════════════════ -->\r
@@ -795,11 +1028,12 @@ footer{background:#06101F;padding:3.5rem 0 1.5rem}\r
   <!-- Overlay -->\r
   <div class="hero-overlay"></div>\r
 \r
-  <!-- Slide counter top-right -->\r
-  <div class="reel-counter">\r
-    <span class="reel-c-cur">01</span>\r
-    <span class="reel-c-sep">/</span>\r
-    <span class="reel-c-tot">04</span>\r
+  <!-- Slide dots -->\r
+  <div class="reel-dots">\r
+    <button class="reel-dot reel-dot-active" data-idx="0" aria-label="Slide 1"></button>\r
+    <button class="reel-dot" data-idx="1" aria-label="Slide 2"></button>\r
+    <button class="reel-dot" data-idx="2" aria-label="Slide 3"></button>\r
+    <button class="reel-dot" data-idx="3" aria-label="Slide 4"></button>\r
   </div>\r
 \r
   <!-- Slide content -->\r
@@ -809,10 +1043,10 @@ footer{background:#06101F;padding:3.5rem 0 1.5rem}\r
     <div class="reel-slide reel-active" data-idx="0">\r
       <div class="container">\r
         <div class="reel-inner">\r
-          <div class="reel-eyebrow">Our Mission</div>\r
-          <h1>Elevate enterprise productivity<br><em>measurably</em> by embedding AI<br>where it matters most.</h1>\r
+          <div class="reel-eyebrow reel-eyebrow-nodash">Our Mission</div>\r
+          <h1>Elevate enterprise productivity<br><span class="reel-nowrap"><em>&mdash;&nbsp;measurably&nbsp;&mdash;</em> by embedding AI</span><br>where it matters most.</h1>\r
           <div class="reel-btns">\r
-            <a href="#contact" class="btn btn-orange btn-hero-primary">Book a Strategy Call &rarr;</a>\r
+            <a href="#contact-form" class="btn btn-orange btn-hero-primary">Book a Strategy Call &rarr;</a>\r
             <a href="#services" class="btn btn-outline-light">Explore AI Solutions</a>\r
           </div>\r
         </div>\r
@@ -855,7 +1089,7 @@ footer{background:#06101F;padding:3.5rem 0 1.5rem}\r
           <div class="reel-eyebrow">Building Enterprise AI Infrastructure</div>\r
           <h1>Cloud-native AI platforms, data pipelines,<br>AIOps, and governance frameworks<br>built for <em>production scale.</em></h1>\r
           <div class="reel-btns">\r
-            <a href="#contact" class="btn btn-orange btn-hero-primary">Book a Strategy Call &rarr;</a>\r
+            <a href="#contact-form" class="btn btn-orange btn-hero-primary">Book a Strategy Call &rarr;</a>\r
             <a href="#services" class="btn btn-outline-light">Explore Services</a>\r
           </div>\r
         </div>\r
@@ -1220,15 +1454,14 @@ footer{background:#06101F;padding:3.5rem 0 1.5rem}\r
       <!-- ── Centred header ─────────────────────────────────────────────── -->\r
       <div class="eng-header">\r
         <div class="section-label">Our Engagement Model</div>\r
-        <h2>Discover. Design. Deploy. Scale.</h2>\r
       </div>\r
 \r
-      <!-- ── Horizontal step tabs ───────────────────────────────────────── -->\r
+      <!-- ── Phase selector ────────────────────────────────────────────── -->\r
       <nav class="eng-steplist">\r
-        <a class="eng-steplbl active" data-phase="0"><span class="sn">01</span>Discover</a>\r
-        <a class="eng-steplbl" data-phase="1"><span class="sn">02</span>Design</a>\r
-        <a class="eng-steplbl" data-phase="2"><span class="sn">03</span>Deploy</a>\r
-        <a class="eng-steplbl" data-phase="3"><span class="sn">04</span>Scale</a>\r
+        <a class="eng-steplbl active" data-phase="0">Discover</a>\r
+        <a class="eng-steplbl" data-phase="1">Design</a>\r
+        <a class="eng-steplbl" data-phase="2">Deploy</a>\r
+        <a class="eng-steplbl" data-phase="3">Scale</a>\r
       </nav>\r
 \r
       <!-- ── Stage: cards absolutely stacked, JS drives which is visible ── -->\r
@@ -1469,7 +1702,7 @@ footer{background:#06101F;padding:3.5rem 0 1.5rem}\r
         <h3>Ready to Move Beyond<br>the AI Pilot?</h3>\r
         <p>Join enterprises that have made AI operational. Our FDE engineers are ready to embed with your team and build AI that works in the real world — not just in demos.</p>\r
         <div style="display:flex;gap:.8rem;flex-wrap:wrap">\r
-          <a href="#contact" class="btn btn-orange">Book a Strategy Call &rarr;</a>\r
+          <a href="#contact-form" class="btn btn-orange">Book a Strategy Call &rarr;</a>\r
           <a href="#contact" class="btn btn-ghost" style="font-size:.82rem">AI Readiness Guide</a>\r
         </div>\r
         <div class="cta-pill">Start with a Discovery Sprint — 2 weeks to your AI roadmap · fixed price · no long-term commitment required</div>\r
@@ -1487,25 +1720,64 @@ footer{background:#06101F;padding:3.5rem 0 1.5rem}\r
   </div>\r
 </section>\r
 \r
-<!-- ══ CONTACT ═════════════════════════════════════════════════════════════ -->\r
+<!-- ══ CONTACT (redesigned) ══════════════════════════════════════════════════ -->\r
 <section id="contact">\r
-  <div class="container">\r
-    <div class="con-grid">\r
-      <div class="fi-left">\r
-        <div class="section-label" style="color:var(--blue)">Get in Touch</div>\r
-        <h2>Let's Talk About Your AI Journey.</h2>\r
-        <p>Whether you're exploring AI for the first time or ready to scale an existing programme, a conversation with our team is the fastest way to understand what's possible for your organisation.</p>\r
+  <div class="con-hero">\r
+\r
+    <!-- ── Location image background ── -->\r
+    <div class="con-map-bg">\r
+      <img src="/location.png" alt="Innovsol global presence map" class="con-loc-img"/>\r
+      <div class="con-map-overlay"></div>\r
+    </div>\r
+\r
+    <!-- ── Content over the map ── -->\r
+    <div class="container con-map-content">\r
+\r
+      <!-- Left: contact info panel -->\r
+      <div class="con-panel fi">\r
+        <div class="section-label" style="color:var(--orange)">Get in Touch</div>\r
+        <h2>Let's Talk About<br>Your AI Journey.</h2>\r
+        <p>Whether you're exploring AI for the first time or ready to scale — a conversation with our team is the fastest way forward.</p>\r
         <div class="con-details">\r
-          <div class="con-det"><span class="con-icon">✉️</span><span><a href="mailto:hello@innovsol.ai" style="color:inherit;text-decoration:none">hello@innovsol.ai</a></span></div>\r
-          <div class="con-det"><span class="con-icon">📞</span><span><a href="tel:+919582799988" style="color:inherit;text-decoration:none">+91 95827 99988</a></span></div>\r
-          <div class="con-det"><span class="con-icon">⚡</span><span>Strategy calls scheduled within 5 business days</span></div>\r
-          <div class="con-det"><span class="con-icon">🔒</span><span>Enterprise-grade security · GDPR compliant</span></div>\r
-          <div class="con-det"><span class="con-icon">🌍</span><span>Serving clients across North America, Europe &amp; Asia-Pacific</span></div>\r
+          <div class="con-det">\r
+            <span class="con-icon">✉️</span>\r
+            <span><a href="mailto:hello@innovsol.ai" style="color:inherit;text-decoration:none">hello@innovsol.ai</a></span>\r
+          </div>\r
+          <div class="con-det">\r
+            <span class="con-icon">📞</span>\r
+            <span><a href="tel:+919582799988" style="color:inherit;text-decoration:none">+91 95827 99988</a></span>\r
+          </div>\r
+          <div class="con-det">\r
+            <span class="con-icon">⚡</span>\r
+            <span>Strategy calls within 5 business days</span>\r
+          </div>\r
+          <div class="con-det">\r
+            <span class="con-icon">🔒</span>\r
+            <span>Enterprise-grade security · GDPR compliant</span>\r
+          </div>\r
         </div>\r
+        <a href="#contact-form" class="btn btn-orange" style="margin-top:1.5rem;align-self:flex-start">Book a Strategy Call &rarr;</a>\r
       </div>\r
-      <div class="cform fi-right">\r
-        <h3>Send Us a Message</h3>\r
-        <form id="cform" onsubmit="sendForm(event)">\r
+\r
+      <!-- HQ address simple text -->\r
+      <div class="con-hq-text">\r
+        <span class="con-hq-label">&#x1F4CD; Headquarters</span>\r
+        <span class="con-hq-addr">411, Good Earth Business Bay-1, Sector-58,<br>Gurugram-122098, India</span>\r
+      </div>\r
+\r
+    </div>\r
+  </div>\r
+</section>\r
+\r
+<!-- ══ CONTACT FORM ══════════════════════════════════════════════════════════ -->\r
+<section id="contact-form" class="contact-form-sec">\r
+  <div class="container">\r
+    <div class="contact-form-inner">\r
+      <div class="cform-hd fi">\r
+        <h2>Start the Conversation</h2>\r
+        <p>Tell us about your AI challenge — our team will respond within 1 business day.</p>\r
+      </div>\r
+      <form id="cform" class="cform-modern fi" onsubmit="sendForm(event)">\r
           <div class="frow">\r
             <div class="fg"><label>First Name *</label><input type="text" placeholder="First name" required/></div>\r
             <div class="fg"><label>Last Name *</label><input type="text" placeholder="Last name" required/></div>\r
@@ -1543,8 +1815,7 @@ footer{background:#06101F;padding:3.5rem 0 1.5rem}\r
           <div class="fg"><label>Message</label><textarea placeholder="Tell us about your AI challenge or ambition..."></textarea></div>\r
           <button type="submit" class="fsub">Send Message &rarr;</button>\r
           <div class="fnote">By submitting you agree to our Privacy Policy. All enquiries reviewed within 1 business day.</div>\r
-        </form>\r
-      </div>\r
+      </form>\r
     </div>\r
   </div>\r
 </section>\r
@@ -1552,20 +1823,56 @@ footer{background:#06101F;padding:3.5rem 0 1.5rem}\r
 <!-- ══ FOOTER ══════════════════════════════════════════════════════════════ -->\r
 <footer>\r
   <div class="container">\r
-    <div class="ft">\r
-      <div class="ft-brand">\r
-        <a href="#home"><img src="/images/logo.png" alt="Innovsol" class="ft-logo-img"/></a>\r
+    <!-- Main footer row: logo | nav | contact -->\r
+    <div class="ft-main">\r
+      <div class="ft-left">\r
+        <a href="#home" class="ft-logo-link"><img src="/images/logo.png" alt="Innovsol" class="ft-logo-img"/></a>\r
         <p class="ft-tagline">Enterprise AI. Deployed,<br>Not Just Discussed.</p>\r
-        <a class="ft-email" href="mailto:hello@innovsol.ai">hello@innovsol.ai</a>\r
       </div>\r
-      <div class="fc"><h4>Company</h4><a href="#why">About Us</a><a href="#why">Mission &amp; Vision</a><a href="#fde">FDE Team</a><a href="#careers">Careers</a><a href="#contact">Contact</a></div>\r
-      <div class="fc"><h4>Services</h4><a href="#services">AI Strategy</a><a href="#services">AI Agents</a><a href="#services">FDE Engineering</a><a href="#services">Enterprise AI Infrastructure</a><a href="#services">GenAI Solutions</a><a href="#services">AI Product Eng</a></div>\r
-      <div class="fc"><h4>Industries</h4><a href="#industries">Banking</a><a href="#industries">Manufacturing</a><a href="#industries">Healthcare</a><a href="#industries">Retail</a><a href="#industries">Insurance</a><a href="#industries">GCCs</a></div>\r
-      <div class="fc"><h4>Resources</h4><a href="#insights">Insights / Blog</a><a href="#casestudies">Case Studies</a><a href="#contact">AI Readiness Guide</a><a href="#contact">Webinars</a></div>\r
+      <nav class="ft-nav">\r
+        <div class="ft-col">\r
+          <span class="ft-col-head">Company</span>\r
+          <a href="#why">About Us</a>\r
+          <a href="#fde">FDE Team</a>\r
+          <a href="#careers">Careers</a>\r
+          <a href="#contact">Contact</a>\r
+        </div>\r
+        <div class="ft-col">\r
+          <span class="ft-col-head">Services</span>\r
+          <a href="#services">AI Strategy</a>\r
+          <a href="#services">AI Agents</a>\r
+          <a href="#services">GenAI Solutions</a>\r
+          <a href="#services">FDE Engineering</a>\r
+        </div>\r
+        <div class="ft-col">\r
+          <span class="ft-col-head">Industries</span>\r
+          <a href="#industries">Banking</a>\r
+          <a href="#industries">Healthcare</a>\r
+          <a href="#industries">Manufacturing</a>\r
+          <a href="#industries">GCCs</a>\r
+        </div>\r
+        <div class="ft-col">\r
+          <span class="ft-col-head">Resources</span>\r
+          <a href="#insights">Blog</a>\r
+          <a href="#casestudies">Case Studies</a>\r
+          <a href="#contact">AI Guide</a>\r
+          <a href="#contact">Webinars</a>\r
+        </div>\r
+      </nav>\r
+      <div class="ft-right">\r
+        <a class="ft-email" href="mailto:hello@innovsol.ai">hello@innovsol.ai</a>\r
+        <a href="tel:+919582799988" class="ft-phone">+91 95827 99988</a>\r
+        <a href="#contact-form" class="btn btn-orange ft-cta">Book a Strategy Call &rarr;</a>\r
+      </div>\r
     </div>\r
-    <div class="fb">\r
-      <p>&copy; 2026 Innovsol. All Rights Reserved. &nbsp;|&nbsp; Innovate . Disrupt . Transform</p>\r
-      <div class="fb-links"><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a><a href="#">Terms of Use</a></div>\r
+    <!-- Bottom bar -->\r
+    <div class="ft-bar">\r
+      <p>&copy; 2026 Innovsol &nbsp;·&nbsp; Innovate . Disrupt . Transform</p>\r
+      <div class="ft-bar-links">\r
+        <a href="#">Privacy Policy</a>\r
+        <a href="#">Cookie Policy</a>\r
+        <a href="#">Terms of Use</a>\r
+      </div>\r
     </div>\r
   </div>\r
 </footer>\r
@@ -1575,314 +1882,28 @@ footer{background:#06101F;padding:3.5rem 0 1.5rem}\r
 \r
 <!-- ══ JAVASCRIPT ══════════════════════════════════════════════════════════ -->\r
 \r
-`,a=`\r
-// ── Hero Reel — 4-slide enterprise video carousel ────────────────────────\r
-(function () {\r
-  // Guard: prevent double-init from React StrictMode's double effect invocation\r
-  if (window.__reelInit) return;\r
-  window.__reelInit = true;\r
-\r
-  const videos  = Array.from(document.querySelectorAll('.reel-video'));\r
-  const slides  = Array.from(document.querySelectorAll('.reel-slide'));\r
-  const curEl   = document.querySelector('.reel-c-cur');\r
-  const prevBtn = document.querySelector('.reel-prev');\r
-  const nextBtn = document.querySelector('.reel-next');\r
-\r
-  if (!videos.length) return;\r
-\r
-  let current       = 0;\r
-  let transitioning = false;\r
-  let fallback      = null;\r
-\r
-  // Hard fallback — advance after 12s max per slide regardless of video state\r
-  function resetFallback () {\r
-    clearTimeout(fallback);\r
-    fallback = setTimeout(() => goTo(current + 1), 12000);\r
-  }\r
-\r
-  function goTo (idx) {\r
-    if (transitioning) return;\r
-    const next = ((idx % videos.length) + videos.length) % videos.length;\r
-    if (next === current) return;\r
-    transitioning = true;\r
-\r
-    clearTimeout(fallback);\r
-    const prev = current;\r
-    current = next;\r
-\r
-    // Videos: crossfade\r
-    videos[prev].classList.remove('reel-active');\r
-    videos[prev].pause();\r
-    videos[current].classList.add('reel-active');\r
-    videos[current].muted = true;\r
-    videos[current].currentTime = 0;\r
-    videos[current].play().catch(() => {});\r
-\r
-    // Slides: fade out old, fade in new\r
-    slides[prev].classList.remove('reel-active');\r
-    slides[prev].classList.add('reel-exit');\r
-    slides[current].classList.add('reel-active');\r
-\r
-    // Counter\r
-    if (curEl) curEl.textContent = String(current + 1).padStart(2, '0');\r
-\r
-    setTimeout(() => {\r
-      slides[prev].classList.remove('reel-exit');\r
-      transitioning = false;\r
-      resetFallback();\r
-    }, 950);\r
-  }\r
-\r
-  // Three layers of advance detection (most → least reliable)\r
-  videos.forEach((v, i) => {\r
-    // 1. ended event (primary)\r
-    v.addEventListener('ended', () => {\r
-      if (i === current) goTo(current + 1);\r
-    });\r
-    // 2. timeupdate: advance when 97% through (catches ended-event failures)\r
-    v.addEventListener('timeupdate', () => {\r
-      if (i !== current || !v.duration) return;\r
-      if (v.currentTime / v.duration >= 0.97) goTo(current + 1);\r
-    });\r
-    // 3. error: skip broken video immediately\r
-    v.addEventListener('error', () => {\r
-      if (i === current) goTo(current + 1);\r
-    });\r
-  });\r
-\r
-  // Arrow clicks\r
-  if (prevBtn) prevBtn.addEventListener('click', () => goTo(current - 1));\r
-  if (nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1));\r
-\r
-  // Keyboard navigation\r
-  document.addEventListener('keydown', e => {\r
-    if (e.key === 'ArrowRight') goTo(current + 1);\r
-    if (e.key === 'ArrowLeft')  goTo(current - 1);\r
-  });\r
-\r
-  // Init — React's dangerouslySetInnerHTML doesn't trigger browser autoplay;\r
-  // we must call .play() programmatically after the DOM has settled.\r
-  function tryPlay () {\r
-    const v = videos[0];\r
-    if (!v) return;\r
-    v.muted = true;          // ensure muted flag is set in DOM\r
-    v.currentTime = 0;\r
-    v.playbackRate = 2.5;    // first video plays 2.5× faster\r
-    const p = v.play();\r
-    if (p !== undefined) {\r
-      p.catch(() => {\r
-        // Browser blocked autoplay — retry on first user gesture\r
-        const resume = () => {\r
-          v.play().catch(() => {});\r
-          document.removeEventListener('click',      resume);\r
-          document.removeEventListener('touchstart', resume);\r
-          document.removeEventListener('keydown',    resume);\r
-        };\r
-        document.addEventListener('click',      resume, { once: true });\r
-        document.addEventListener('touchstart', resume, { once: true });\r
-        document.addEventListener('keydown',    resume, { once: true });\r
-      });\r
-    }\r
-  }\r
-\r
-  // Wait two animation frames so React's paint + browser layout are complete\r
-  requestAnimationFrame(() => requestAnimationFrame(() => {\r
-    tryPlay();\r
-    resetFallback();\r
-  }));\r
-})();\r
-\r
-// ── Navbar scroll shadow ─────────────────────────────────────────────────\r
-const nav = document.getElementById('nav');\r
-window.addEventListener('scroll', () => {\r
-  nav.classList.toggle('sc', window.scrollY > 60);\r
-}, { passive: true });\r
-\r
-// ── Active nav link ──────────────────────────────────────────────────────\r
-const navLinks   = document.querySelectorAll('.nav-links a');\r
-const allSections = Array.from(document.querySelectorAll('section[id], div[id].eng-scroll-driver'));\r
-\r
-function updateActiveNav () {\r
-  const offset = 120; // navbar height + buffer\r
-  let current  = '';\r
-  allSections.forEach(sec => {\r
-    if (window.scrollY >= sec.offsetTop - offset) current = sec.id;\r
-  });\r
-  navLinks.forEach(a => {\r
-    a.classList.toggle('act', a.getAttribute('href') === '#' + current);\r
-  });\r
-}\r
-\r
-window.addEventListener('scroll', updateActiveNav, { passive: true });\r
-updateActiveNav(); // run once on load\r
-\r
-// ── Showcase video: autoplay ─────────────────────────────────────────────\r
-const showcase = document.getElementById('showcase');\r
-const scVid = showcase && showcase.querySelector('.sc-video');\r
-if (scVid) {\r
-  scVid.play().catch(() => {});\r
-  scVid.addEventListener('error', function(){\r
-    const sources = scVid.querySelectorAll('source');\r
-    let idx = 0;\r
-    const tryNext = () => {\r
-      if (idx >= sources.length) return;\r
-      scVid.src = sources[idx++].src;\r
-      scVid.load();\r
-      scVid.play().catch(tryNext);\r
-    };\r
-    tryNext();\r
-  });\r
-  document.addEventListener('click', () => { if (scVid.paused) scVid.play().catch(()=>{}); }, { once: true });\r
-}\r
-\r
-// ── Showcase text reveal: add sc-go when section enters view ─────────────\r
-if (showcase) {\r
-  const scIO = new IntersectionObserver((entries) => {\r
-    entries.forEach(e => {\r
-      if (e.isIntersecting) {\r
-        showcase.classList.add('sc-go');\r
-        scIO.unobserve(showcase);\r
-      }\r
-    });\r
-  }, { threshold: 0.15 });\r
-  scIO.observe(showcase);\r
-}\r
-\r
-// ── Auto-assign slow left/right animation to all section titles ──────────\r
-(function () {\r
-  const sections = document.querySelectorAll(\r
-    '#services,#why,#industries,#engagement,#casestudies,#fde,#insights,#careers,#contact'\r
-  );\r
-  sections.forEach((sec, idx) => {\r
-    const fromLeft  = idx % 2 === 0;   // alternate direction per section\r
-    const labels = sec.querySelectorAll('.section-label');\r
-    const h2s    = sec.querySelectorAll('h2');\r
-\r
-    labels.forEach(el => {\r
-      el.classList.remove('fi','fi-left','fi-right');\r
-      el.classList.add(fromLeft ? 'fi-left' : 'fi-right', 'title-label');\r
-    });\r
-    h2s.forEach(el => {\r
-      el.classList.remove('fi','fi-left','fi-right');\r
-      // h2 comes from opposite side to label for a spreading effect\r
-      el.classList.add(fromLeft ? 'fi-right' : 'fi-left', 'title-h2');\r
-    });\r
-  });\r
-})();\r
-\r
-// ── Intersection observer: fade-in animations ────────────────────────────\r
-const ioFade = new IntersectionObserver((entries) => {\r
-  entries.forEach(e => {\r
-    if (!e.isIntersecting) return;\r
-    e.target.classList.add('on');\r
-    e.target.querySelectorAll('[data-count]').forEach(animNum);\r
-    ioFade.unobserve(e.target);\r
-  });\r
-}, { threshold: 0.12 });\r
-\r
-document.querySelectorAll('.fi,.fi-left,.fi-right').forEach(el => ioFade.observe(el));\r
-\r
-// ── Engagement sticky scroll — page scroll drives card transitions ────────\r
-(function () {\r
-  const driver = document.getElementById('engagement');\r
-  const cards  = Array.from(document.querySelectorAll('.eng-card'));\r
-  const steps  = Array.from(document.querySelectorAll('.eng-steplbl'));\r
-  const dots   = Array.from(document.querySelectorAll('.eng-dot'));\r
-  if (!driver || !cards.length) return;\r
-\r
-  let activeIdx  = 0;\r
-  let exiting    = false;\r
-\r
-  function getIdx () {\r
-    const rect      = driver.getBoundingClientRect();\r
-    const scrolled  = Math.max(0, -rect.top);\r
-    const available = driver.offsetHeight - window.innerHeight;\r
-    if (available <= 0) return 0;\r
-    const progress  = Math.min(1, scrolled / available);\r
-    return Math.min(cards.length - 1, Math.floor(progress * cards.length));\r
-  }\r
-\r
-  function activate (idx) {\r
-    if (idx === activeIdx) return;\r
-    const prev = activeIdx;\r
-    activeIdx  = idx;\r
-\r
-    // Exit previous\r
-    cards[prev].classList.remove('eng-active');\r
-    cards[prev].classList.add('eng-exit');\r
-    setTimeout(() => cards[prev]?.classList.remove('eng-exit'), 450);\r
-\r
-    // Enter next\r
-    cards[idx].classList.add('eng-active');\r
-\r
-    // Sync sidebar steps\r
-    steps.forEach((s, i) => s.classList.toggle('active', i === idx));\r
-\r
-    // Sync progress dots\r
-    dots.forEach((d, i) => d.classList.toggle('active', i === idx));\r
-  }\r
-\r
-  window.addEventListener('scroll', () => activate(getIdx()), { passive: true });\r
-  activate(getIdx()); // init\r
-\r
-  // Click sidebar step → scroll to that card's position in the driver\r
-  steps.forEach((s, i) => {\r
-    s.addEventListener('click', (ev) => {\r
-      ev.preventDefault();\r
-      const available = driver.offsetHeight - window.innerHeight;\r
-      const target    = driver.getBoundingClientRect().top + window.scrollY\r
-                        + (i / cards.length) * available;\r
-      window.scrollTo({ top: target, behavior: 'smooth' });\r
-    });\r
-  });\r
-})();\r
-\r
-// ── Staggered grid children ──────────────────────────────────────────────\r
-const ioGrid = new IntersectionObserver((entries) => {\r
-  entries.forEach(e => {\r
-    if (!e.isIntersecting) return;\r
-    [...e.target.children].forEach((c, i) =>\r
-      setTimeout(() => c.classList.add('on'), i * 90));\r
-    ioGrid.unobserve(e.target);\r
-  });\r
-}, { threshold: 0.08 });\r
-\r
-document.querySelectorAll('.why-grid,.ind-grid,.cs-grid,.ins-grid,.roles,.svc-grid').forEach(grid => {\r
-  ioGrid.observe(grid);\r
-});\r
-\r
-// ── Number counter animation ─────────────────────────────────────────────\r
-function animNum(el) {\r
-  const target = +el.getAttribute('data-count');\r
-  if (isNaN(target)) return;\r
-  const pfx = el.getAttribute('data-pfx') || '';\r
-  const sfx = el.getAttribute('data-sfx') || '';\r
-  const dur = 1800, start = performance.now();\r
-  const tick = now => {\r
-    const t = Math.min((now - start) / dur, 1);\r
-    const ease = 1 - Math.pow(1 - t, 3);\r
-    el.textContent = pfx + Math.round(ease * target) + sfx;\r
-    if (t < 1) requestAnimationFrame(tick);\r
-  };\r
-  requestAnimationFrame(tick);\r
-}\r
-\r
-// ── Contact form ─────────────────────────────────────────────────────────\r
-function sendForm(e) {\r
-  e.preventDefault();\r
-  const btn = e.target.querySelector('.fsub');\r
-  btn.textContent = 'Sending...'; btn.disabled = true;\r
-  setTimeout(() => {\r
-    btn.textContent = 'Send Message →'; btn.disabled = false;\r
-    e.target.reset();\r
-    const t = document.getElementById('toast');\r
-    t.classList.add('on');\r
-    setTimeout(() => t.classList.remove('on'), 4500);\r
-  }, 1300);\r
-}\r
-\r
-// ── Fire hero stats on load ──────────────────────────────────────────────\r
-window.addEventListener('load', () => {\r
-  document.querySelectorAll('.hero-txt .hn[data-count]').forEach(el => animNum(el));\r
-});\r
-`;function o(){return n.useEffect(()=>{const r=document.createElement("script");return r.type="text/javascript",r.text=a,document.body.appendChild(r),()=>{r.remove(),window.__reelInit=!1}},[]),e.jsxs(e.Fragment,{children:[e.jsx("style",{dangerouslySetInnerHTML:{__html:i}}),e.jsx("div",{dangerouslySetInnerHTML:{__html:t}})]})}export{o as component};
+`;
+const script = "\r\n// ── Mobile nav drawer (right-side slide-in) ──────────────────────────────\r\nfunction toggleMob () {\r\n  const nav    = document.getElementById('mobNav');\r\n  const ham    = document.getElementById('ham');\r\n  const overlay = document.getElementById('mobOverlay');\r\n  const isOpen = nav.classList.toggle('open');\r\n  ham.classList.toggle('open', isOpen);\r\n  overlay.classList.toggle('open', isOpen);\r\n  document.body.style.overflow = isOpen ? 'hidden' : '';\r\n}\r\n\r\n// close on overlay click\r\ndocument.addEventListener('DOMContentLoaded', () => {\r\n  const overlay = document.getElementById('mobOverlay');\r\n  if (overlay) overlay.addEventListener('click', toggleMob);\r\n});\r\n\r\n// ── Hero Reel — 4-slide enterprise video carousel ────────────────────────\r\n(function () {\r\n  // Guard: prevent double-init from React StrictMode's double effect invocation\r\n  if (window.__reelInit) return;\r\n  window.__reelInit = true;\r\n\r\n  const videos  = Array.from(document.querySelectorAll('.reel-video'));\r\n  const slides  = Array.from(document.querySelectorAll('.reel-slide'));\r\n  const dots    = Array.from(document.querySelectorAll('.reel-dot'));\r\n\r\n  if (!videos.length) return;\r\n\r\n  // Playback speed per slide (0 = first, last = videos.length-1)\r\n  const rates = [0.6, 1.0, 1.0, 2.5];\r\n  function applyRate (idx) {\r\n    videos[idx].playbackRate = rates[idx] ?? 1.0;\r\n  }\r\n\r\n  let current       = 0;\r\n  let transitioning = false;\r\n  let fallback      = null;\r\n\r\n  // Hard fallback — advance after 12s max per slide regardless of video state\r\n  function resetFallback () {\r\n    clearTimeout(fallback);\r\n    fallback = setTimeout(() => goTo(current + 1), 12000);\r\n  }\r\n\r\n  function goTo (idx) {\r\n    if (transitioning) return;\r\n    const next = ((idx % videos.length) + videos.length) % videos.length;\r\n    if (next === current) return;\r\n    transitioning = true;\r\n\r\n    clearTimeout(fallback);\r\n    const prev = current;\r\n    current = next;\r\n\r\n    // Videos: crossfade\r\n    videos[prev].classList.remove('reel-active');\r\n    videos[prev].pause();\r\n    videos[current].classList.add('reel-active');\r\n    videos[current].muted = true;\r\n    videos[current].currentTime = 0;\r\n    applyRate(current);\r\n    videos[current].play().catch(() => {});\r\n\r\n    // Slides: fade out old, fade in new\r\n    slides[prev].classList.remove('reel-active');\r\n    slides[prev].classList.add('reel-exit');\r\n    slides[current].classList.add('reel-active');\r\n\r\n    // Dots\r\n    dots.forEach((d, i) => d.classList.toggle('reel-dot-active', i === current));\r\n\r\n    setTimeout(() => {\r\n      slides[prev].classList.remove('reel-exit');\r\n      transitioning = false;\r\n      resetFallback();\r\n    }, 950);\r\n  }\r\n\r\n  // Three layers of advance detection (most → least reliable)\r\n  videos.forEach((v, i) => {\r\n    // 1. ended event (primary)\r\n    v.addEventListener('ended', () => {\r\n      if (i === current) goTo(current + 1);\r\n    });\r\n    // 2. timeupdate: advance when 97% through (catches ended-event failures)\r\n    v.addEventListener('timeupdate', () => {\r\n      if (i !== current || !v.duration) return;\r\n      if (v.currentTime / v.duration >= 0.97) goTo(current + 1);\r\n    });\r\n    // 3. error: skip broken video immediately\r\n    v.addEventListener('error', () => {\r\n      if (i === current) goTo(current + 1);\r\n    });\r\n  });\r\n\r\n  // Dot clicks\r\n  dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.idx)));\r\n\r\n  // Keyboard navigation\r\n  document.addEventListener('keydown', e => {\r\n    if (e.key === 'ArrowRight') goTo(current + 1);\r\n    if (e.key === 'ArrowLeft')  goTo(current - 1);\r\n  });\r\n\r\n  // Init — React's dangerouslySetInnerHTML doesn't trigger browser autoplay;\r\n  // we must call .play() programmatically after the DOM has settled.\r\n  function tryPlay () {\r\n    const v = videos[0];\r\n    if (!v) return;\r\n    v.muted = true;          // ensure muted flag is set in DOM\r\n    v.currentTime = 0;\r\n    applyRate(0);\r\n    const p = v.play();\r\n    if (p !== undefined) {\r\n      p.catch(() => {\r\n        // Browser blocked autoplay — retry on first user gesture\r\n        const resume = () => {\r\n          v.play().catch(() => {});\r\n          document.removeEventListener('click',      resume);\r\n          document.removeEventListener('touchstart', resume);\r\n          document.removeEventListener('keydown',    resume);\r\n        };\r\n        document.addEventListener('click',      resume, { once: true });\r\n        document.addEventListener('touchstart', resume, { once: true });\r\n        document.addEventListener('keydown',    resume, { once: true });\r\n      });\r\n    }\r\n  }\r\n\r\n  // Wait two animation frames so React's paint + browser layout are complete\r\n  requestAnimationFrame(() => requestAnimationFrame(() => {\r\n    tryPlay();\r\n    resetFallback();\r\n  }));\r\n})();\r\n\r\n// ── Navbar scroll shadow ─────────────────────────────────────────────────\r\nconst nav = document.getElementById('nav');\r\nwindow.addEventListener('scroll', () => {\r\n  nav.classList.toggle('sc', window.scrollY > 60);\r\n}, { passive: true });\r\n\r\n// ── Active nav link ──────────────────────────────────────────────────────\r\nconst navLinks   = document.querySelectorAll('.nav-links a');\r\nconst allSections = Array.from(document.querySelectorAll('section[id], div[id].eng-scroll-driver'));\r\n\r\nfunction updateActiveNav () {\r\n  const offset = 120; // navbar height + buffer\r\n  let current  = '';\r\n  allSections.forEach(sec => {\r\n    if (window.scrollY >= sec.offsetTop - offset) current = sec.id;\r\n  });\r\n  navLinks.forEach(a => {\r\n    a.classList.toggle('act', a.getAttribute('href') === '#' + current);\r\n  });\r\n}\r\n\r\nwindow.addEventListener('scroll', updateActiveNav, { passive: true });\r\nupdateActiveNav(); // run once on load\r\n\r\n// ── Showcase video: autoplay ─────────────────────────────────────────────\r\nconst showcase = document.getElementById('showcase');\r\nconst scVid = showcase && showcase.querySelector('.sc-video');\r\nif (scVid) {\r\n  scVid.play().catch(() => {});\r\n  scVid.addEventListener('error', function(){\r\n    const sources = scVid.querySelectorAll('source');\r\n    let idx = 0;\r\n    const tryNext = () => {\r\n      if (idx >= sources.length) return;\r\n      scVid.src = sources[idx++].src;\r\n      scVid.load();\r\n      scVid.play().catch(tryNext);\r\n    };\r\n    tryNext();\r\n  });\r\n  document.addEventListener('click', () => { if (scVid.paused) scVid.play().catch(()=>{}); }, { once: true });\r\n}\r\n\r\n// ── Showcase text reveal: add sc-go when section enters view ─────────────\r\nif (showcase) {\r\n  const scIO = new IntersectionObserver((entries) => {\r\n    entries.forEach(e => {\r\n      if (e.isIntersecting) {\r\n        showcase.classList.add('sc-go');\r\n        scIO.unobserve(showcase);\r\n      }\r\n    });\r\n  }, { threshold: 0.15 });\r\n  scIO.observe(showcase);\r\n}\r\n\r\n// ── Auto-assign slow left/right animation to all section titles ──────────\r\n(function () {\r\n  const sections = document.querySelectorAll(\r\n    '#services,#why,#industries,#engagement,#casestudies,#fde,#insights,#careers,#contact'\r\n  );\r\n  sections.forEach((sec, idx) => {\r\n    const fromLeft  = idx % 2 === 0;   // alternate direction per section\r\n    const labels = sec.querySelectorAll('.section-label');\r\n    const h2s    = sec.querySelectorAll('h2');\r\n\r\n    labels.forEach(el => {\r\n      el.classList.remove('fi','fi-left','fi-right');\r\n      el.classList.add(fromLeft ? 'fi-left' : 'fi-right', 'title-label');\r\n    });\r\n    h2s.forEach(el => {\r\n      el.classList.remove('fi','fi-left','fi-right');\r\n      // h2 comes from opposite side to label for a spreading effect\r\n      el.classList.add(fromLeft ? 'fi-right' : 'fi-left', 'title-h2');\r\n    });\r\n  });\r\n})();\r\n\r\n// ── Intersection observer: fade-in animations ────────────────────────────\r\nconst ioFade = new IntersectionObserver((entries) => {\r\n  entries.forEach(e => {\r\n    if (!e.isIntersecting) return;\r\n    e.target.classList.add('on');\r\n    e.target.querySelectorAll('[data-count]').forEach(animNum);\r\n    ioFade.unobserve(e.target);\r\n  });\r\n}, { threshold: 0.12 });\r\n\r\ndocument.querySelectorAll('.fi,.fi-left,.fi-right').forEach(el => ioFade.observe(el));\r\n\r\n// ── Engagement sticky scroll — page scroll drives card transitions ────────\r\n(function () {\r\n  const driver = document.getElementById('engagement');\r\n  const cards  = Array.from(document.querySelectorAll('.eng-card'));\r\n  const steps  = Array.from(document.querySelectorAll('.eng-steplbl'));\r\n  const dots   = Array.from(document.querySelectorAll('.eng-dot'));\r\n  if (!driver || !cards.length) return;\r\n\r\n  let activeIdx  = 0;\r\n  let exiting    = false;\r\n\r\n  function getIdx () {\r\n    const rect      = driver.getBoundingClientRect();\r\n    const scrolled  = Math.max(0, -rect.top);\r\n    const available = driver.offsetHeight - window.innerHeight;\r\n    if (available <= 0) return 0;\r\n    const progress  = Math.min(1, scrolled / available);\r\n    return Math.min(cards.length - 1, Math.floor(progress * cards.length));\r\n  }\r\n\r\n  function activate (idx) {\r\n    if (idx === activeIdx) return;\r\n    const prev = activeIdx;\r\n    activeIdx  = idx;\r\n\r\n    // Exit previous\r\n    cards[prev].classList.remove('eng-active');\r\n    cards[prev].classList.add('eng-exit');\r\n    setTimeout(() => cards[prev]?.classList.remove('eng-exit'), 450);\r\n\r\n    // Enter next\r\n    cards[idx].classList.add('eng-active');\r\n\r\n    // Sync sidebar steps\r\n    steps.forEach((s, i) => s.classList.toggle('active', i === idx));\r\n\r\n    // Sync progress dots\r\n    dots.forEach((d, i) => d.classList.toggle('active', i === idx));\r\n  }\r\n\r\n  window.addEventListener('scroll', () => activate(getIdx()), { passive: true });\r\n  activate(getIdx()); // init\r\n\r\n  // Click sidebar step → scroll to that card's position in the driver\r\n  steps.forEach((s, i) => {\r\n    s.addEventListener('click', (ev) => {\r\n      ev.preventDefault();\r\n      const available = driver.offsetHeight - window.innerHeight;\r\n      const target    = driver.getBoundingClientRect().top + window.scrollY\r\n                        + (i / cards.length) * available;\r\n      window.scrollTo({ top: target, behavior: 'smooth' });\r\n    });\r\n  });\r\n})();\r\n\r\n// ── Staggered grid children ──────────────────────────────────────────────\r\nconst ioGrid = new IntersectionObserver((entries) => {\r\n  entries.forEach(e => {\r\n    if (!e.isIntersecting) return;\r\n    [...e.target.children].forEach((c, i) =>\r\n      setTimeout(() => c.classList.add('on'), i * 90));\r\n    ioGrid.unobserve(e.target);\r\n  });\r\n}, { threshold: 0.08 });\r\n\r\ndocument.querySelectorAll('.why-grid,.ind-grid,.cs-grid,.ins-grid,.roles,.svc-grid').forEach(grid => {\r\n  ioGrid.observe(grid);\r\n});\r\n\r\n// ── Number counter animation ─────────────────────────────────────────────\r\nfunction animNum(el) {\r\n  const target = +el.getAttribute('data-count');\r\n  if (isNaN(target)) return;\r\n  const pfx = el.getAttribute('data-pfx') || '';\r\n  const sfx = el.getAttribute('data-sfx') || '';\r\n  const dur = 1800, start = performance.now();\r\n  const tick = now => {\r\n    const t = Math.min((now - start) / dur, 1);\r\n    const ease = 1 - Math.pow(1 - t, 3);\r\n    el.textContent = pfx + Math.round(ease * target) + sfx;\r\n    if (t < 1) requestAnimationFrame(tick);\r\n  };\r\n  requestAnimationFrame(tick);\r\n}\r\n\r\n// ── Contact form ─────────────────────────────────────────────────────────\r\nfunction sendForm(e) {\r\n  e.preventDefault();\r\n  const btn = e.target.querySelector('.fsub');\r\n  btn.textContent = 'Sending...'; btn.disabled = true;\r\n  setTimeout(() => {\r\n    btn.textContent = 'Send Message →'; btn.disabled = false;\r\n    e.target.reset();\r\n    const t = document.getElementById('toast');\r\n    t.classList.add('on');\r\n    setTimeout(() => t.classList.remove('on'), 4500);\r\n  }, 1300);\r\n}\r\n\r\n// ── Fire hero stats on load ──────────────────────────────────────────────\r\nwindow.addEventListener('load', () => {\r\n  document.querySelectorAll('.hero-txt .hn[data-count]').forEach(el => animNum(el));\r\n});\r\n";
+function Index() {
+  reactExports.useEffect(() => {
+    const el = document.createElement("script");
+    el.type = "text/javascript";
+    el.text = script;
+    document.body.appendChild(el);
+    return () => {
+      el.remove();
+      window.__reelInit = false;
+    };
+  }, []);
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("style", { dangerouslySetInnerHTML: {
+      __html: styles
+    } }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { dangerouslySetInnerHTML: {
+      __html: body
+    } })
+  ] });
+}
+export {
+  Index as component
+};
