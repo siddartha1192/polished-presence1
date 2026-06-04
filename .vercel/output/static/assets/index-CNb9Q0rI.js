@@ -1,4 +1,4 @@
-import{r as n,j as e}from"./index-DTC8IXls.js";const i=`\r
+import{r as n,j as e}from"./index-CVRBty_b.js";const i=`\r
 /* ═══ RESET & ROOT ════════════════════════════════════════════════════════ */\r
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}\r
 :root{\r
@@ -954,8 +954,12 @@ footer{background:#000;border-top:3px solid var(--orange)}\r
   .mob-overlay{display:block;opacity:0;pointer-events:none;transition:opacity .35s}\r
   .mob-overlay.open{opacity:1;pointer-events:auto}\r
   .svc-grid{grid-template-columns:1fr}\r
+  .why-grid{grid-template-columns:1fr}\r
+  .ind-grid{grid-template-columns:1fr 1fr}\r
   .fde-grid,.car-grid,.con-grid,.cta-duo{grid-template-columns:1fr}\r
   .cs-grid,.ins-grid{grid-template-columns:1fr}\r
+  .why-img-wrap{height:200px}\r
+  .ind-img-wrap{height:130px}\r
   .stat-cards{grid-template-columns:1fr 1fr}\r
   .hero-stats{grid-template-columns:repeat(2,1fr);max-width:100%}\r
   /* ── Hero mobile ── */\r
@@ -994,6 +998,7 @@ footer{background:#000;border-top:3px solid var(--orange)}\r
   .met-grid{grid-template-columns:repeat(2,1fr)}\r
   .ind-grid{grid-template-columns:1fr 1fr}\r
   .frow{grid-template-columns:1fr}\r
+  .ind-grid{grid-template-columns:1fr}\r
   .ft-nav{gap:1.2rem .8rem}\r
   .ft-bar-links{flex-wrap:wrap;gap:.8rem}\r
 }\r

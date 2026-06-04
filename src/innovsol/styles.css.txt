@@ -954,8 +954,12 @@ footer{background:#000;border-top:3px solid var(--orange)}
   .mob-overlay{display:block;opacity:0;pointer-events:none;transition:opacity .35s}
   .mob-overlay.open{opacity:1;pointer-events:auto}
   .svc-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .ind-grid{grid-template-columns:1fr 1fr}
   .fde-grid,.car-grid,.con-grid,.cta-duo{grid-template-columns:1fr}
   .cs-grid,.ins-grid{grid-template-columns:1fr}
+  .why-img-wrap{height:200px}
+  .ind-img-wrap{height:130px}
   .stat-cards{grid-template-columns:1fr 1fr}
   .hero-stats{grid-template-columns:repeat(2,1fr);max-width:100%}
   /* ── Hero mobile ── */
@@ -994,6 +998,7 @@ footer{background:#000;border-top:3px solid var(--orange)}
   .met-grid{grid-template-columns:repeat(2,1fr)}
   .ind-grid{grid-template-columns:1fr 1fr}
   .frow{grid-template-columns:1fr}
+  .ind-grid{grid-template-columns:1fr}
   .ft-nav{gap:1.2rem .8rem}
   .ft-bar-links{flex-wrap:wrap;gap:.8rem}
 }
