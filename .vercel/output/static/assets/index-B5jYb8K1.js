@@ -1,4 +1,4 @@
-import{r as n,j as e}from"./index-loHDqoU4.js";const i=`\r
+import{r as n,j as e}from"./index-CzxQ3H8k.js";const i=`\r
 /* ═══ RESET & ROOT ════════════════════════════════════════════════════════ */\r
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}\r
 :root{\r
@@ -815,12 +815,11 @@ footer{background:#000;border-top:3px solid var(--orange)}\r
   display:block;line-height:0;\r
   overflow:hidden;\r
   width:225px;height:110px;\r
-  background:#fff;\r
-  border-radius:10px;\r
   flex-shrink:0}\r
 .ft-logo-img{\r
   width:205px;height:auto;display:block;\r
   margin-top:-45px;margin-left:8px;\r
+  filter:brightness(0) invert(1);\r
   transition:opacity .25s}\r
 .ft-logo-img:hover{opacity:.85}\r
 .ft-tagline{font-size:.7rem;color:rgba(255,255,255,.45);line-height:1.6;margin:0}\r
