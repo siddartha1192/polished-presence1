@@ -958,8 +958,9 @@ footer{background:#000;border-top:3px solid var(--orange)}\r
   .mob-overlay.open{opacity:1;pointer-events:auto}\r
 \r
   /* ── Global section padding ── */\r
-  #services,#why,#metrics,#industries,#casestudies,\r
+  #services,#why,#metrics,#casestudies,\r
   #fde,#insights,#careers,#cta,#contact-form{padding:3.5rem 0}\r
+  #industries{padding:1rem 0 3rem}\r
 \r
   /* ── Section headings ── */\r
   .sec-hd h2{font-size:clamp(1.5rem,6vw,2rem)}\r
@@ -1034,7 +1035,7 @@ footer{background:#000;border-top:3px solid var(--orange)}\r
   .eng-steplist::-webkit-scrollbar{display:none}\r
   .eng-steplbl{font-size:clamp(.85rem,4vw,1.1rem);padding:.35rem .9rem;white-space:nowrap;flex-shrink:0}\r
   /* Pills */\r
-  .eng-pills-row{padding:.75rem 0}\r
+  .eng-pills-row{padding:.5rem 0 .5rem}\r
   .eng-summary{flex-wrap:wrap;gap:.4rem;justify-content:center}\r
   .eng-sum-pill{font-size:.7rem;padding:.4rem .75rem}\r
 \r
