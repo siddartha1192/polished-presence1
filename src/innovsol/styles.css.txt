@@ -959,7 +959,6 @@ footer{background:#000;border-top:3px solid var(--orange)}
   /* ── Global section padding ── */
   #services,#why,#metrics,#industries,#casestudies,
   #fde,#insights,#careers,#cta,#contact-form{padding:3.5rem 0}
-  #engagement{padding:3rem 0}
 
   /* ── Section headings ── */
   .sec-hd h2{font-size:clamp(1.5rem,6vw,2rem)}
@@ -1001,17 +1000,36 @@ footer{background:#000;border-top:3px solid var(--orange)}
   .ind-card h3{font-size:.82rem}
   .ind-card p{font-size:.72rem}
 
-  /* ── Engagement ── */
-  .eng-steplist{display:none}
-  .eng-header h2{font-size:clamp(1.6rem,6vw,2.2rem)}
-  .eng-card-title{font-size:clamp(2rem,8vw,3rem)}
-  .eng-card-desc{font-size:.85rem}
-  .eng-del-txt{font-size:.75rem;line-height:1.5;text-align:center;word-break:break-word}
-  .eng-deliverable{padding:0 .5rem}
+  /* ── Engagement — sticky scroll re-enabled on mobile ── */
+  /* Use #id to beat the 860px block's #engagement{height:auto} */
+  #engagement{height:calc(100vh + 240vh);padding:0;position:static}
+  .eng-section{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center}
+  .eng-wrapper{gap:.8rem;padding:88px 0 0}
+  .eng-stage{position:relative;height:55vh;width:100%;max-width:100%;overflow:hidden}
+  .eng-card{position:absolute;inset:0;opacity:0;transform:translateY(45px);
+    display:flex;align-items:flex-start;justify-content:center;
+    padding:.5rem 0;pointer-events:none}
+  .eng-card.eng-active{opacity:1;transform:translateY(0);pointer-events:auto}
+  .eng-card.eng-exit{opacity:0;transform:translateY(-35px)}
+  .eng-card-body{text-align:center;padding:0 .5rem;max-width:100%}
+  .eng-card-tag{font-size:.6rem;margin-bottom:.4rem}
+  .eng-card-title{font-size:clamp(2.2rem,10vw,3.5rem)}
+  .eng-card-desc{font-size:.8rem;line-height:1.6;margin-bottom:.5rem}
+  .eng-del-txt{font-size:.7rem;line-height:1.5;word-break:break-word}
+  .eng-deliverable{padding:0 .5rem;margin-top:.3rem}
   .eng-ghost-num{display:none}
   .eng-progress{display:none}
-  .eng-sum-pill{font-size:.75rem;padding:.5rem .9rem}
-  .eng-pills-row{padding:1.5rem 0}
+  /* Scrollable phase tabs */
+  .eng-steplist{
+    display:flex;gap:0;flex-wrap:nowrap;overflow-x:auto;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;
+    width:100%;justify-content:flex-start;margin-bottom:.5rem}
+  .eng-steplist::-webkit-scrollbar{display:none}
+  .eng-steplbl{font-size:clamp(.85rem,4vw,1.1rem);padding:.35rem .9rem;white-space:nowrap;flex-shrink:0}
+  /* Pills */
+  .eng-pills-row{padding:.75rem 0}
+  .eng-summary{flex-wrap:wrap;gap:.4rem;justify-content:center}
+  .eng-sum-pill{font-size:.7rem;padding:.4rem .75rem}
 
   /* ── Case Studies ── */
   .cs-grid{grid-template-columns:1fr}

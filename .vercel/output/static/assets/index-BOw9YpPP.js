@@ -1,4 +1,4 @@
-import{r as n,j as e}from"./index-C_KNHDNv.js";const i=`\r
+import{r as n,j as e}from"./index-BRPWJVYO.js";const t=`\r
 /* ═══ RESET & ROOT ════════════════════════════════════════════════════════ */\r
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}\r
 :root{\r
@@ -959,7 +959,6 @@ footer{background:#000;border-top:3px solid var(--orange)}\r
   /* ── Global section padding ── */\r
   #services,#why,#metrics,#industries,#casestudies,\r
   #fde,#insights,#careers,#cta,#contact-form{padding:3.5rem 0}\r
-  #engagement{padding:3rem 0}\r
 \r
   /* ── Section headings ── */\r
   .sec-hd h2{font-size:clamp(1.5rem,6vw,2rem)}\r
@@ -1001,17 +1000,36 @@ footer{background:#000;border-top:3px solid var(--orange)}\r
   .ind-card h3{font-size:.82rem}\r
   .ind-card p{font-size:.72rem}\r
 \r
-  /* ── Engagement ── */\r
-  .eng-steplist{display:none}\r
-  .eng-header h2{font-size:clamp(1.6rem,6vw,2.2rem)}\r
-  .eng-card-title{font-size:clamp(2rem,8vw,3rem)}\r
-  .eng-card-desc{font-size:.85rem}\r
-  .eng-del-txt{font-size:.75rem;line-height:1.5;text-align:center;word-break:break-word}\r
-  .eng-deliverable{padding:0 .5rem}\r
+  /* ── Engagement — sticky scroll re-enabled on mobile ── */\r
+  /* Use #id to beat the 860px block's #engagement{height:auto} */\r
+  #engagement{height:calc(100vh + 240vh);padding:0;position:static}\r
+  .eng-section{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center}\r
+  .eng-wrapper{gap:.8rem;padding:88px 0 0}\r
+  .eng-stage{position:relative;height:55vh;width:100%;max-width:100%;overflow:hidden}\r
+  .eng-card{position:absolute;inset:0;opacity:0;transform:translateY(45px);\r
+    display:flex;align-items:flex-start;justify-content:center;\r
+    padding:.5rem 0;pointer-events:none}\r
+  .eng-card.eng-active{opacity:1;transform:translateY(0);pointer-events:auto}\r
+  .eng-card.eng-exit{opacity:0;transform:translateY(-35px)}\r
+  .eng-card-body{text-align:center;padding:0 .5rem;max-width:100%}\r
+  .eng-card-tag{font-size:.6rem;margin-bottom:.4rem}\r
+  .eng-card-title{font-size:clamp(2.2rem,10vw,3.5rem)}\r
+  .eng-card-desc{font-size:.8rem;line-height:1.6;margin-bottom:.5rem}\r
+  .eng-del-txt{font-size:.7rem;line-height:1.5;word-break:break-word}\r
+  .eng-deliverable{padding:0 .5rem;margin-top:.3rem}\r
   .eng-ghost-num{display:none}\r
   .eng-progress{display:none}\r
-  .eng-sum-pill{font-size:.75rem;padding:.5rem .9rem}\r
-  .eng-pills-row{padding:1.5rem 0}\r
+  /* Scrollable phase tabs */\r
+  .eng-steplist{\r
+    display:flex;gap:0;flex-wrap:nowrap;overflow-x:auto;\r
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;\r
+    width:100%;justify-content:flex-start;margin-bottom:.5rem}\r
+  .eng-steplist::-webkit-scrollbar{display:none}\r
+  .eng-steplbl{font-size:clamp(.85rem,4vw,1.1rem);padding:.35rem .9rem;white-space:nowrap;flex-shrink:0}\r
+  /* Pills */\r
+  .eng-pills-row{padding:.75rem 0}\r
+  .eng-summary{flex-wrap:wrap;gap:.4rem;justify-content:center}\r
+  .eng-sum-pill{font-size:.7rem;padding:.4rem .75rem}\r
 \r
   /* ── Case Studies ── */\r
   .cs-grid{grid-template-columns:1fr}\r
@@ -1078,7 +1096,7 @@ footer{background:#000;border-top:3px solid var(--orange)}\r
   .hero-stats{grid-template-columns:1fr 1fr}\r
   .sec-hd h2{font-size:clamp(1.3rem,7vw,1.8rem)}\r
 }\r
-`,t=`\r
+`,i=`\r
 \r
 <!-- ══ NAVBAR ════════════════════════════════════════════════════════════ -->\r
 <nav id="nav">\r
@@ -2321,4 +2339,4 @@ function sendForm(e) {\r
 window.addEventListener('load', () => {\r
   document.querySelectorAll('.hero-txt .hn[data-count]').forEach(el => animNum(el));\r
 });\r
-`;function s(){return n.useEffect(()=>{const r=document.createElement("script");return r.type="text/javascript",r.text=a,document.body.appendChild(r),()=>{r.remove(),window.__reelInit=!1}},[]),e.jsxs(e.Fragment,{children:[e.jsx("style",{dangerouslySetInnerHTML:{__html:i}}),e.jsx("div",{dangerouslySetInnerHTML:{__html:t}})]})}export{s as component};
+`;function s(){return n.useEffect(()=>{const r=document.createElement("script");return r.type="text/javascript",r.text=a,document.body.appendChild(r),()=>{r.remove(),window.__reelInit=!1}},[]),e.jsxs(e.Fragment,{children:[e.jsx("style",{dangerouslySetInnerHTML:{__html:t}}),e.jsx("div",{dangerouslySetInnerHTML:{__html:i}})]})}export{s as component};
