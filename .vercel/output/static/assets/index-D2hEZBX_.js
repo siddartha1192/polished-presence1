@@ -1,4 +1,4 @@
-import{r as n,j as e}from"./index-BRPWJVYO.js";const t=`\r
+import{r as n,j as e}from"./index-B5a0qYLw.js";const i=`\r
 /* ═══ RESET & ROOT ════════════════════════════════════════════════════════ */\r
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}\r
 :root{\r
@@ -994,11 +994,17 @@ footer{background:#000;border-top:3px solid var(--orange)}\r
   .why-grid{grid-template-columns:1fr}\r
   .why-img-wrap{height:180px}\r
 \r
-  /* ── Industries ── */\r
-  .ind-grid{grid-template-columns:1fr 1fr}\r
-  .ind-img-wrap{height:120px}\r
-  .ind-card h3{font-size:.82rem}\r
-  .ind-card p{font-size:.72rem}\r
+  /* ── Industries — horizontal list on mobile ── */\r
+  .ind-grid{grid-template-columns:1fr;gap:.75rem}\r
+  .ind-card{flex-direction:row;height:90px}\r
+  .ind-img-wrap{width:110px;height:100%;flex-shrink:0;border-radius:0}\r
+  .ind-img-wrap::after{background:linear-gradient(to right,transparent 60%,rgba(10,24,58,.3) 100%)}\r
+  .ind-body{padding:.65rem .85rem;border-top:none;border-left:3px solid var(--blue);display:flex;flex-direction:column;justify-content:center;gap:.15rem}\r
+  .ind-card:hover .ind-body{border-left-color:var(--orange);border-top-color:var(--blue)}\r
+  .ind-icon{display:none}\r
+  .ind-card h3{font-size:.82rem;margin-bottom:.15rem}\r
+  .ind-card p{font-size:.68rem;line-height:1.4;\r
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}\r
 \r
   /* ── Engagement — sticky scroll re-enabled on mobile ── */\r
   /* Use #id to beat the 860px block's #engagement{height:auto} */\r
@@ -1087,7 +1093,7 @@ footer{background:#000;border-top:3px solid var(--orange)}\r
 \r
 @media(max-width:480px){\r
   .container{padding:0 16px}\r
-  .ind-grid{grid-template-columns:1fr}\r
+  .ind-img-wrap{width:90px}\r
   .met-grid{grid-template-columns:1fr 1fr}\r
   .stat-cards{grid-template-columns:1fr 1fr}\r
   .cform-modern .frow{grid-template-columns:1fr}\r
@@ -1096,7 +1102,7 @@ footer{background:#000;border-top:3px solid var(--orange)}\r
   .hero-stats{grid-template-columns:1fr 1fr}\r
   .sec-hd h2{font-size:clamp(1.3rem,7vw,1.8rem)}\r
 }\r
-`,i=`\r
+`,t=`\r
 \r
 <!-- ══ NAVBAR ════════════════════════════════════════════════════════════ -->\r
 <nav id="nav">\r
@@ -2339,4 +2345,4 @@ function sendForm(e) {\r
 window.addEventListener('load', () => {\r
   document.querySelectorAll('.hero-txt .hn[data-count]').forEach(el => animNum(el));\r
 });\r
-`;function s(){return n.useEffect(()=>{const r=document.createElement("script");return r.type="text/javascript",r.text=a,document.body.appendChild(r),()=>{r.remove(),window.__reelInit=!1}},[]),e.jsxs(e.Fragment,{children:[e.jsx("style",{dangerouslySetInnerHTML:{__html:t}}),e.jsx("div",{dangerouslySetInnerHTML:{__html:i}})]})}export{s as component};
+`;function s(){return n.useEffect(()=>{const r=document.createElement("script");return r.type="text/javascript",r.text=a,document.body.appendChild(r),()=>{r.remove(),window.__reelInit=!1}},[]),e.jsxs(e.Fragment,{children:[e.jsx("style",{dangerouslySetInnerHTML:{__html:i}}),e.jsx("div",{dangerouslySetInnerHTML:{__html:t}})]})}export{s as component};

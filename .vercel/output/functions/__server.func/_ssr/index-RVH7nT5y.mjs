@@ -995,11 +995,17 @@ footer{background:#000;border-top:3px solid var(--orange)}\r
   .why-grid{grid-template-columns:1fr}\r
   .why-img-wrap{height:180px}\r
 \r
-  /* ── Industries ── */\r
-  .ind-grid{grid-template-columns:1fr 1fr}\r
-  .ind-img-wrap{height:120px}\r
-  .ind-card h3{font-size:.82rem}\r
-  .ind-card p{font-size:.72rem}\r
+  /* ── Industries — horizontal list on mobile ── */\r
+  .ind-grid{grid-template-columns:1fr;gap:.75rem}\r
+  .ind-card{flex-direction:row;height:90px}\r
+  .ind-img-wrap{width:110px;height:100%;flex-shrink:0;border-radius:0}\r
+  .ind-img-wrap::after{background:linear-gradient(to right,transparent 60%,rgba(10,24,58,.3) 100%)}\r
+  .ind-body{padding:.65rem .85rem;border-top:none;border-left:3px solid var(--blue);display:flex;flex-direction:column;justify-content:center;gap:.15rem}\r
+  .ind-card:hover .ind-body{border-left-color:var(--orange);border-top-color:var(--blue)}\r
+  .ind-icon{display:none}\r
+  .ind-card h3{font-size:.82rem;margin-bottom:.15rem}\r
+  .ind-card p{font-size:.68rem;line-height:1.4;\r
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}\r
 \r
   /* ── Engagement — sticky scroll re-enabled on mobile ── */\r
   /* Use #id to beat the 860px block's #engagement{height:auto} */\r
@@ -1088,7 +1094,7 @@ footer{background:#000;border-top:3px solid var(--orange)}\r
 \r
 @media(max-width:480px){\r
   .container{padding:0 16px}\r
-  .ind-grid{grid-template-columns:1fr}\r
+  .ind-img-wrap{width:90px}\r
   .met-grid{grid-template-columns:1fr 1fr}\r
   .stat-cards{grid-template-columns:1fr 1fr}\r
   .cform-modern .frow{grid-template-columns:1fr}\r
