@@ -1,4 +1,4 @@
-import{r as n,j as e}from"./index-CzxQ3H8k.js";const i=`\r
+import{r as n,j as e}from"./index-DURR91PW.js";const i=`\r
 /* ═══ RESET & ROOT ════════════════════════════════════════════════════════ */\r
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}\r
 :root{\r
@@ -828,29 +828,29 @@ footer{background:#000;border-top:3px solid var(--orange)}\r
 .ft-nav{display:flex;gap:2rem;flex:1;justify-content:center}\r
 .ft-col{display:flex;flex-direction:column;gap:.28rem}\r
 .ft-col-head{\r
-  font-size:.6rem;font-weight:800;letter-spacing:.1em;\r
+  font-size:.75rem;font-weight:800;letter-spacing:.1em;\r
   text-transform:uppercase;color:#fff;\r
-  margin-bottom:.5rem;padding-bottom:.35rem;\r
+  margin-bottom:.6rem;padding-bottom:.35rem;\r
   border-bottom:1.5px solid var(--orange);\r
   display:block;width:fit-content}\r
-.ft-col a{font-size:.73rem;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;line-height:1.5}\r
+.ft-col a{font-size:.88rem;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;line-height:1.6}\r
 .ft-col a:hover{color:var(--orange)}\r
 \r
 /* Right contact + CTA */\r
-.ft-right{display:flex;flex-direction:column;align-items:flex-end;gap:.5rem;flex-shrink:0}\r
-.ft-email{font-size:.75rem;font-weight:700;color:#6398ff;text-decoration:none}\r
+.ft-right{display:flex;flex-direction:column;align-items:flex-end;gap:.55rem;flex-shrink:0}\r
+.ft-email{font-size:.9rem;font-weight:700;color:#6398ff;text-decoration:none}\r
 .ft-email:hover{color:var(--orange)}\r
-.ft-phone{font-size:.72rem;color:rgba(255,255,255,.45);text-decoration:none}\r
+.ft-phone{font-size:.85rem;color:rgba(255,255,255,.45);text-decoration:none}\r
 .ft-phone:hover{color:#fff}\r
-.ft-cta{font-size:.72rem;padding:.42rem .9rem;margin-top:.4rem;white-space:nowrap}\r
+.ft-cta{font-size:.82rem;padding:.45rem 1rem;margin-top:.4rem;white-space:nowrap}\r
 \r
 /* Bottom bar */\r
 .ft-bar{\r
   display:flex;justify-content:space-between;align-items:center;\r
   padding:.8rem 0;flex-wrap:wrap;gap:.4rem}\r
-.ft-bar p{font-size:.67rem;color:rgba(255,255,255,.3);margin:0}\r
+.ft-bar p{font-size:.78rem;color:rgba(255,255,255,.3);margin:0}\r
 .ft-bar-links{display:flex;gap:1.2rem}\r
-.ft-bar-links a{font-size:.67rem;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}\r
+.ft-bar-links a{font-size:.78rem;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}\r
 .ft-bar-links a:hover{color:#fff}\r
 \r
 /* ═══ EXTRAS ══════════════════════════════════════════════════════════════ */\r
