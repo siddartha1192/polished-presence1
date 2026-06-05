@@ -1098,19 +1098,19 @@ footer{background:#000;border-top:3px solid var(--orange)}
   /* Use #id to beat the 860px block's #engagement{height:auto} */
   #engagement{height:calc(100vh + 240vh);padding:0;position:static;margin-top:3rem}
   .eng-section{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center}
-  .eng-wrapper{gap:.8rem;padding:80px 0 0}
-  .eng-stage{position:relative;height:55vh;width:100%;max-width:100%;overflow:hidden}
+  .eng-wrapper{gap:.6rem;padding:72px 0 0}
+  .eng-stage{position:relative;height:62vh;width:100%;max-width:100%;overflow:visible}
   .eng-card{position:absolute;inset:0;opacity:0;transform:translateY(45px);
     display:flex;align-items:flex-start;justify-content:center;
-    padding:.5rem 0;pointer-events:none}
+    padding:.4rem 0;pointer-events:none}
   .eng-card.eng-active{opacity:1;transform:translateY(0);pointer-events:auto}
   .eng-card.eng-exit{opacity:0;transform:translateY(-35px)}
-  .eng-card-body{text-align:center;padding:0 .5rem;max-width:100%}
-  .eng-card-tag{font-size:.6rem;margin-bottom:.4rem}
-  .eng-card-title{font-size:clamp(2.2rem,10vw,3.5rem)}
-  .eng-card-desc{font-size:.8rem;line-height:1.6;margin-bottom:.5rem}
-  .eng-del-txt{font-size:.7rem;line-height:1.5;word-break:break-word}
-  .eng-deliverable{padding:0 .5rem;margin-top:.3rem}
+  .eng-card-body{text-align:center;padding:0 1rem;max-width:100%;display:flex;flex-direction:column;gap:.3rem}
+  .eng-card-tag{font-size:.6rem;margin-bottom:.2rem}
+  .eng-card-title{font-size:clamp(2rem,9vw,3.2rem);margin-bottom:.3rem}
+  .eng-card-desc{font-size:.82rem;line-height:1.55;margin-bottom:.4rem}
+  .eng-del-txt{font-size:.8rem;line-height:1.45;word-break:break-word;overflow-wrap:break-word;white-space:normal}
+  .eng-deliverable{padding:.4rem .75rem;margin-top:.2rem;background:var(--bg2);border-radius:8px;border-left:3px solid var(--orange)}
   .eng-ghost-num{display:none}
   .eng-progress{display:none}
   /* Scrollable phase tabs */
@@ -1222,4 +1222,10 @@ footer{background:#000;border-top:3px solid var(--orange)}
   .met-cell{padding:1.2rem .6rem}
   .met-cell .mn{font-size:clamp(1.9rem,8vw,2.6rem)}
   .reel-dot.reel-dot-active{width:12px}
+  /* Engagement — short phones */
+  .eng-wrapper{padding:60px 0 0}
+  .eng-stage{height:65vh}
+  .eng-card-title{font-size:clamp(1.8rem,8vw,2.8rem)}
+  .eng-card-desc{font-size:.76rem}
+  .eng-del-txt{font-size:.74rem}
 }
