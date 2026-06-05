@@ -135,57 +135,63 @@ img{max-width:100%;display:block}
 
 /* ── Right-side drawer ── */
 .mob-nav{
-  position:fixed;top:0;right:0;bottom:0;
-  width:min(320px,88vw);
+  position:fixed;top:0;right:0;
+  width:min(320px,88vw);height:100%;
   background:#fff;z-index:2000;
   display:flex;flex-direction:column;
   box-shadow:-12px 0 48px rgba(0,0,0,.22);
   transform:translateX(110%);
   transition:transform .38s cubic-bezier(.4,0,.2,1);
-  overflow-y:auto;overflow-x:hidden}
+  -webkit-overflow-scrolling:touch}
 .mob-nav.open{transform:translateX(0)}
 
 /* Drawer header */
 .mob-nav-header{
   display:flex;align-items:center;justify-content:space-between;
-  padding:1.2rem 1.4rem;
-  border-bottom:1px solid var(--border);
-  background:#fff;flex-shrink:0}
-.mob-nav-logo{height:48px;width:auto;display:block}
+  padding:1.2rem 1.4rem 1.2rem 1.2rem;
+  border-bottom:2px solid var(--border);
+  background:#fff;flex-shrink:0;min-height:72px}
+.mob-nav-logo{height:44px;width:auto;display:block}
 
 /* Close button */
 .mob-close{
-  width:40px;height:40px;border-radius:50%;
+  width:44px;height:44px;border-radius:50%;
   background:var(--bg2);border:none;
   display:flex;align-items:center;justify-content:center;
   font-size:1.1rem;color:var(--dark);cursor:pointer;
   transition:background .2s;flex-shrink:0;line-height:1}
 .mob-close:hover{background:var(--border)}
 
-/* Nav links */
+/* Nav links — scrollable middle section */
 .mob-nav-links{
+  flex:1;overflow-y:auto;overflow-x:hidden;
   display:flex;flex-direction:column;
-  padding:.5rem 0;flex:1}
-.mob-nav a{
-  font-size:1.05rem;color:var(--dark2);font-weight:600;
+  -webkit-overflow-scrolling:touch}
+.mob-nav-links a{
+  font-size:1.05rem;color:var(--dark);font-weight:600;
   padding:1rem 1.6rem;
   border-bottom:1px solid var(--bg2);
-  text-decoration:none;display:flex;align-items:center;
-  gap:.6rem;transition:background .18s,color .18s}
-.mob-nav a:hover{background:var(--bg2);color:var(--blue)}
-.mob-nav a:last-of-type{border-bottom:none}
+  text-decoration:none;display:block;
+  transition:background .18s,color .18s;
+  min-height:52px;line-height:1.4}
+.mob-nav-links a:hover,.mob-nav-links a:active{background:var(--bg2);color:var(--blue)}
 
 /* Drawer footer CTA */
 .mob-nav-footer{
   padding:1.2rem 1.4rem;
-  border-top:1px solid var(--border);
+  border-top:2px solid var(--border);
   background:#fff;flex-shrink:0}
-.mob-nav-footer .btn{width:100%;justify-content:center;font-size:.95rem;padding:.85rem 1rem}
+.mob-nav-footer .btn{
+  width:100%;justify-content:center;
+  font-size:1rem;padding:.9rem 1rem;
+  border-radius:8px}
 
 /* Overlay */
 .mob-overlay{
-  display:none;position:fixed;inset:0;
-  background:rgba(0,0,0,.5);z-index:1999;
+  display:none;position:fixed;
+  top:0;left:0;right:0;bottom:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,.55);z-index:1999;
   backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
 .mob-overlay.open{display:block}
 
@@ -1024,8 +1030,8 @@ footer{background:#000;border-top:3px solid var(--orange)}
   .nav-logo-img{height:clamp(48px,12vw,72px)}
   #nav.reel-alt .nav-logo-img{height:clamp(48px,12vw,72px)}
   .nav-wrap{height:72px}
-  .mob-overlay{display:block;opacity:0;pointer-events:none;transition:opacity .35s}
-  .mob-overlay.open{opacity:1;pointer-events:auto}
+  .mob-overlay{display:none}
+  .mob-overlay.open{display:block}
 
   /* ── Global section padding ── */
   #services,#why,#metrics,#casestudies,
