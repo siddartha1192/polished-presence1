@@ -1101,7 +1101,14 @@ footer{background:#000;border-top:3px solid var(--orange)}
   .hstat .hlbl{font-size:.68rem}
 
   /* ── Metrics ── */
-  .met-grid{grid-template-columns:repeat(2,1fr)}
+  #metrics{padding:2.5rem 0;overflow:hidden}
+  .met-grid{grid-template-columns:repeat(2,1fr);width:100%}
+  .met-cell{padding:1.6rem 1rem;border-right:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.12);min-width:0}
+  .met-cell:nth-child(2n){border-right:none}
+  .met-cell:nth-last-child(-n+1):nth-child(odd){grid-column:1/-1}
+  .met-cell .mn{font-size:clamp(2.2rem,9vw,3.2rem);letter-spacing:-.03em}
+  .met-cell .ml{font-size:clamp(.72rem,3vw,.85rem)}
+  .met-bar{margin:.75rem auto 0}
 
   /* ── CTA ── */
   .cta-duo{gap:2rem}
@@ -1160,5 +1167,8 @@ footer{background:#000;border-top:3px solid var(--orange)}
   .btn-hero-primary,.btn-outline-light{font-size:.74rem;padding:.5rem .85rem}
   .reel-dots{bottom:1rem}
   .reel-dot{width:4px;height:4px}
+  /* Metrics extra tight */
+  .met-cell{padding:1.2rem .6rem}
+  .met-cell .mn{font-size:clamp(1.9rem,8vw,2.6rem)}
   .reel-dot.reel-dot-active{width:12px}
 }
