@@ -1033,10 +1033,12 @@ footer{background:#000;border-top:3px solid var(--orange)}
   .mob-overlay{display:none}
   .mob-overlay.open{display:block}
 
-  /* ── Global section padding ── */
-  #services,#why,#metrics,#casestudies,
-  #fde,#insights,#careers,#cta,#contact-form{padding:3.5rem 0}
-  #industries{padding:1rem 0 3rem}
+  /* ── Global section padding — uniform 3rem on mobile ── */
+  #services,#why,#casestudies,
+  #fde,#insights,#careers,#cta,#contact-form{padding:3rem 0}
+  #metrics{padding:2.5rem 0}
+  #strip{padding:2rem 0}
+  #industries{padding:3rem 0}
 
   /* ── Section headings ── */
   .sec-hd h2{font-size:clamp(1.5rem,6vw,2rem)}
@@ -1067,7 +1069,6 @@ footer{background:#000;border-top:3px solid var(--orange)}
     width:max-content;max-width:calc(100vw - 32px)}
 
   /* ── Logo strip ── */
-  #strip{padding:2rem 0}
   .strip-label{font-size:.82rem;margin-bottom:1.2rem}
   .logo-chip{font-size:.75rem;padding:.55rem .9rem;gap:.5rem;border-radius:8px}
   .logo-chip svg{width:18px;height:18px}
@@ -1095,9 +1096,9 @@ footer{background:#000;border-top:3px solid var(--orange)}
 
   /* ── Engagement — sticky scroll re-enabled on mobile ── */
   /* Use #id to beat the 860px block's #engagement{height:auto} */
-  #engagement{height:calc(100vh + 240vh);padding:0;position:static}
+  #engagement{height:calc(100vh + 240vh);padding:0;position:static;margin-top:3rem}
   .eng-section{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center}
-  .eng-wrapper{gap:.8rem;padding:88px 0 0}
+  .eng-wrapper{gap:.8rem;padding:80px 0 0}
   .eng-stage{position:relative;height:55vh;width:100%;max-width:100%;overflow:hidden}
   .eng-card{position:absolute;inset:0;opacity:0;transform:translateY(45px);
     display:flex;align-items:flex-start;justify-content:center;
@@ -1120,7 +1121,7 @@ footer{background:#000;border-top:3px solid var(--orange)}
   .eng-steplist::-webkit-scrollbar{display:none}
   .eng-steplbl{font-size:clamp(.85rem,4vw,1.1rem);padding:.35rem .9rem;white-space:nowrap;flex-shrink:0}
   /* Pills */
-  .eng-pills-row{padding:.5rem 0 .5rem}
+  .eng-pills-row{padding:2rem 0 3rem}
   .eng-summary{flex-wrap:wrap;gap:.4rem;justify-content:center}
   .eng-sum-pill{font-size:.7rem;padding:.4rem .75rem}
 
