@@ -118,35 +118,76 @@ img{max-width:100%;display:block}
 #nav.sc .nav-links a.act::after{background:var(--blue);width:100%}
 .nav-right{display:flex;align-items:center;gap:.6rem}
 .nav-right .btn{white-space:nowrap;font-size:clamp(.72rem,.85vw,.9rem);padding:.5rem clamp(.7rem,1vw,1.3rem)}
-.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
-.ham span{width:22px;height:2px;background:#fff;border-radius:2px;transition:.3s;display:block}
+/* ── Hamburger button ── */
+.ham{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  cursor:pointer;padding:10px;background:none;border:none;
+  min-width:44px;min-height:44px;border-radius:8px;
+  transition:background .2s}
+.ham:hover{background:rgba(255,255,255,.12)}
+.ham span{width:24px;height:2.5px;background:#fff;border-radius:2px;transition:.3s ease;display:block}
 #nav.sc .ham span{background:var(--dark)}
-/* Right-side drawer */
+#nav.sc .ham:hover{background:rgba(15,25,35,.07)}
+/* Ham → X animation */
+.ham.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.ham.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+
+/* ── Right-side drawer ── */
 .mob-nav{
   position:fixed;top:0;right:0;bottom:0;
-  width:min(300px,82vw);
-  background:#fff;z-index:1001;
-  display:flex;flex-direction:column;gap:0;
-  padding:1.8rem 1.6rem;
-  box-shadow:-8px 0 40px rgba(0,0,0,.18);
+  width:min(320px,88vw);
+  background:#fff;z-index:2000;
+  display:flex;flex-direction:column;
+  box-shadow:-12px 0 48px rgba(0,0,0,.22);
   transform:translateX(110%);
-  transition:transform .35s cubic-bezier(.4,0,.2,1)}
+  transition:transform .38s cubic-bezier(.4,0,.2,1);
+  overflow-y:auto;overflow-x:hidden}
 .mob-nav.open{transform:translateX(0)}
-.mob-nav a{font-size:1rem;color:var(--dark);font-weight:600;padding:.75rem 0;border-bottom:1px solid var(--border);text-decoration:none}
-.mob-nav a:last-of-type{border-bottom:none}
+
+/* Drawer header */
+.mob-nav-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem 1.4rem;
+  border-bottom:1px solid var(--border);
+  background:#fff;flex-shrink:0}
+.mob-nav-logo{height:48px;width:auto;display:block}
+
+/* Close button */
 .mob-close{
-  align-self:flex-end;background:none;border:none;
-  font-size:1.3rem;color:var(--dark);cursor:pointer;
-  margin-bottom:1.2rem;padding:4px 8px;line-height:1}
+  width:40px;height:40px;border-radius:50%;
+  background:var(--bg2);border:none;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;color:var(--dark);cursor:pointer;
+  transition:background .2s;flex-shrink:0;line-height:1}
+.mob-close:hover{background:var(--border)}
+
+/* Nav links */
+.mob-nav-links{
+  display:flex;flex-direction:column;
+  padding:.5rem 0;flex:1}
+.mob-nav a{
+  font-size:1.05rem;color:var(--dark2);font-weight:600;
+  padding:1rem 1.6rem;
+  border-bottom:1px solid var(--bg2);
+  text-decoration:none;display:flex;align-items:center;
+  gap:.6rem;transition:background .18s,color .18s}
+.mob-nav a:hover{background:var(--bg2);color:var(--blue)}
+.mob-nav a:last-of-type{border-bottom:none}
+
+/* Drawer footer CTA */
+.mob-nav-footer{
+  padding:1.2rem 1.4rem;
+  border-top:1px solid var(--border);
+  background:#fff;flex-shrink:0}
+.mob-nav-footer .btn{width:100%;justify-content:center;font-size:.95rem;padding:.85rem 1rem}
+
+/* Overlay */
 .mob-overlay{
   display:none;position:fixed;inset:0;
-  background:rgba(0,0,0,.45);z-index:1000;
-  backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+  background:rgba(0,0,0,.5);z-index:1999;
+  backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
 .mob-overlay.open{display:block}
-/* Ham → X animation */
-.ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
-.ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* ═══ HERO REEL — 4-slide enterprise video carousel ══════════════════════ */
 .hero-reel{
@@ -980,6 +1021,9 @@ footer{background:#000;border-top:3px solid var(--orange)}
   /* ── Nav ── */
   .nav-links,.nav-right .btn-outline-blue,.nav-right .btn-orange{display:none}
   .ham{display:flex}
+  .nav-logo-img{height:clamp(48px,12vw,72px)}
+  #nav.reel-alt .nav-logo-img{height:clamp(48px,12vw,72px)}
+  .nav-wrap{height:72px}
   .mob-overlay{display:block;opacity:0;pointer-events:none;transition:opacity .35s}
   .mob-overlay.open{opacity:1;pointer-events:auto}
 

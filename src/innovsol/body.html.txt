@@ -23,16 +23,23 @@
     </div>
   </div>
   <div class="mob-nav" id="mobNav">
-    <button class="mob-close" onclick="toggleMob()" aria-label="Close menu">&#x2715;</button>
-    <a href="#home" onclick="toggleMob()">Home</a>
-    <a href="#services" onclick="toggleMob()">Services</a>
-    <a href="#industries" onclick="toggleMob()">Industries</a>
-    <a href="#casestudies" onclick="toggleMob()">Case Studies</a>
-    <a href="#fde" onclick="toggleMob()">FDE Team</a>
-    <a href="#insights" onclick="toggleMob()">Insights</a>
-    <a href="#careers" onclick="toggleMob()">Careers</a>
-    <a href="#contact-form" onclick="toggleMob()">Contact Us</a>
-    <a href="#contact-form" class="btn btn-orange" style="margin-top:1rem;justify-content:center" onclick="toggleMob()">Book a Strategy Call</a>
+    <div class="mob-nav-header">
+      <img src="/images/logo.png" alt="Innovsol" class="mob-nav-logo"/>
+      <button class="mob-close" onclick="toggleMob()" aria-label="Close menu">&#x2715;</button>
+    </div>
+    <div class="mob-nav-links">
+      <a href="#home" onclick="toggleMob()">Home</a>
+      <a href="#services" onclick="toggleMob()">Services</a>
+      <a href="#industries" onclick="toggleMob()">Industries</a>
+      <a href="#casestudies" onclick="toggleMob()">Case Studies</a>
+      <a href="#fde" onclick="toggleMob()">FDE Team</a>
+      <a href="#insights" onclick="toggleMob()">Insights</a>
+      <a href="#careers" onclick="toggleMob()">Careers</a>
+      <a href="#contact-form" onclick="toggleMob()">Contact Us</a>
+    </div>
+    <div class="mob-nav-footer">
+      <a href="#contact-form" class="btn btn-orange" onclick="toggleMob()">Book a Strategy Call &rarr;</a>
+    </div>
   </div>
   <div class="mob-overlay" id="mobOverlay"></div>
 </nav>
