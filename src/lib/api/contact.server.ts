@@ -1,5 +1,18 @@
 import nodemailer from "nodemailer";
 
+function getTransporter() {
+  return nodemailer.createTransport({
+    host:       process.env.SMTP_HOST,
+    port:       587,
+    secure:     false,
+    requireTLS: true,
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+  });
+}
+
 export async function handleContactRequest(request: Request): Promise<Response> {
   if (request.method !== "POST") {
     return Response.json({ error: "Method not allowed" }, { status: 405 });
@@ -25,25 +38,8 @@ export async function handleContactRequest(request: Request): Promise<Response> 
   const smtpTo   = process.env.SMTP_TO   ?? "hello@innovsol.ai";
 
   if (!smtpHost || !smtpUser || !smtpPass) {
-    console.error("SMTP credentials not configured");
-    return Response.json({ error: "Email service not configured" }, { status: 500 });
-  }
-
-  console.log("[contact] SMTP config →", { host: smtpHost, user: smtpUser, from: smtpFrom, to: smtpTo });
-
-  const transporter = nodemailer.createTransport({
-    host: smtpHost,
-    port: 587,
-    secure: false,
-    auth: { user: smtpUser, pass: smtpPass },
-  });
-
-  try {
-    await transporter.verify();
-    console.log("[contact] SMTP connection verified ✓");
-  } catch (verifyErr) {
-    console.error("[contact] SMTP connection FAILED:", verifyErr);
-    return Response.json({ error: "SMTP connection failed" }, { status: 500 });
+    console.error("[contact] Missing SMTP env vars");
+    return Response.json({ error: "Email service not configured. Please contact us at " + smtpTo }, { status: 500 });
   }
 
   const html = `
@@ -115,17 +111,18 @@ export async function handleContactRequest(request: Request): Promise<Response> 
 </html>`;
 
   try {
+    const transporter = getTransporter();
     const info = await transporter.sendMail({
-      from: `"Innovsol Website" <${smtpFrom}>`,
-      to: smtpTo,
+      from:    `"${process.env.SMTP_FROM_NAME ?? "Innovsol Website"}" <${smtpFrom}>`,
+      to:      smtpTo,
       replyTo: email,
       subject: `New Enquiry: ${firstName} ${lastName} — ${company}`,
       html,
     });
-    console.log("[contact] Email sent ✓ messageId:", info.messageId, "response:", info.response);
-  } catch (err) {
-    console.error("[contact] sendMail FAILED:", err);
-    return Response.json({ error: "Failed to send email" }, { status: 500 });
+    console.log("[contact] ✓ Sent | messageId:", info.messageId, "| response:", info.response);
+  } catch (err: any) {
+    console.error("[contact] SMTP error:", err?.message);
+    return Response.json({ error: "Failed to send email. Please contact us at " + smtpTo }, { status: 500 });
   }
 
   return Response.json({ success: true });

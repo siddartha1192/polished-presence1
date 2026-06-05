@@ -3,6 +3,7 @@ import "./lib/error-capture";
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
 import { handleContactRequest } from "./lib/api/contact.server";
+import { handleTestSmtp } from "./lib/api/test-smtp.server";
 
 type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
@@ -43,6 +44,9 @@ export default {
     const url = new URL(request.url);
     if (url.pathname === "/api/contact") {
       return handleContactRequest(request);
+    }
+    if (url.pathname === "/api/test-smtp") {
+      return handleTestSmtp(request);
     }
 
     try {

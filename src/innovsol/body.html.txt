@@ -75,7 +75,7 @@
       <div class="container">
         <div class="reel-inner">
           <div class="reel-eyebrow reel-eyebrow-nodash">Our Mission</div>
-          <h1>Elevate enterprise productivity-<br><span class="reel-nowrap"><em>measurably -</em> by embedding AI</span><br>where it matters most.</h1>
+          <h1>Elevate enterprise productivity -<br><span class="reel-nowrap"><em>measurably <span style="color:#fff">-</span></em> by embedding AI</span><br>where it matters most.</h1>
           <div class="reel-btns">
             <a href="#contact-form" class="btn btn-orange btn-hero-primary">Book a Strategy Call &rarr;</a>
             <a href="#services" class="btn btn-outline-light">Explore AI Solutions</a>
@@ -708,7 +708,6 @@
           <div class="perk"><span class="pdot"></span><span>Competitive salary, performance bonus, equity for senior roles</span></div>
           <div class="perk"><span class="pdot"></span><span>Annual learning budget for courses &amp; conferences</span></div>
         </div>
-        <a href="#contact" class="btn btn-orange" style="margin-top:.5rem">View Open Roles &rarr;</a>
       </div>
       <div class="fi-right">
         <div class="roles">
@@ -742,9 +741,6 @@
         <div class="section-label" style="color:rgba(255,255,255,.6)">For AI Talent</div>
         <h3>Build AI That<br>Actually Ships.</h3>
         <p>Join the FDE team. Embed in ambitious enterprises. Work on hard problems. See your AI running in production — fast.</p>
-        <div style="display:flex;gap:.8rem;flex-wrap:wrap">
-          <a href="#careers" class="btn btn-white">View Open Roles &rarr;</a>
-        </div>
         <div class="cta-pill">Reach us directly: <strong style="color:#fff">hello@innovsol.ai</strong></div>
       </div>
     </div>
