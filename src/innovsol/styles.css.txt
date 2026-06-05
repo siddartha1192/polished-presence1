@@ -460,12 +460,12 @@ img{max-width:100%;display:block}
 
 /* Centred header */
 .eng-header{text-align:center}
-.eng-header h2{font-size:clamp(1.6rem,2.8vw,2.8rem);color:var(--dark);margin:.5rem 0 0;line-height:1.15}
+.eng-header h2{font-size:clamp(2rem,3.5vw,3.6rem);color:var(--dark);margin:.5rem 0 0;line-height:1.15}
 
 /* Phase selector — big scroll-driven text nav */
 .eng-steplist{display:flex;flex-direction:row;gap:0;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem}
 .eng-steplbl{
-  font-size:clamp(1.4rem,2.2vw,2rem);font-weight:800;letter-spacing:-.02em;
+  font-size:clamp(1.6rem,2.6vw,2.5rem);font-weight:800;letter-spacing:-.02em;
   color:rgba(15,40,90,.3);
   padding:.5rem 1.8rem;border-bottom:3px solid var(--blue);
   cursor:pointer;transition:color .3s,border-color .3s;text-decoration:none}
@@ -505,19 +505,19 @@ img{max-width:100%;display:block}
   background:var(--orange);border-radius:2px;flex-shrink:0}
 
 .eng-card-title{
-  font-size:clamp(2.8rem,5vw,5rem);font-weight:900;
+  font-size:clamp(3.4rem,6.5vw,7rem);font-weight:900;
   color:var(--dark);letter-spacing:-.04em;line-height:.95;
   margin:0 0 1.2rem}
 
 .eng-card-desc{
-  font-size:.98rem;color:var(--gray);
+  font-size:1.15rem;color:var(--gray);
   line-height:1.75;margin:0 0 1.5rem;font-weight:400}
 
 .eng-deliverable{display:flex;flex-direction:column;gap:.3rem;align-items:center}
 .eng-del-lbl{
-  font-size:.58rem;font-weight:800;letter-spacing:.14em;
+  font-size:.68rem;font-weight:800;letter-spacing:.14em;
   text-transform:uppercase;color:var(--orange)}
-.eng-del-txt{font-size:.9rem;color:var(--dark2);font-weight:700}
+.eng-del-txt{font-size:1.05rem;color:var(--dark2);font-weight:700}
 
 /* Progress dots — right side, vertical */
 .eng-progress{
