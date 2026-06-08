@@ -16,7 +16,8 @@
       "Bash(git rebase *)",
       "Bash(ls \"C:/Users/HP/Downloads/polished-presence1-new-varcel-update\" 2>&1 | head -5 || ls \"C:/Users/HP/Downloads/polished-presence1/polished-presence1-new-varcel-update\" 2>&1 | head -5)",
       "Read(//c/Users/HP/Downloads/**)",
-      "Bash(git remote *)"
+      "Bash(git remote *)",
+      "Bash(git commit *)"
     ]
   }
 }
