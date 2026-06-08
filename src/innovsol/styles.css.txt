@@ -1027,10 +1027,10 @@ footer{background:#000;border-top:3px solid var(--orange)}
   /* ── Nav ── */
   .nav-links,.nav-right .btn-outline-blue,.nav-right .btn-orange{display:none}
   .ham{display:flex}
-  .nav-logo-img{height:clamp(48px,12vw,72px)}
-  #nav.reel-alt .nav-logo-img{height:clamp(48px,12vw,72px)}
-  #nav.reel-alt #nav-logo-alt{height:auto;max-height:clamp(82px,20vw,122px);max-width:calc(100vw - 110px);width:auto}
-  .nav-wrap{height:72px}
+  .nav-logo-img{height:clamp(62px,16vw,94px)}
+  #nav.reel-alt .nav-logo-img{height:clamp(62px,16vw,94px)}
+  #nav.reel-alt #nav-logo-alt{height:auto;max-height:clamp(107px,26vw,159px);max-width:calc(100vw - 110px);width:auto}
+  .nav-wrap{height:94px}
   .mob-overlay{display:none}
   .mob-overlay.open{display:block}
 
