@@ -1029,7 +1029,7 @@ footer{background:#000;border-top:3px solid var(--orange)}
   .ham{display:flex}
   .nav-logo-img{height:clamp(48px,12vw,72px)}
   #nav.reel-alt .nav-logo-img{height:clamp(48px,12vw,72px)}
-  #nav.reel-alt #nav-logo-alt{height:clamp(48px,12vw,72px);width:auto}
+  #nav.reel-alt #nav-logo-alt{height:clamp(82px,20vw,122px);width:auto}
   .nav-wrap{height:72px}
   .mob-overlay{display:none}
   .mob-overlay.open{display:block}
