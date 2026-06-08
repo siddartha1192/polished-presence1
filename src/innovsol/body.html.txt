@@ -190,7 +190,7 @@
           <div class="svc-num2">01</div>
           <div class="svc-title2">AI Strategy &amp; Transformation</div>
           <div class="svc-desc2">12-month AI roadmap, maturity assessment, ROI models and a board-ready business case — delivered in as little as 2 weeks. We identify your highest-value AI opportunities and build a phased, costed plan.</div>
-          <a href="#contact" class="svc-link">Learn more <svg viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#3f6cb5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="#contact-form" class="svc-link">Learn more <svg viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#3f6cb5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
 
@@ -204,7 +204,7 @@
           <div class="svc-num2">02</div>
           <div class="svc-title2">AI Product Engineering</div>
           <div class="svc-desc2">End-to-end AI product builds — UX design, backend AI services, production deployment and post-launch optimisation in 8–16 weeks. We build AI-native features your customers will actually adopt.</div>
-          <a href="#contact" class="svc-link">Learn more <svg viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#3f6cb5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="#contact-form" class="svc-link">Learn more <svg viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#3f6cb5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
 
@@ -219,7 +219,7 @@
           <div class="svc-num2">03</div>
           <div class="svc-title2">AI Agents &amp; Agentic Automation</div>
           <div class="svc-desc2">Autonomous agents that execute complex multi-step workflows across your enterprise without constant human oversight. We design and deploy agents that work reliably in production at scale.</div>
-          <a href="#contact" class="svc-link">Learn more <svg viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#3f6cb5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="#contact-form" class="svc-link">Learn more <svg viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#3f6cb5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
 
@@ -233,7 +233,7 @@
           <div class="svc-num2">04</div>
           <div class="svc-title2">Generative AI Solutions</div>
           <div class="svc-desc2">Custom LLM applications tailored to your domain: document intelligence, knowledge assistants, AI-powered search, and enterprise copilots. RAG-first architecture, security-hardened, deeply integrated with your workflows.</div>
-          <a href="#contact" class="svc-link">Learn more <svg viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#3f6cb5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="#contact-form" class="svc-link">Learn more <svg viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#3f6cb5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
 
@@ -247,7 +247,7 @@
           <div class="svc-num2">05</div>
           <div class="svc-title2">Enterprise AI Infrastructure</div>
           <div class="svc-desc2">Cloud-native AI platforms, edge computing, scalable data pipelines, and modern enterprise tech stacks — designed for speed, resilience, and the demands of next-generation AI workloads.</div>
-          <a href="#contact" class="svc-link">Learn more <svg viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#3f6cb5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="#contact-form" class="svc-link">Learn more <svg viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#3f6cb5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
 
@@ -261,7 +261,7 @@
           <div class="svc-num2">06</div>
           <div class="svc-title2">Forward Deployed Engineering</div>
           <div class="svc-desc2">Our engineers embed inside your team, work in your systems, and ship production-ready AI in under 12 weeks. Not strategy decks — engineers inside your organisation building what works for your reality.</div>
-          <a href="#fde" class="svc-link">Learn more <svg viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#3f6cb5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="#contact-form" class="svc-link">Learn more <svg viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#3f6cb5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
     </div>
@@ -676,7 +676,7 @@
         <div class="ins-body">
           <h3>Why 95% of Enterprise AI Pilots Fail — and How the FDE Model Fixes It</h3>
           <p>An analysis of the root causes of AI pilot failure in large enterprises, and how Forward Deployed Engineering addresses each one systematically.</p>
-          <span class="ins-link">Read article</span>
+          <a href="#contact-form" class="ins-link">Read article</a>
         </div>
       </div>
       <div class="ins-card fi">
@@ -684,7 +684,7 @@
         <div class="ins-body">
           <h3>The 12-Week AI Sprint: From Idea to Production</h3>
           <p>A behind-the-scenes look at how Innovsol structures its 12-week FDE engagement — week by week, from discovery through to go-live.</p>
-          <span class="ins-link">Read article</span>
+          <a href="#contact-form" class="ins-link">Read article</a>
         </div>
       </div>
       <div class="ins-card fi">
@@ -692,7 +692,7 @@
         <div class="ins-body">
           <h3>RAG vs. Fine-Tuning: Which LLM Approach Fits Your Enterprise Use Case?</h3>
           <p>A practical framework for choosing between Retrieval-Augmented Generation and fine-tuning for enterprise LLM applications.</p>
-          <span class="ins-link">Read article</span>
+          <a href="#contact-form" class="ins-link">Read article</a>
         </div>
       </div>
     </div>
