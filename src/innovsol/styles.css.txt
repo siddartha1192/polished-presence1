@@ -1122,8 +1122,8 @@ footer{background:#000;border-top:3px solid var(--orange)}
   .eng-steplist::-webkit-scrollbar{display:none}
   .eng-steplbl{font-size:clamp(.85rem,4vw,1.1rem);padding:.35rem .9rem;white-space:nowrap;flex-shrink:0}
   /* Pills */
-  .eng-pills-row{padding:0.5rem 0 0.5rem}
-  #casestudies{padding-top:1.5rem}
+  .eng-pills-row{padding:0.25rem 0 0.25rem}
+  #casestudies{padding-top:0.75rem}
   .eng-summary{flex-wrap:wrap;gap:.4rem;justify-content:center}
   .eng-sum-pill{font-size:.7rem;padding:.4rem .75rem}
 
