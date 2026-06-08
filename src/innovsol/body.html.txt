@@ -115,7 +115,7 @@
           <div class="reel-eyebrow">Forward Deployed Engineering</div>
           <h1>Senior AI engineers embedded inside<br>your team — shipping production AI<br>in under <em>12 weeks, guaranteed.</em></h1>
           <div class="reel-btns">
-            <a href="#fde" class="btn btn-orange btn-hero-primary">Explore FDE Models &rarr;</a>
+            <a href="#contact-form" class="btn btn-orange btn-hero-primary">Explore FDE Models &rarr;</a>
             <a href="#careers" class="btn btn-outline-light">Join the FDE Team</a>
           </div>
         </div>
@@ -646,7 +646,7 @@
           <div class="fde-stage"><span class="fde-wk">Wk 11–12</span><span class="fde-act">Go-live &rarr; Scale plan activated</span></div>
         </div>
         <div class="fde-btns">
-          <a href="#contact" class="btn btn-blue">Explore FDE Models &rarr;</a>
+          <a href="#contact-form" class="btn btn-blue">Explore FDE Models &rarr;</a>
           <a href="#careers" class="btn btn-outline-blue">Join the FDE Team</a>
         </div>
       </div>
