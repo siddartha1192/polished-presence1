@@ -1099,7 +1099,7 @@ footer{background:#000;border-top:3px solid var(--orange)}
   /* Use #id to beat the 860px block's #engagement{height:auto} */
   #engagement{height:calc(100vh + 240vh);padding:0;position:static;margin-top:0}
   .eng-section{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center}
-  .eng-wrapper{gap:.5rem;padding:68px 0 0}
+  .eng-wrapper{gap:.5rem;padding:0}
   .eng-stage{position:relative;height:62vh;width:100%;max-width:100%;overflow:visible}
   .eng-card{position:absolute;inset:0;opacity:0;transform:translateY(45px);
     display:flex;align-items:flex-start;justify-content:center;
@@ -1122,7 +1122,8 @@ footer{background:#000;border-top:3px solid var(--orange)}
   .eng-steplist::-webkit-scrollbar{display:none}
   .eng-steplbl{font-size:clamp(.85rem,4vw,1.1rem);padding:.35rem .9rem;white-space:nowrap;flex-shrink:0}
   /* Pills */
-  .eng-pills-row{padding:0.75rem 0 1.25rem}
+  .eng-pills-row{padding:0.5rem 0 0.5rem}
+  #casestudies{padding-top:1.5rem}
   .eng-summary{flex-wrap:wrap;gap:.4rem;justify-content:center}
   .eng-sum-pill{font-size:.7rem;padding:.4rem .75rem}
 
