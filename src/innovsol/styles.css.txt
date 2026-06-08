@@ -1051,16 +1051,16 @@ footer{background:#000;border-top:3px solid var(--orange)}
   .reel-bg,.reel-video{width:100%;max-width:100vw}
   .reel-slide{align-items:center;padding-top:0;padding-bottom:0;width:100%;overflow:hidden;display:flex;justify-content:center}
   .reel-slide .container{width:100%;padding:0 1.5rem;box-sizing:border-box}
-  .reel-inner{text-align:center;max-width:100%;padding:0;overflow-wrap:break-word;word-break:break-word;margin-top:clamp(90px,18vh,130px)}
-  .reel-eyebrow{font-size:clamp(1rem,4.2vw,1.4rem);white-space:normal;letter-spacing:.08em;justify-content:center;width:100%;margin-bottom:1rem}
+  .reel-inner{text-align:center;max-width:100%;padding:0;overflow-wrap:break-word;word-break:break-word;margin-top:clamp(94px,13vh,110px)}
+  .reel-eyebrow{font-size:clamp(1.3rem,5.5vw,1.8rem);white-space:normal;letter-spacing:.08em;justify-content:center;width:100%;margin-bottom:1rem}
   .reel-slide[data-idx="2"] .reel-eyebrow,
-  .reel-slide[data-idx="3"] .reel-eyebrow{font-size:clamp(.9rem,3.8vw,1.2rem)}
-  .reel-slide h1{font-size:clamp(1.7rem,7vw,2.6rem);text-align:center;overflow-wrap:break-word;word-break:break-word;line-height:1.2;margin-bottom:.5rem}
-  .reel-slide[data-idx="0"] h1{font-size:clamp(1.6rem,6.8vw,2.4rem)}
-  .reel-sub{font-size:clamp(.88rem,3.8vw,1.05rem);margin-top:.75rem}
+  .reel-slide[data-idx="3"] .reel-eyebrow{font-size:clamp(1.2rem,5vw,1.6rem)}
+  .reel-slide h1{font-size:clamp(2.2rem,9vw,3.4rem);text-align:center;overflow-wrap:break-word;word-break:break-word;line-height:1.2;margin-bottom:.5rem}
+  .reel-slide[data-idx="0"] h1{font-size:clamp(2.1rem,8.8vw,3.1rem)}
+  .reel-sub{font-size:clamp(1.15rem,5vw,1.4rem);margin-top:.75rem}
   .reel-nowrap{white-space:normal}
   .reel-btns{position:relative;bottom:auto;left:auto;right:auto;justify-content:center;flex-wrap:wrap;gap:.75rem;margin-top:2.5rem;padding:0;width:100%}
-  .btn-hero-primary,.btn-outline-light{font-size:clamp(.85rem,3.8vw,1rem);padding:.75rem 1.6rem;white-space:nowrap}
+  .btn-hero-primary,.btn-outline-light{font-size:clamp(1.1rem,5vw,1.3rem);padding:.75rem 1.6rem;white-space:nowrap}
   /* Dots — always centred, never clipped */
   .reel-dots{
     position:absolute;bottom:1.5rem;
@@ -1204,9 +1204,9 @@ footer{background:#000;border-top:3px solid var(--orange)}
 
   /* Hero on narrow phones (≤480px) */
   .reel-slide .container{padding:0 1.2rem}
-  .reel-slide h1{font-size:clamp(1.5rem,6.5vw,2.2rem)}
-  .reel-slide[data-idx="0"] h1{font-size:clamp(1.4rem,6.2vw,2rem)}
-  .btn-hero-primary,.btn-outline-light{font-size:.88rem;padding:.7rem 1.3rem}
+  .reel-slide h1{font-size:clamp(2rem,8.5vw,2.9rem)}
+  .reel-slide[data-idx="0"] h1{font-size:clamp(1.8rem,8vw,2.6rem)}
+  .btn-hero-primary,.btn-outline-light{font-size:1.15rem;padding:.7rem 1.3rem}
   .reel-dots{bottom:1.2rem;gap:5px}
   .reel-dot{width:5px;height:5px}
   .reel-dot.reel-dot-active{width:14px}
@@ -1215,9 +1215,9 @@ footer{background:#000;border-top:3px solid var(--orange)}
 /* Extra-small phones — iPhone SE, Galaxy A series (≤360px) */
 @media(max-width:360px){
   .reel-slide .container{padding:0 .85rem}
-  .reel-slide h1{font-size:clamp(1rem,4.5vw,1.4rem)}
+  .reel-slide h1{font-size:clamp(1.3rem,5.9vw,1.8rem)}
   .reel-btns{gap:.5rem}
-  .btn-hero-primary,.btn-outline-light{font-size:.74rem;padding:.5rem .85rem}
+  .btn-hero-primary,.btn-outline-light{font-size:1rem;padding:.5rem .85rem}
   .reel-dots{bottom:1rem}
   .reel-dot{width:4px;height:4px}
   /* Metrics extra tight */
