@@ -1098,8 +1098,8 @@ footer{background:#000;border-top:3px solid var(--orange)}
   /* ── Engagement — sticky scroll re-enabled on mobile ── */
   /* Use #id to beat the 860px block's #engagement{height:auto} */
   #engagement{height:calc(100vh + 240vh);padding:0;position:static;margin-top:0}
-  .eng-section{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center}
-  .eng-wrapper{gap:.5rem;padding:0}
+  .eng-section{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:flex-start}
+  .eng-wrapper{gap:.5rem;padding:94px 0 0}
   .eng-stage{position:relative;height:62vh;width:100%;max-width:100%;overflow:visible}
   .eng-card{position:absolute;inset:0;opacity:0;transform:translateY(45px);
     display:flex;align-items:flex-start;justify-content:center;
