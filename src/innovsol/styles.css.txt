@@ -1170,7 +1170,7 @@ footer{background:#000;border-top:3px solid var(--orange)}
   /* ── Contact section ── */
   .con-hero{height:auto;min-height:560px}
   .con-map-content{flex-direction:column;align-items:flex-start;padding:5rem 0 2rem;gap:1.5rem}
-  .con-panel{max-width:100%}
+  .con-panel{max-width:100%;padding-top:2rem}
   .con-panel h2{font-size:clamp(1.5rem,6vw,2rem)}
   .con-hq-text{position:static;margin-top:1rem}
 

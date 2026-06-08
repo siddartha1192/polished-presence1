@@ -625,7 +625,7 @@
       </div>
     </div>
     <div style="text-align:center;margin-top:2.5rem">
-      <a href="#contact" class="btn btn-ghost">View All Case Studies &rarr;</a>
+      <a href="#contact-form" class="btn btn-ghost">View All Case Studies &rarr;</a>
     </div>
   </div>
 </section>
